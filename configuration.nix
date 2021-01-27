@@ -73,7 +73,7 @@
     monitoring = {
       enable = true;
       useACME = true;
-      domain = "monitoring-test.${config.networking.domain}";
+      domain = "monitoring.${config.networking.domain}";
     };
   };
 
