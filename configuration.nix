@@ -95,17 +95,84 @@
   programs.fish.enable = true;
 
   # List services that you want to enable:
+  services.grafana = {
+    enable = true;
+    domain = "monitoring-test.alarsyo.net";
+    port = 3000;
+    addr = "127.0.0.1";
+
+    provision = {
+      enable = true;
+
+      datasources = [
+        {
+          name = "Prometheus";
+          type = "prometheus";
+          url = "http://localhost:${toString config.services.prometheus.port}";
+        }
+      ];
+
+      dashboards = [
+        {
+          name = "Node Exporter";
+          options.path = ./grafana-dashboards;
+          disableDeletion = true;
+        }
+      ];
+    };
+  };
+
+  services.prometheus = {
+    enable = true;
+    port = 9090;
+    listenAddress = "127.0.0.1";
+
+    exporters = {
+      node = {
+        enable = true;
+        enabledCollectors = [ "systemd" ];
+        port = 9100;
+      };
+    };
+
+    scrapeConfigs = [
+      {
+        job_name = config.networking.hostName;
+        static_configs = [{
+          targets = [ "127.0.0.1:${toString config.services.prometheus.exporters.node.port}" ];
+        }];
+      }
+    ];
+  };
+
+  services.nginx = {
+    enable = true;
+
+    recommendedGzipSettings = true;
+    recommendedOptimisation = true;
+    recommendedProxySettings = true;
+    recommendedTlsSettings = true;
+
+    virtualHosts.${config.services.grafana.domain} = {
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:${toString config.services.grafana.port}";
+        proxyWebsockets = true;
+      };
+
+      forceSSL = true;
+      enableACME = true;
+    };
+  };
+
+  security.acme.acceptTerms = true;
+  security.acme.email = "antoine97.martin@gmail.com";
+
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.openssh.permitRootLogin = "no";
   services.openssh.passwordAuthentication = false;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
