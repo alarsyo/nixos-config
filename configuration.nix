@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./services
     ];
 
   # Use the GRUB 2 boot loader.
@@ -16,6 +17,7 @@
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
 
   networking.hostName = "poseidon"; # Define your hostname.
+  networking.domain = "alarsyo.net";
 
   # Set your time zone.
   time.timeZone = "Europe/Paris";
@@ -67,72 +69,11 @@
   programs.fish.enable = true;
 
   # List services that you want to enable:
-  services.grafana = {
-    enable = true;
-    domain = "monitoring-test.alarsyo.net";
-    port = 3000;
-    addr = "127.0.0.1";
-
-    provision = {
+  my.services = {
+    monitoring = {
       enable = true;
-
-      datasources = [
-        {
-          name = "Prometheus";
-          type = "prometheus";
-          url = "http://localhost:${toString config.services.prometheus.port}";
-        }
-      ];
-
-      dashboards = [
-        {
-          name = "Node Exporter";
-          options.path = ./grafana-dashboards;
-          disableDeletion = true;
-        }
-      ];
-    };
-  };
-
-  services.prometheus = {
-    enable = true;
-    port = 9090;
-    listenAddress = "127.0.0.1";
-
-    exporters = {
-      node = {
-        enable = true;
-        enabledCollectors = [ "systemd" ];
-        port = 9100;
-      };
-    };
-
-    scrapeConfigs = [
-      {
-        job_name = config.networking.hostName;
-        static_configs = [{
-          targets = [ "127.0.0.1:${toString config.services.prometheus.exporters.node.port}" ];
-        }];
-      }
-    ];
-  };
-
-  services.nginx = {
-    enable = true;
-
-    recommendedGzipSettings = true;
-    recommendedOptimisation = true;
-    recommendedProxySettings = true;
-    recommendedTlsSettings = true;
-
-    virtualHosts.${config.services.grafana.domain} = {
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString config.services.grafana.port}";
-        proxyWebsockets = true;
-      };
-
-      forceSSL = true;
-      enableACME = true;
+      useACME = true;
+      domain = "monitoring-test.${config.networking.domain}";
     };
   };
 
