@@ -75,6 +75,8 @@
       useACME = true;
       domain = "monitoring.${config.networking.domain}";
     };
+
+    matrix.enable = true;
   };
 
   security.acme.acceptTerms = true;
