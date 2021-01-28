@@ -1,0 +1,22 @@
+#+title: NixOS deployment configuration
+
+* Services
+
+** Matrix
+
+My Matrix homeserver =alarsyo.net= is deployed using [[file:services/matrix.nix][this service file]].
+
+*** TODO Cleanup config using the one in the NixOS manual
+*** TODO Setup element-web as well
+
+** Monitoring
+
+Grafana and Prometheus are currently used as a glorified =htop=.
+
+* Tasks
+
+** TODO Setup BitWarden
+** TODO Setup backups BitWarden
+** TODO Setup declarative config postgresql
+** TODO Setup backup postgresql
+** TODO Try borg backups
