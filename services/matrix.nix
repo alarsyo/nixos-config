@@ -1,3 +1,12 @@
+# Matrix homeserver setup, using different endpoints for federation and client
+# traffic. The main trick for this is defining two nginx servers endpoints for
+# matrix.domain.com, each listening on different ports.
+#
+# Configuration inspired by :
+#
+# - https://github.com/delroth/infra.delroth.net/blob/master/roles/matrix-synapse.nix
+# - https://nixos.org/manual/nixos/stable/index.html#module-services-matrix
+#
 { config, lib, pkgs, ... }:
 
 with lib;
@@ -27,7 +36,7 @@ in {
       listeners = [
         # Federation
         {
-          bind_address = "127.0.0.1";
+          bind_address = "::1";
           port = federationPort.private;
           tls = false;  # Terminated by nginx.
           x_forwarded = true;
@@ -36,7 +45,7 @@ in {
 
         # Client
         {
-          bind_address = "127.0.0.1";
+          bind_address = "::1";
           port = clientPort.private;
           tls = false;  # Terminated by nginx.
           x_forwarded = true;
@@ -49,44 +58,73 @@ in {
       enable = true;
 
       recommendedGzipSettings = true;
+      recommendedOptimisation = true;
       recommendedTlsSettings = true;
       recommendedProxySettings = true;
 
-      virtualHosts = let
-        passToMatrix = port: {
-          proxyPass = "http://127.0.0.1:${toString port}";
-        };
-      in {
+      virtualHosts = {
         "matrix.${domain}" = {
           forceSSL = true;
           enableACME = true;
 
-          locations."/" = passToMatrix clientPort.private;
+          # Or do a redirect instead of the 404, or whatever is appropriate for you.
+          # But do not put a Matrix Web client here! See the Element web section below.
+          locations."/".return = "404";
+
+          locations."/_matrix" = {
+            proxyPass = "http://[::1]:${toString clientPort.private}";
+          };
+
+          listen = [
+            { addr = "0.0.0.0"; port = clientPort.public; ssl = true; }
+            { addr = "[::]"; port = clientPort.public; ssl = true; }
+          ];
+
         };
 
+        # same as above, but listening on the federation port
         "matrix.${domain}_federation" = rec {
-          onlySSL = true;
+          forceSSL = true;
           serverName = "matrix.${domain}";
           useACMEHost = serverName;
 
+          locations."/".return = "404";
+
+          locations."/_matrix" = {
+            proxyPass = "http://[::1]:${toString federationPort.private}";
+          };
+
           listen = [
             { addr = "0.0.0.0"; port = federationPort.public; ssl = true; }
             { addr = "[::]"; port = federationPort.public; ssl = true; }
           ];
 
-          locations."/" = passToMatrix federationPort.private;
         };
 
         "${domain}" = {
-          onlySSL = true;
+          forceSSL = true;
           enableACME = true;
 
-          listen = [
-            { addr = "0.0.0.0"; port = federationPort.public; ssl = true; }
-            { addr = "[::]"; port = federationPort.public; ssl = true; }
-          ];
+          locations."= /.well-known/matrix/server".extraConfig =
+            let
+              server = { "m.server" = "matrix.${domain}:${toString federationPort.public}"; };
+            in ''
+            add_header Content-Type application/json;
+            return 200 '${builtins.toJSON server}';
+          '';
 
-          locations."/" = passToMatrix federationPort.private;
+          locations."= /.well-known/matrix/client".extraConfig =
+            let
+              client = {
+                "m.homeserver" =  { "base_url" = "https://matrix.${domain}"; };
+                "m.identity_server" =  { "base_url" = "https://vector.im"; };
+              };
+              # ACAO required to allow element-web on any URL to request this json file
+            in ''
+            add_header Content-Type application/json;
+            add_header Access-Control-Allow-Origin *;
+            return 200 '${builtins.toJSON client}';
+          '';
         };
       };
     };
