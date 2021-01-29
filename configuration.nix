@@ -58,6 +58,7 @@
     fish
     git
     htop
+    ripgrep
     stow
     tmux
     vim
