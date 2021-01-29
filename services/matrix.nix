@@ -126,6 +126,36 @@ in {
             return 200 '${builtins.toJSON client}';
           '';
         };
+
+        # Element Web app deployment
+        #
+        "chat.${domain}" = {
+          enableACME = true;
+          forceSSL = true;
+
+          root = pkgs.element-web.override {
+            conf = {
+              default_server_config = {
+                "m.homeserver" = {
+                  "base_url" = "https://matrix.${domain}";
+                  "server_name" = "${domain}";
+                };
+                "m.identity_server" = {
+                  "base_url" = "https://vector.im";
+                };
+              };
+              showLabsSettings = true;
+              defaultCountryCode = "FR"; # cocorico
+              roomDirectory = {
+                "servers" = [
+                  "matrix.org"
+                  "mozilla.org"
+                  "prologin.org"
+                ];
+              };
+            };
+          };
+        };
       };
     };
 
