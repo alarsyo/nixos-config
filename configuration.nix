@@ -71,6 +71,12 @@
 
   # List services that you want to enable:
   my.services = {
+    bitwarden_rs = {
+      enable = true;
+      privatePort = 8081;
+      websocketPort = 3012;
+    };
+
     borg-backup = {
       enable = true;
       repo = (lib.removeSuffix "\n" (builtins.readFile ./borg-backup-repo));
@@ -119,5 +125,7 @@
   system.stateVersion = "20.09"; # Did you read the comment?
 
   boot.supportedFilesystems = [ "btrfs" ];
+
+  nixpkgs.overlays = [ (import ./overlays/bitwarden_rs.nix) ];
 }
 

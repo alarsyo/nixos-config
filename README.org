@@ -9,10 +9,3 @@ My Matrix homeserver =alarsyo.net= is deployed using [[file:services/matrix.nix]
 ** Monitoring
 
 Grafana and Prometheus are currently used as a glorified =htop=.
-
-* Tasks
-
-** TODO Setup BitWarden
-** TODO Setup backups BitWarden
-** TODO Setup declarative config postgresql
-** TODO Setup backup postgresql
