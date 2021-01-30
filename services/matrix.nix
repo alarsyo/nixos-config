@@ -28,6 +28,13 @@ in {
       package = pkgs.postgresql_12;
     };
 
+    services.postgresqlBackup = {
+      enable = true;
+      databases = [ "matrix-synapse" ];
+      # Borg backup starts at midnight so create DB dump just before
+      startAt = "*-*-* 23:30:00";
+    };
+
     services.matrix-synapse = {
       enable = true;
       server_name = domain;
