@@ -16,4 +16,3 @@ Grafana and Prometheus are currently used as a glorified =htop=.
 ** TODO Setup backups BitWarden
 ** TODO Setup declarative config postgresql
 ** TODO Setup backup postgresql
-** TODO Try borg backups

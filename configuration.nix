@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   imports =
@@ -71,6 +71,14 @@
 
   # List services that you want to enable:
   my.services = {
+    borg-backup = {
+      enable = true;
+      repo = (lib.removeSuffix "\n" (builtins.readFile ./borg-backup-repo));
+      paths = [
+        "/var/lib/matrix-synapse"
+      ];
+      exclude = [];
+    };
     monitoring = {
       enable = true;
       useACME = true;
