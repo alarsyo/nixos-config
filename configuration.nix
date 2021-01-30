@@ -80,13 +80,20 @@
       ];
       exclude = [];
     };
+
+    miniflux = {
+      enable = true;
+      adminCredentialsFile = "${./miniflux-admin-credentials}";
+      privatePort = 8080;
+    };
+
+    matrix.enable = true;
+
     monitoring = {
       enable = true;
       useACME = true;
       domain = "monitoring.${config.networking.domain}";
     };
-
-    matrix.enable = true;
   };
 
   security.acme.acceptTerms = true;
