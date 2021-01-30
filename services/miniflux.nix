@@ -4,6 +4,7 @@ with lib;
 
 let
   cfg = config.my.services.miniflux;
+  my = config.my;
 
   domain = config.networking.domain;
 in {
@@ -28,7 +29,7 @@ in {
   config = mkIf cfg.enable {
     # services.postgresql is automatically enabled by services.miniflux, let's
     # back it up
-    services.postgresqlBackup = {
+    services.postgresqlBackup = mkIf my.services.postgresql-backup.enable {
       databases = [ "miniflux" ];
     };
 

@@ -13,6 +13,7 @@ with lib;
 
 let
   cfg = config.my.services.matrix;
+  my = config.my;
 
   federationPort = { public = 8448; private = 11338; };
   clientPort = { public = 443; private = 11339; };
@@ -28,11 +29,8 @@ in {
       package = pkgs.postgresql_12;
     };
 
-    services.postgresqlBackup = {
-      enable = true;
+    services.postgresqlBackup = mkIf my.services.postgresql-backup.enable {
       databases = [ "matrix-synapse" ];
-      # Borg backup starts at midnight so create DB dump just before
-      startAt = "*-*-* 23:30:00";
     };
 
     services.matrix-synapse = {

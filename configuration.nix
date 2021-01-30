@@ -94,6 +94,10 @@
       useACME = true;
       domain = "monitoring.${config.networking.domain}";
     };
+
+    postgresql-backup = {
+      enable = true;
+    };
   };
 
   security.acme.acceptTerms = true;
