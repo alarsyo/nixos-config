@@ -171,5 +171,9 @@ in {
       clientPort.public
       federationPort.public
     ];
+
+    my.services.borg-backup = mkIf cfg.enable {
+      paths = [ "/var/lib/matrix-synapse" ];
+    };
   };
 }

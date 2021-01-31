@@ -15,5 +15,14 @@ in {
       # Borg backup starts at midnight so create DB dump just before
       startAt = "*-*-* 23:30:00";
     };
+
+    my.services.borg-backup = mkIf cfg.enable {
+      paths = [ "/var/backup/postgresql" ];
+
+      # no need to store previously backed up files, as borg does the snapshoting
+      # for us
+      exclude = [ "/var/backup/postgresql/*.prev.sql.gz" ];
+    };
   };
+
 }

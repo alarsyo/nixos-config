@@ -80,11 +80,6 @@
     borg-backup = {
       enable = true;
       repo = (lib.removeSuffix "\n" (builtins.readFile ./borg-backup-repo));
-      paths = [
-        "/var/lib/matrix-synapse"
-        "/var/backup/postgresql"
-      ];
-      exclude = [];
     };
 
     miniflux = {

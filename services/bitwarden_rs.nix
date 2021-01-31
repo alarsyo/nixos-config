@@ -93,5 +93,11 @@ in {
     environment.systemPackages = with pkgs; [
       bitwarden_rs-vault
     ];
+
+    my.services.borg-backup = mkIf cfg.enable {
+      paths = [ "/var/lib/bitwarden_rs" ];
+      exclude = [ "/var/lib/bitwarden_rs/icon_cache" ];
+    };
   };
+
 }
