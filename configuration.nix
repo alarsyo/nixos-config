@@ -79,12 +79,12 @@
 
     borg-backup = {
       enable = true;
-      repo = (lib.removeSuffix "\n" (builtins.readFile ./borg-backup-repo));
+      repo = (lib.removeSuffix "\n" (builtins.readFile ./secrets/borg-backup-repo));
     };
 
     miniflux = {
       enable = true;
-      adminCredentialsFile = "${./miniflux-admin-credentials}";
+      adminCredentialsFile = "${./secrets/miniflux-admin-credentials}";
       privatePort = 8080;
     };
 
