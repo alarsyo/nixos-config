@@ -121,6 +121,6 @@
 
   boot.supportedFilesystems = [ "btrfs" ];
 
-  nixpkgs.overlays = [ (import ./overlays/bitwarden_rs.nix) ];
+  nixpkgs.overlays = import ./overlays;
 }
 
