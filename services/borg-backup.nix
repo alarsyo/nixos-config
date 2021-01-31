@@ -45,10 +45,8 @@ in {
   config = mkIf cfg.enable {
     services.borgbackup.jobs."borgbase" = {
       paths = cfg.paths;
-      exclude = [
-        # nothing for now
-      ];
-      repo = "${cfg.repo}";
+      exclude = cfg.exclude;
+      repo = cfg.repo;
       encryption = {
         mode = "repokey-blake2";
         passCommand = "cat /root/borgbackup/passphrase";
