@@ -82,6 +82,11 @@
       repo = (lib.removeSuffix "\n" (builtins.readFile ./secrets/borg-backup-repo));
     };
 
+    gitea = {
+      enable = true;
+      privatePort = 8082;
+    };
+
     miniflux = {
       enable = true;
       adminCredentialsFile = "${./secrets/miniflux-admin-credentials}";
