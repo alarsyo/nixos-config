@@ -56,11 +56,10 @@ in {
         other.SHOW_FOOTER_VERSION = false;
       };
 
-      dump = {
-        enable = true;
-        # Borg backup starts at midnight so create dump before
-        interval = "*-*-* 23:40:00";
-      };
+      # NixOS module uses `gitea dump` to backup repositories and the database,
+      # but it produces a single .zip file that's not very borg-backup friendly.
+      # I configure my backup system manually below.
+      dump.enable = false;
 
       database = {
         type = "postgres";
@@ -69,8 +68,19 @@ in {
       };
     };
 
+    # FIXME: Borg *could* be backing up files while they're being edited by
+    # gitea, so it may produce corrupt files in the snapshot if I push stuff
+    # around midnight. I'm not sure how `gitea dump` handles this either,
+    # though.
     my.services.borg-backup = mkIf cfg.enable {
-      paths = [ config.services.gitea.dump.backupDir ];
+      paths = [
+        config.services.gitea.lfs.contentDir
+        config.services.gitea.repositoryRoot
+      ];
+    };
+
+    services.postgresqlBackup = mkIf my.services.postgresql-backup.enable {
+      databases = [ "gitea" ];
     };
 
     services.nginx = {
