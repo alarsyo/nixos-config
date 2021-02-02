@@ -81,13 +81,20 @@ in {
           forceSSL = true;
           enableACME = true;
 
-          # Or do a redirect instead of the 404, or whatever is appropriate for you.
-          # But do not put a Matrix Web client here! See the Element web section below.
-          locations."/".return = "404";
+          locations =
+            let
+              proxyToClientPort = {
+                proxyPass = "http://[::1]:${toString clientPort.private}";
+              };
+            in {
+              # Or do a redirect instead of the 404, or whatever is appropriate
+              # for you. But do not put a Matrix Web client here! See the
+              # Element web section below.
+              "/".return = "404";
 
-          locations."/_matrix" = {
-            proxyPass = "http://[::1]:${toString clientPort.private}";
-          };
+              "/_matrix" = proxyToClientPort;
+              "/_synapse/client" = proxyToClientPort;
+            };
 
           listen = [
             { addr = "0.0.0.0"; port = clientPort.public; ssl = true; }
