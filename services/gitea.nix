@@ -12,7 +12,7 @@ in {
     enable = mkEnableOption "Personal Git hosting with Gitea";
 
     privatePort = mkOption {
-      type = types.int;
+      type = types.port;
       default = 8082;
       example = 8082;
       description = "Port to serve the app";

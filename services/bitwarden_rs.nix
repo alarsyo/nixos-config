@@ -12,14 +12,14 @@ in {
     enable = mkEnableOption "Bitwarden";
 
     privatePort = mkOption {
-      type = types.int;
+      type = types.port;
       default = 8081;
       example = 8081;
       description = "Port used internally for rocket server";
     };
 
     websocketPort = mkOption {
-      type = types.int;
+      type = types.port;
       default = 3012;
       example = 3012;
       description = "Port used for websocket connections";
