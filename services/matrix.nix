@@ -21,6 +21,13 @@ let
 in {
   options.my.services.matrix = {
     enable = lib.mkEnableOption "Matrix Synapse";
+
+    registration_shared_secret = lib.mkOption {
+      type = types.str;
+      default = null;
+      example = "deadbeef";
+      description = "Shared secret to register users";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -37,6 +44,8 @@ in {
       enable = true;
       server_name = domain;
       public_baseurl = "https://matrix.${domain}";
+
+      registration_shared_secret = cfg.registration_shared_secret;
 
       listeners = [
         # Federation

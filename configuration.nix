@@ -88,7 +88,13 @@
       privatePort = 8080;
     };
 
-    matrix.enable = true;
+    matrix = {
+      enable = true;
+      registration_shared_secret =
+        (lib.removeSuffix "\n" (
+          builtins.readFile ./secrets/matrix-registration-shared-secret
+        ));
+    };
 
     monitoring = {
       enable = true;
