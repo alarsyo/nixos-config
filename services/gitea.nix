@@ -56,7 +56,11 @@ in {
         other.SHOW_FOOTER_VERSION = false;
       };
 
-      dump.enable = true;
+      dump = {
+        enable = true;
+        # Borg backup starts at midnight so create dump before
+        interval = "*-*-* 23:40:00";
+      };
 
       database = {
         type = "postgres";
