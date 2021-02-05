@@ -41,8 +41,12 @@
     "62.210.16.7"
   ];
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Define a user account.
+  users.users.root = {
+    hashedPassword = lib.fileContents ./secrets/shadow-hashed-password-root;
+  };
   users.users.alarsyo = {
+    hashedPassword = lib.fileContents ./secrets/shadow-hashed-password-alarsyo;
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.fish;
