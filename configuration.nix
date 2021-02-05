@@ -42,6 +42,7 @@
   ];
 
   # Define a user account.
+  users.mutableUsers = false;
   users.users.root = {
     hashedPassword = lib.fileContents ./secrets/shadow-hashed-password-root;
   };
