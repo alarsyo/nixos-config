@@ -79,7 +79,7 @@
 
     borg-backup = {
       enable = true;
-      repo = (lib.removeSuffix "\n" (builtins.readFile ./secrets/borg-backup-repo));
+      repo = lib.fileContents ./secrets/borg-backup-repo;
     };
 
     gitea = {
@@ -95,10 +95,9 @@
 
     matrix = {
       enable = true;
-      registration_shared_secret =
-        (lib.removeSuffix "\n" (
-          builtins.readFile ./secrets/matrix-registration-shared-secret
-        ));
+      registration_shared_secret = (
+        lib.fileContents ./secrets/matrix-registration-shared-secret
+      );
     };
 
     monitoring = {
