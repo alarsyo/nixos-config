@@ -1,5 +1,8 @@
 name: "Build everything and push to cachix"
 on:
+  workflow_dispatch:
+  schedule:
+    - cron: '* */1 * * *'
   push:
     branches:
       - main
