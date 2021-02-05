@@ -40,6 +40,9 @@ in {
       config = {
         LISTEN_ADDR = "127.0.0.1:${toString cfg.privatePort}";
         BASE_URL = "https://reader.${domain}/";
+
+        CLEANUP_ARCHIVE_UNREAD_DAYS = "-1";
+        CLEANUP_ARCHIVE_READ_DAYS = "-1";
       };
     };
 
