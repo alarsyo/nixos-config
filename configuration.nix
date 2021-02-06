@@ -139,6 +139,11 @@
   nixpkgs.overlays = import ./overlays;
 
   nix = {
+    package = pkgs.nixUnstable;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+
     binaryCaches = [
       "https://alarsyo.cachix.org"
     ];
