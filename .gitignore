@@ -1,5 +1,0 @@
-/secrets/borg-backup-repo
-/secrets/miniflux-admin-credentials
-/secrets/matrix-registration-shared-secret
-/secrets/shadow-hashed-password-alarsyo
-/secrets/shadow-hashed-password-root
