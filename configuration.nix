@@ -62,7 +62,9 @@
     bat
     fish
     git
+    gnupg
     htop
+    pinentry-curses
     ripgrep
     stow
     tmux
@@ -73,6 +75,11 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs.fish.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+    pinentryFlavor = "curses";
+  };
 
   # List services that you want to enable:
   my.services = {
