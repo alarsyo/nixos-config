@@ -84,13 +84,6 @@ in {
     };
 
     services.nginx = {
-      enable = true;
-
-      recommendedGzipSettings = true;
-      recommendedOptimisation = true;
-      recommendedTlsSettings = true;
-      recommendedProxySettings = true;
-
       virtualHosts = {
         "git.${domain}" = {
           forceSSL = true;

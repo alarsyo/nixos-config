@@ -68,13 +68,6 @@ in {
     };
 
     services.nginx = {
-      enable = true;
-
-      recommendedGzipSettings = true;
-      recommendedOptimisation = true;
-      recommendedProxySettings = true;
-      recommendedTlsSettings = true;
-
       virtualHosts.${config.services.grafana.domain} = {
         locations."/" = {
           proxyPass = "http://127.0.0.1:${toString config.services.grafana.port}";

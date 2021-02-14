@@ -47,13 +47,6 @@ in {
     };
 
     services.nginx = {
-      enable = true;
-
-      recommendedGzipSettings = true;
-      recommendedOptimisation = true;
-      recommendedTlsSettings = true;
-      recommendedProxySettings = true;
-
       virtualHosts = {
         "reader.${domain}" = {
           forceSSL = true;

@@ -8,6 +8,7 @@
     ./matrix.nix
     ./miniflux.nix
     ./monitoring.nix
+    ./nginx.nix
     ./postgresql-backup.nix
   ];
 }
