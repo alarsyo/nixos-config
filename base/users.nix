@@ -1,11 +1,14 @@
 { config, lib, pkgs, ... }:
+let
+  secrets = config.my.secrets;
+in
 {
   users.mutableUsers = false;
   users.users.root = {
-    hashedPassword = lib.fileContents ../secrets/shadow-hashed-password-root;
+    hashedPassword = secrets.shadow-hashed-password-root;
   };
   users.users.alarsyo = {
-    hashedPassword = lib.fileContents ../secrets/shadow-hashed-password-alarsyo;
+    hashedPassword = secrets.shadow-hashed-password-alarsyo;
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.fish;

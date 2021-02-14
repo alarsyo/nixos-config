@@ -3,16 +3,13 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, lib, pkgs, ... }:
-
+let
+  secrets = config.my.secrets;
+in
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-
-      ./services
-
-      # Default configuration
-      ./base
     ];
 
   # Use the GRUB 2 boot loader.
@@ -80,7 +77,7 @@
 
     borg-backup = {
       enable = true;
-      repo = lib.fileContents ./secrets/borg-backup-repo;
+      repo = secrets.borg-backup-repo;
     };
 
     gitea = {
@@ -90,15 +87,13 @@
 
     miniflux = {
       enable = true;
-      adminCredentialsFile = "${./secrets/miniflux-admin-credentials}";
+      adminCredentialsFile = "${../../secrets/miniflux-admin-credentials.secret}";
       privatePort = 8080;
     };
 
     matrix = {
       enable = true;
-      registration_shared_secret = (
-        lib.fileContents ./secrets/matrix-registration-shared-secret
-      );
+      registration_shared_secret = secrets.matrix-registration-shared-secret;
     };
 
     monitoring = {
@@ -120,17 +115,10 @@
   services.openssh.permitRootLogin = "no";
   services.openssh.passwordAuthentication = false;
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "20.09"; # Did you read the comment?
 
   boot.supportedFilesystems = [ "btrfs" ];
 
-  nixpkgs.overlays = import ./overlays;
+  nixpkgs.overlays = import ../../overlays;
 
   nix = {
     package = pkgs.nixUnstable;
@@ -152,4 +140,3 @@
     };
   };
 }
-
