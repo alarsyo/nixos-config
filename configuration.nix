@@ -115,8 +115,6 @@
   security.acme.acceptTerms = true;
   security.acme.email = "antoine97.martin@gmail.com";
 
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
-
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.openssh.permitRootLogin = "no";
