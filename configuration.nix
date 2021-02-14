@@ -8,7 +8,11 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+
       ./services
+
+      # Default configuration
+      ./base
     ];
 
   # Use the GRUB 2 boot loader.
@@ -40,21 +44,6 @@
     "62.210.16.6"
     "62.210.16.7"
   ];
-
-  # Define a user account.
-  users.mutableUsers = false;
-  users.users.root = {
-    hashedPassword = lib.fileContents ./secrets/shadow-hashed-password-root;
-  };
-  users.users.alarsyo = {
-    hashedPassword = lib.fileContents ./secrets/shadow-hashed-password-alarsyo;
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    shell = pkgs.fish;
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH3rrF3VSWI4n4cpguvlmLAaU3uftuX4AVV/39S/8GO9 alarsyo@thinkpad"
-    ];
-  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
