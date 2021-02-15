@@ -118,8 +118,6 @@ in
 
   boot.supportedFilesystems = [ "btrfs" ];
 
-  nixpkgs.overlays = import ../../overlays;
-
   nix = {
     package = pkgs.nixUnstable;
     extraOptions = ''

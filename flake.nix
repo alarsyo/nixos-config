@@ -10,6 +10,9 @@
       modules =
         [
           ./poseidon.nix
+          {
+            nixpkgs.overlays = import ./overlays;
+          }
         ];
     };
   };
