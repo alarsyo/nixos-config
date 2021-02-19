@@ -11,5 +11,6 @@ with lib;
     shadow-hashed-password-root = lib.fileContents ./shadow-hashed-password-root.secret;
     miniflux-admin-credentials = lib.fileContents ./miniflux-admin-credentials.secret;
     borg-backup-repo = lib.fileContents ./borg-backup-repo.secret;
+    transmission-password = lib.fileContents ./transmission.secret;
   };
 }

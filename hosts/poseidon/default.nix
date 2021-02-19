@@ -109,6 +109,12 @@ in
     postgresql-backup = {
       enable = true;
     };
+
+    transmission = {
+      enable = true;
+      username = "alarsyo";
+      password = secrets.transmission-password;
+    };
   };
 
   security.acme.acceptTerms = true;

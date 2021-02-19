@@ -12,5 +12,6 @@
     ./monitoring.nix
     ./nginx.nix
     ./postgresql-backup.nix
+    ./transmission.nix
   ];
 }
