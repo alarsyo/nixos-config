@@ -85,6 +85,10 @@ in
       privatePort = 8082;
     };
 
+    jellyfin = {
+      enable = true;
+    };
+
     miniflux = {
       enable = true;
       adminCredentialsFile = "${../../secrets/miniflux-admin-credentials.secret}";
