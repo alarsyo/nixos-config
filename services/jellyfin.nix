@@ -26,7 +26,10 @@ in {
       forceSSL = true;
       enableACME = true;
 
-      locations."/".proxyPass = "http://localhost:${toString jellyfinPort}/";
+      locations."/" = {
+        proxyPass = "http://localhost:${toString jellyfinPort}/";
+        proxyWebsockets = true;
+      };
     };
   };
 }
