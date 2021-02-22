@@ -80,6 +80,10 @@ in
       repo = secrets.borg-backup-repo;
     };
 
+    fail2ban = {
+      enable = true;
+    };
+
     gitea = {
       enable = true;
       privatePort = 8082;
