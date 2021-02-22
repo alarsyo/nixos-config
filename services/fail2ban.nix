@@ -9,6 +9,13 @@ in {
   };
 
   config = mkIf cfg.enable {
-    services.fail2ban.enable = true;
+    services.fail2ban = {
+      enable = true;
+      bantime-increment.enable = true;
+      jails.DEFAULT = ''
+        bantime = 6h
+        findtime = 6h
+      '';
+    };
   };
 }
