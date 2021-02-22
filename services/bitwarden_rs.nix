@@ -91,6 +91,39 @@ in {
       paths = [ "/var/lib/bitwarden_rs" ];
       exclude = [ "/var/lib/bitwarden_rs/icon_cache" ];
     };
+
+    services.fail2ban.jails = {
+      bitwarden_rs = ''
+        enabled = true
+        filter = bitwarden_rs
+        port = http,https
+        maxretry = 5
+      '';
+
+      # Admin page isn't enabled by default, but just in case...
+      bitwarden_rs-admin = ''
+        enabled = true
+        filter = bitwarden_rs-admin
+        port = http,https
+        maxretry = 2
+      '';
+    };
+
+    environment.etc = {
+      "fail2ban/filter.d/bitwarden_rs.conf".text = ''
+        [Definition]
+        failregex = ^.*Username or password is incorrect\. Try again\. IP: <ADDR>\. Username:.*$
+        ignoreregex =
+        journalmatch = _SYSTEMD_UNIT=bitwarden_rs.service
+      '';
+
+      "fail2ban/filter.d/bitwarden_rs-admin.conf".text = ''
+        [Definition]
+        failregex = ^.*Invalid admin token\. IP: <ADDR>.*$
+        ignoreregex =
+        journalmatch = _SYSTEMD_UNIT=bitwarden_rs.service
+      '';
+    };
   };
 
 }
