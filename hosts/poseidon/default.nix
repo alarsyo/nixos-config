@@ -41,6 +41,7 @@ in
     "62.210.16.6"
     "62.210.16.7"
   ];
+  my.networking.externalInterface = "eno1";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -118,6 +119,23 @@ in
       enable = true;
       username = "alarsyo";
       password = secrets.transmission-password;
+    };
+
+    wireguard = {
+      enable = true;
+      iface = "wg";
+      port = 51820;
+
+      net = {
+        v4 = {
+          subnet = "10.0.0";
+          mask = 24;
+        };
+        v6 = {
+          subnet = "fd42:42:42";
+          mask = 64;
+        };
+      };
     };
   };
 

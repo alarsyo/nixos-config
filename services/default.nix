@@ -14,5 +14,6 @@
     ./nginx.nix
     ./postgresql-backup.nix
     ./transmission.nix
+    ./wireguard.nix
   ];
 }

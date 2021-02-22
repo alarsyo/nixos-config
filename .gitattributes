@@ -1,1 +1,2 @@
 secrets/*.secret filter=git-crypt diff=git-crypt
+secrets/wireguard.nix filter=git-crypt diff=git-crypt
