@@ -78,10 +78,6 @@ in {
       };
     };
 
-    systemd.services.matrix-synapse = {
-      after = [ "postgresql.service" ];
-    };
-
     # needed for bitwarden to find files to serve for the vault
     environment.systemPackages = with pkgs; [
       bitwarden_rs-vault
