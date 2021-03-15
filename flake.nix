@@ -13,12 +13,20 @@
           ./poseidon.nix
 
           {
-            nixpkgs.overlays = [
-              # packages accessible through pkgs.unstable.package
-              (final: prev: {
-                unstable = nixpkgs-unstable.legacyPackages.${system};
-              })
-            ] ++ (import ./overlays);
+            nixpkgs.overlays =
+              let
+                pkgsUnstable = nixpkgs-unstable.legacyPackages.${system};
+              in
+                [
+                  # packages accessible through pkgs.unstable.package
+                  (final: prev: {
+                    unstable = pkgsUnstable;
+                  })
+                  (final: prev: {
+                    bitwarden_rs = pkgsUnstable.bitwarden_rs;
+                    bitwarden_rs-vault = pkgsUnstable.bitwarden_rs-vault;
+                  })
+                ];
           }
         ];
     };
