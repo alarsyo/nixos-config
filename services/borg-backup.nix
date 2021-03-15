@@ -54,6 +54,11 @@ in {
       environment.BORG_RSH = "ssh -i /root/borgbackup/ssh_key";
       compression = "auto,lzma";
       startAt = "daily";
+      prune.keep = {
+        daily = 7;
+        weekly = 4;
+        monthly = 6;
+      };
     };
   };
 }
