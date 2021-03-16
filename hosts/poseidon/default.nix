@@ -118,6 +118,10 @@ in
       enable = true;
     };
 
+    tgv = {
+      enable = true;
+    };
+
     transmission = {
       enable = true;
       username = "alarsyo";

@@ -13,6 +13,7 @@
     ./monitoring.nix
     ./nginx.nix
     ./postgresql-backup.nix
+    ./tgv.nix
     ./transmission.nix
     ./wireguard.nix
   ];
