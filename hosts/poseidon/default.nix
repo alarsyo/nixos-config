@@ -114,6 +114,10 @@ in
       domain = "monitoring.${config.networking.domain}";
     };
 
+    nextcloud = {
+      enable = true;
+    };
+
     postgresql-backup = {
       enable = true;
     };

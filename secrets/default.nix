@@ -12,6 +12,8 @@ with lib;
     miniflux-admin-credentials = lib.fileContents ./miniflux-admin-credentials.secret;
     borg-backup-repo = lib.fileContents ./borg-backup-repo.secret;
     transmission-password = lib.fileContents ./transmission.secret;
+    nextcloud-admin-pass = lib.fileContents ./nextcloud-admin-pass.secret;
+    nextcloud-admin-user = lib.fileContents ./nextcloud-admin-user.secret;
 
     wireguard = pkgs.callPackage ./wireguard.nix { };
   };

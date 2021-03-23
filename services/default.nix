@@ -11,6 +11,7 @@
     ./media.nix
     ./miniflux.nix
     ./monitoring.nix
+    ./nextcloud.nix
     ./nginx.nix
     ./postgresql-backup.nix
     ./tgv.nix
