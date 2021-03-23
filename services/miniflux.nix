@@ -29,7 +29,7 @@ in {
   config = mkIf cfg.enable {
     # services.postgresql is automatically enabled by services.miniflux, let's
     # back it up
-    services.postgresqlBackup = mkIf my.services.postgresql-backup.enable {
+    services.postgresqlBackup = {
       databases = [ "miniflux" ];
     };
 

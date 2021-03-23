@@ -79,7 +79,7 @@ in {
       ];
     };
 
-    services.postgresqlBackup = mkIf my.services.postgresql-backup.enable {
+    services.postgresqlBackup = {
       databases = [ "gitea" ];
     };
 

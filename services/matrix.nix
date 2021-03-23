@@ -36,7 +36,7 @@ in {
       package = pkgs.postgresql_12;
     };
 
-    services.postgresqlBackup = mkIf my.services.postgresql-backup.enable {
+    services.postgresqlBackup = {
       databases = [ "matrix-synapse" ];
     };
 
