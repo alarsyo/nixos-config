@@ -33,7 +33,6 @@ in {
   config = lib.mkIf cfg.enable {
     services.postgresql = {
       enable = true;
-      package = pkgs.postgresql_12;
     };
 
     services.postgresqlBackup = {

@@ -14,6 +14,7 @@
     ./nextcloud.nix
     ./nginx.nix
     ./postgresql-backup.nix
+    ./postgresql.nix
     ./tgv.nix
     ./transmission.nix
     ./wireguard.nix

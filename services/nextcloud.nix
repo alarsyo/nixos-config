@@ -14,7 +14,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    # FIXME: set postgresql package globally
     services.postgresql = {
       enable = true;
 
