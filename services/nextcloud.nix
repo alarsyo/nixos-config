@@ -71,8 +71,12 @@ in
       };
     };
 
-    my.services.borg-backup = lib.mkIf cfg.enable {
-      paths = [ config.services.nextcloud.home ];
+    my.services.borg-backup = let
+      nextcloudHome = config.services.nextcloud.home;
+    in lib.mkIf cfg.enable  {
+      paths = [ nextcloudHome ];
+      # borg can fail if *.part files disappear during backup
+      exclude = [ "${nextcloudHome}/data/*/uploads" ];
     };
   };
 }
