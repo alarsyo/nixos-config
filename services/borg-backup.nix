@@ -52,6 +52,7 @@ in {
         passCommand = "cat /root/borgbackup/passphrase";
       };
       environment.BORG_RSH = "ssh -i /root/borgbackup/ssh_key";
+      extraCreateArgs = "--stats --list";
       compression = "auto,zstd";
       startAt = "daily";
       prune.keep = {
