@@ -28,6 +28,12 @@ in
       ];
     };
 
+    # not handled by module
+    systemd.services.nextcloud-setup= {
+      requires = [ "postgresql.service" ];
+      after = [ "postgresql.service" ];
+    };
+
     services.postgresqlBackup = {
       databases = [ dbName ];
     };
