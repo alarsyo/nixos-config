@@ -52,7 +52,7 @@ in {
         passCommand = "cat /root/borgbackup/passphrase";
       };
       environment.BORG_RSH = "ssh -i /root/borgbackup/ssh_key";
-      compression = "auto,lzma";
+      compression = "auto,zstd";
       startAt = "daily";
       prune.keep = {
         daily = 7;
