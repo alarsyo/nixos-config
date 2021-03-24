@@ -43,34 +43,6 @@ in
   ];
   my.networking.externalInterface = "eno1";
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    bat
-    fish
-    git
-    gnupg
-    htop
-    pinentry-curses
-    ripgrep
-    stow
-    vim
-    wget
-  ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  programs = {
-    fish.enable = true;
-    gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
-      pinentryFlavor = "curses";
-    };
-    mosh.enable = true;
-    tmux.enable = true;
-  };
-
   # List services that you want to enable:
   my.services = {
     bitwarden_rs = {
