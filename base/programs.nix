@@ -9,7 +9,10 @@
     };
     less.enable = true;
     mosh.enable = true;
-    tmux.enable = true;
+    tmux = {
+      enable = true;
+      baseIndex = 1;
+    };
   };
 
   environment.systemPackages = with pkgs; [
