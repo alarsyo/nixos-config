@@ -180,9 +180,12 @@ in {
       federationPort.public
     ];
 
-    my.services.borg-backup = mkIf cfg.enable {
-      paths = [ "/var/lib/matrix-synapse" ];
-      # FIXME: find out what I can exclude safely
+    my.services.borg-backup = let
+      dataDir = config.services.matrix-synapse.dataDir;
+    in mkIf cfg.enable {
+      paths = [ dataDir ];
+      # this is just caching for other servers media, doesn't need backup
+      exclude = [ "${dataDir}/media/remote_*" ];
     };
   };
 }
