@@ -17,6 +17,8 @@ in
   boot.loader.grub.version = 2;
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
 
+  boot.supportedFilesystems = [ "btrfs" ];
+
   networking.hostName = "poseidon"; # Define your hostname.
   networking.domain = "alarsyo.net";
 
@@ -129,7 +131,4 @@ in
   services.openssh.enable = true;
   services.openssh.permitRootLogin = "no";
   services.openssh.passwordAuthentication = false;
-
-
-  boot.supportedFilesystems = [ "btrfs" ];
 }
