@@ -19,6 +19,13 @@ in
 
   boot.supportedFilesystems = [ "btrfs" ];
 
+  services.btrfs = {
+    autoScrub = {
+      enable = true;
+      fileSystems = [ "/" ];
+    };
+  };
+
   networking.hostName = "poseidon"; # Define your hostname.
   networking.domain = "alarsyo.net";
 
