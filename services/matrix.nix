@@ -182,6 +182,7 @@ in {
 
     my.services.borg-backup = mkIf cfg.enable {
       paths = [ "/var/lib/matrix-synapse" ];
+      # FIXME: find out what I can exclude safely
     };
   };
 }
