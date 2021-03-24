@@ -54,7 +54,6 @@ in
     pinentry-curses
     ripgrep
     stow
-    tmux
     vim
     wget
   ];
@@ -69,6 +68,7 @@ in
       pinentryFlavor = "curses";
     };
     mosh.enable = true;
+    tmux.enable = true;
   };
 
   # List services that you want to enable:
