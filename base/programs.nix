@@ -4,11 +4,16 @@
     fish.enable = true;
     gnupg.agent = {
       enable = true;
-      enableSSHSupport = true;
       pinentryFlavor = "curses";
     };
     less.enable = true;
     mosh.enable = true;
+    ssh = {
+      startAgent = true;
+      extraConfig = ''
+        AddKeysToAgent yes
+      '';
+    };
     tmux = {
       enable = true;
       baseIndex = 1;
