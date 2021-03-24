@@ -75,8 +75,12 @@ in
       nextcloudHome = config.services.nextcloud.home;
     in lib.mkIf cfg.enable  {
       paths = [ nextcloudHome ];
-      # borg can fail if *.part files disappear during backup
-      exclude = [ "${nextcloudHome}/data/*/uploads" ];
+      exclude = [
+        # borg can fail if *.part files disappear during backup
+        "re:^${nextcloudHome}/data/[^/]+/uploads"
+        # image previews can take up a lot of space
+        "re:^${nextcloudHome}/data/appdata_[^/]+/preview"
+      ];
     };
   };
 }
