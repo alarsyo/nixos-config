@@ -7,6 +7,7 @@
       enableSSHSupport = true;
       pinentryFlavor = "curses";
     };
+    less.enable = true;
     mosh.enable = true;
     tmux.enable = true;
   };
