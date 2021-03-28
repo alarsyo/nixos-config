@@ -78,6 +78,10 @@ in
       enable = true;
     };
 
+    lohr = {
+      enable = true;
+    };
+
     miniflux = {
       enable = true;
       adminCredentialsFile = "${../../secrets/miniflux-admin-credentials.secret}";

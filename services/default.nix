@@ -7,6 +7,7 @@
     ./fail2ban.nix
     ./gitea.nix
     ./jellyfin.nix
+    ./lohr.nix
     ./matrix.nix
     ./media.nix
     ./miniflux.nix
