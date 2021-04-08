@@ -9,3 +9,7 @@ My Matrix homeserver =alarsyo.net= is deployed using [[file:services/matrix.nix]
 ** Monitoring
 
 Grafana and Prometheus are currently used as a glorified =htop=.
+
+** Lohr
+
+Needs manual SSH key and known hosts setup.
