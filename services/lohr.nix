@@ -40,6 +40,7 @@ in
           "ROCKET_PORT=${toString cfg.port}"
           "ROCKET_LOG_LEVEL=normal"
           "LOHR_HOME=${cfg.home}"
+          # NOTE: secret cannot contain a '%', it's interpreted by systemd
           "'LOHR_SECRET=${secrets.lohr-shared-secret}'"
         ];
         ExecStart = "${lohrPkg}/bin/lohr";
