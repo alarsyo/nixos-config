@@ -14,6 +14,7 @@ with lib;
     transmission-password = lib.fileContents ./transmission.secret;
     nextcloud-admin-pass = lib.fileContents ./nextcloud-admin-pass.secret;
     nextcloud-admin-user = lib.fileContents ./nextcloud-admin-user.secret;
+    lohr-shared-secret = lib.fileContents ./lohr-shared-secret.secret;
 
     wireguard = pkgs.callPackage ./wireguard.nix { };
   };

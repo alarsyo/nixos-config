@@ -80,6 +80,7 @@ in
 
     lohr = {
       enable = true;
+      port = 8083;
     };
 
     miniflux = {
