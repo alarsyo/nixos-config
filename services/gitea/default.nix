@@ -95,5 +95,7 @@ in {
         };
       };
     };
+
+    systemd.services.gitea.preStart = "${pkgs.coreutils}/bin/ln -sfT ${./templates} ${config.services.gitea.stateDir}/custom/templates";
   };
 }

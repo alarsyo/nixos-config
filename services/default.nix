@@ -5,7 +5,7 @@
     ./bitwarden_rs.nix
     ./borg-backup.nix
     ./fail2ban.nix
-    ./gitea.nix
+    ./gitea
     ./jellyfin.nix
     ./lohr.nix
     ./matrix.nix
