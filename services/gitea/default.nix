@@ -43,7 +43,7 @@ in {
       rootUrl = "https://git.${domain}/";
       httpAddress = "127.0.0.1";
       httpPort = cfg.privatePort;
-      log.level = "Info"; # [ "Trace" "Debug" "Info" "Warn" "Error" "Critical" ]
+      log.level = "Warn"; # [ "Trace" "Debug" "Info" "Warn" "Error" "Critical" ]
       lfs.enable = true;
 
       # NOTE: temporarily remove this for initial setup
