@@ -54,6 +54,9 @@ in {
 
       settings = {
         other.SHOW_FOOTER_VERSION = false;
+        repository = {
+          ENABLE_PUSH_CREATE_USER = true;
+        };
       };
 
       # NixOS module uses `gitea dump` to backup repositories and the database,
