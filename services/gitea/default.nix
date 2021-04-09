@@ -72,7 +72,7 @@ in {
     # gitea, so it may produce corrupt files in the snapshot if I push stuff
     # around midnight. I'm not sure how `gitea dump` handles this either,
     # though.
-    my.services.borg-backup = mkIf cfg.enable {
+    my.services.borg-backup = {
       paths = [
         config.services.gitea.lfs.contentDir
         config.services.gitea.repositoryRoot
