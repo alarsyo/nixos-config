@@ -29,6 +29,7 @@
 
     # development
     git
+    git-crypt
     gnupg
     pinentry-curses
     vim
