@@ -23,6 +23,7 @@
   environment.systemPackages = with pkgs; [
     # shell usage
     bat
+    fd
     ripgrep
     wget
 

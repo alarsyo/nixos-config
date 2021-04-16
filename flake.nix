@@ -30,5 +30,12 @@
           }
         ];
     };
+    nixosConfigurations.boreal = nixpkgs-unstable.lib.nixosSystem rec {
+      system = "x86_64-linux";
+      modules =
+        [
+          ./boreal.nix
+        ];
+    };
   };
 }

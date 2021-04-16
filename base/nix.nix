@@ -1,5 +1,7 @@
 { pkgs, ... }:
 {
+  nixpkgs.config.allowUnfree = true;
+
   nix = {
     package = pkgs.nixUnstable;
     extraOptions = ''

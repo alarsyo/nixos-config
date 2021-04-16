@@ -12,6 +12,7 @@ in
     isNormalUser = true;
     extraGroups = [
       "media"
+      "networkmanager"
       "wheel" # Enable ‘sudo’ for the user.
     ];
     shell = pkgs.fish;
