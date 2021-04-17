@@ -1,11 +1,11 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    alacritty
+    discord
     firefox
     flameshot
-    alacritty
     slack
-    discord
   ];
 
   networking.networkmanager.enable = true;
