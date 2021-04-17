@@ -64,7 +64,7 @@ in
 
     xserver = {
       enable = true;
-      videoDrivers = [ "nouveau" ];
+      videoDrivers = [ "nvidia" ];
       windowManager.i3.enable = true;
       layout = "fr";
       xkbVariant = "us";
