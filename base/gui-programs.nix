@@ -5,6 +5,7 @@
     discord
     firefox
     flameshot
+    pavucontrol
     slack
   ];
 
