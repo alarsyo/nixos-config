@@ -69,6 +69,11 @@ in
       layout = "fr";
       xkbVariant = "us";
     };
+
+    emacs = {
+      enable = true;
+      package = pkgs.emacsPgtkGcc;
+    };
   };
 
   sound.enable = true;

@@ -3,9 +3,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-20.09";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    emacs-overlay.url = "github:nix-community/emacs-overlay/master";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable }: {
+  outputs = { self, nixpkgs, nixpkgs-unstable, emacs-overlay }: {
     nixosConfigurations.poseidon = nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
       modules =
@@ -35,6 +36,10 @@
       modules =
         [
           ./boreal.nix
+
+          {
+            nixpkgs.overlays = [ emacs-overlay.overlay ];
+          }
         ];
     };
   };
