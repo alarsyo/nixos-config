@@ -32,6 +32,7 @@
     git-crypt
     gnupg
     pinentry-curses
+    python3
     vim
 
     # terminal utilities
