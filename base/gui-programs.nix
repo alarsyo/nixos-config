@@ -8,6 +8,7 @@
     flameshot
     pavucontrol
     slack
+    spotify
   ];
 
   networking.networkmanager.enable = true;
