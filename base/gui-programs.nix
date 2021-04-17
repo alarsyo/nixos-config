@@ -3,6 +3,7 @@
   environment.systemPackages = with pkgs; [
     alacritty
     discord
+    feh
     firefox
     flameshot
     pavucontrol
