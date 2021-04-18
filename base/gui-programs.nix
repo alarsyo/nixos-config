@@ -11,6 +11,7 @@
     slack
     spotify
     sqlite # needed for org-roam
+    zathura
   ];
 
   fonts.fonts = with pkgs; [
