@@ -25,6 +25,7 @@
     bat
     fd
     ripgrep
+    tree
     wget
 
     # development
