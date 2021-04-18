@@ -38,7 +38,16 @@
           ./boreal.nix
 
           {
-            nixpkgs.overlays = [ emacs-overlay.overlay ];
+            nixpkgs.overlays = [
+              emacs-overlay.overlay
+
+              # uncomment this to build everything from scratch, fun but takes a
+              # while
+              #
+              # (self: super: {
+              #   stdenv = super.impureUseNativeOptimizations super.stdenv;
+              # })
+            ];
           }
         ];
     };
