@@ -1,9 +1,26 @@
 {
   description = "Nixos configuration with flakes";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-20.09";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    emacs-overlay.url = "github:nix-community/emacs-overlay/master";
+    nixpkgs = {
+      type = "github";
+      owner = "NixOS";
+      repo = "nixpkgs";
+      ref = "nixos-20.09";
+    };
+
+    nixpkgs-unstable = {
+      type = "github";
+      owner = "NixOS";
+      repo = "nixpkgs";
+      ref = "nixos-unstable";
+    };
+
+    emacs-overlay = {
+      type = "github";
+      owner = "nix-community";
+      repo = "emacs-overlay";
+      ref = "master";
+    };
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, emacs-overlay }: {
