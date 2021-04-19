@@ -85,7 +85,7 @@ in
 
         keybindings = lib.mkOptionDefault {
           "${modifier}+Shift+e" = ''mode "${logoutMode}"'';
-          "${modifier}+i" = "exec ${pkgs.emacsPgtkGcc}/bin/emacsclient -c";
+          "${modifier}+i" = "exec emacsclient -c";
         };
 
         modes =
