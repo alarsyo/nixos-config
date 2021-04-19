@@ -74,6 +74,10 @@
             nixpkgs.overlays = [
               emacs-overlay.overlay
 
+              (self: super: {
+                packages = import ./packages { pkgs = super; };
+              })
+
               # uncomment this to build everything from scratch, fun but takes a
               # while
               #

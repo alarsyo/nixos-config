@@ -22,6 +22,7 @@
     fd
     ripgrep
     tree
+    packages.tmux-thumbs
     wget
 
     # development

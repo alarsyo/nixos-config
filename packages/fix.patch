@@ -1,0 +1,41 @@
+diff --git a/src/swapper.rs b/src/swapper.rs
+index aff33e1..cb5f21a 100644
+--- a/src/swapper.rs
++++ b/src/swapper.rs
+@@ -210,11 +210,10 @@ impl<'a> Swapper<'a> {
+     };
+ 
+     let pane_command = format!(
+-        "tmux capture-pane -t {active_pane_id} -p{scroll_params} | tail -n {height} | {dir}/target/release/thumbs -f '%U:%H' -t {tmp} {args}; tmux swap-pane -t {active_pane_id}; {zoom_command} tmux wait-for -S {signal}",
++        "tmux capture-pane -t {active_pane_id} -p{scroll_params} | tail -n {height} | @@replace-me@@/thumbs -f '%U:%H' -t {tmp} {args}; tmux swap-pane -t {active_pane_id}; {zoom_command} tmux wait-for -S {signal}",
+         active_pane_id = active_pane_id,
+         scroll_params = scroll_params,
+         height = self.active_pane_height.unwrap_or(i32::MAX),
+-        dir = self.dir,
+         tmp = TMP_FILE,
+         args = args.join(" "),
+         zoom_command = zoom_command,
+diff --git a/tmux-thumbs.sh b/tmux-thumbs.sh
+index 92d5625..c6300c7 100755
+--- a/tmux-thumbs.sh
++++ b/tmux-thumbs.sh
+@@ -35,4 +35,4 @@ add-param command        string
+ add-param upcase-command string
+ add-param osc52          boolean
+ 
+-"${CURRENT_DIR}/target/release/tmux-thumbs" "${PARAMS[@]}" || true
++@@replace-me@@ "${PARAMS[@]}" || true
+diff --git a/tmux-thumbs.tmux b/tmux-thumbs.tmux
+index 4fc9355..87c5346 100755
+--- a/tmux-thumbs.tmux
++++ b/tmux-thumbs.tmux
+@@ -8,9 +8,3 @@ THUMBS_KEY="$(tmux show-option -gqv @thumbs-key)"
+ THUMBS_KEY=${THUMBS_KEY:-$DEFAULT_THUMBS_KEY}
+ 
+ tmux bind-key "${THUMBS_KEY}" run-shell -b "${CURRENT_DIR}/tmux-thumbs.sh"
+-
+-BINARY="${CURRENT_DIR}/target/release/thumbs"
+-
+-if [ ! -f "$BINARY" ]; then
+-  tmux split-window "cd ${CURRENT_DIR} && cargo build --release --target-dir=target && echo 'Press any key to continue...' && read -k1"
+-fi
