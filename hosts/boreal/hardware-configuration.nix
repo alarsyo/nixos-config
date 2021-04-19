@@ -26,4 +26,5 @@
 
   swapDevices = [ ];
 
+  hardware.cpu.amd.updateMicrocode = true;
 }
