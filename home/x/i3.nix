@@ -24,6 +24,7 @@ let
   colorAqua = "#689d68";
   colorGray = "#a89984";
   colorDarkGray = "#1d2021";
+  colorWhite = "#ffffff";
 in
 {
   config = lib.mkIf isEnabled {
@@ -76,9 +77,42 @@ in
                   background = colorRed;
                   text = colorBg;
                 };
+
+                separator = colorRed;
               };
             }
           ];
+
+        colors = {
+          focused = {
+            border = colorBlue;
+            background = colorBlue;
+            text = colorDarkGray;
+            indicator = colorPurple;
+            childBorder = colorDarkGray;
+          };
+          focusedInactive = {
+            border = colorDarkGray;
+            background = colorDarkGray;
+            text = colorYellow;
+            indicator = colorPurple;
+            childBorder = colorDarkGray;
+          };
+          unfocused = {
+            border = colorDarkGray;
+            background = colorDarkGray;
+            text = colorYellow;
+            indicator = colorPurple;
+            childBorder = colorDarkGray;
+          };
+          urgent = {
+            border = colorRed;
+            background = colorRed;
+            text = colorWhite;
+            indicator = colorRed;
+            childBorder = colorRed;
+          };
+        };
 
         focus = {
           followMouse = true;
