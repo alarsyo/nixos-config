@@ -33,6 +33,7 @@ in
             {
               block = "cpu";
               interval = 1;
+              format = "{barchart}";
             }
             {
               block = "temperature";
