@@ -14,7 +14,7 @@ in
 
       bars = {
         top = {
-          theme = "gruvbox-light";
+          theme = "solarized-light";
         };
       };
     };
