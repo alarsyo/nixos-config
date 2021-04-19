@@ -8,7 +8,7 @@ in
     home.packages = with pkgs; [
       iw # Used by `net` block
       lm_sensors # Used by `temperature` block
-      font-awesome-ttf
+      font-awesome
     ];
 
     programs.i3status-rust = {
