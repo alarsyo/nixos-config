@@ -40,7 +40,7 @@ in
   # List services that you want to enable:
   my.services = {
     wireguard = {
-      enable = true;
+      enable = false;
       iface = "wg";
       port = 51820;
 
