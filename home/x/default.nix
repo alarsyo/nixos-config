@@ -2,6 +2,7 @@
 {
   imports = [
     ./i3.nix
+    ./i3bar.nix
   ];
 
   options.my.home.x = with lib; {

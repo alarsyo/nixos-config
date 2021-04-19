@@ -13,6 +13,17 @@ let
   modifier = "Mod4"; # `Super` key
 
   logoutMode = "[L]ogout, [S]uspend, [P]oweroff, [R]eboot";
+
+  # colors
+  colorBg = "#282828";
+  colorRed = "#cc241d";
+  colorGreen = "#98971a";
+  colorYellow = "#d79921";
+  colorBlue = "#458588";
+  colorPurple = "#b16286";
+  colorAqua = "#689d68";
+  colorGray = "#a89984";
+  colorDarkGray = "#1d2021";
 in
 {
   config = lib.mkIf isEnabled {
@@ -26,10 +37,40 @@ in
         inherit modifier;
 
         bars =
+          let
+            barConfigPath =
+              config.xdg.configFile."i3status-rust/config-top.toml".target;
+          in
           [
             {
-              statusCommand = "i3status";
+              statusCommand = "i3status-rs ${barConfigPath}";
               position = "top";
+
+              colors = {
+                background = colorBg;
+                statusline = colorYellow;
+
+                focusedWorkspace = {
+                  border = colorAqua;
+                  background = colorAqua;
+                  text = colorDarkGray;
+                };
+                inactiveWorkspace = {
+                  border = colorDarkGray;
+                  background = colorDarkGray;
+                  text = colorYellow;
+                };
+                activeWorkspace = {
+                  border = colorAqua;
+                  background = colorDarkGray;
+                  text = colorYellow;
+                };
+                urgentWorkspace = {
+                  border = colorRed;
+                  background = colorRed;
+                  text = colorBg;
+                };
+              };
             }
           ];
 
