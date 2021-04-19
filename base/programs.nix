@@ -14,10 +14,6 @@
         AddKeysToAgent yes
       '';
     };
-    tmux = {
-      enable = true;
-      baseIndex = 1;
-    };
   };
 
   environment.systemPackages = with pkgs; [

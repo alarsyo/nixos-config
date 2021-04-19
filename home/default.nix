@@ -3,6 +3,7 @@
   imports = [
     ./emacs.nix
     ./flameshot.nix
+    ./tmux.nix
     ./x
   ];
 
