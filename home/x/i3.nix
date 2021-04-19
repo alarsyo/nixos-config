@@ -31,6 +31,10 @@ in
       flameshot.enable = true;
     };
 
+    home.packages = with pkgs; [
+      betterlockscreen
+    ];
+
     xsession.windowManager.i3 = {
       enable = true;
 
@@ -94,6 +98,8 @@ in
           "XF86AudioLowerVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%";
           "XF86AudioMute" = "exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle";
           "XF86AudioMicMute" = "exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+
+          "${modifier}+l" = "exec --no-startup-id betterlockscreen --lock";
         };
 
         modes =
@@ -106,7 +112,7 @@ in
           {
             "${logoutMode}" = makeModeBindings {
               "l" = "exec --no-startup-id i3-msg exit, mode default";
-              "s" = "exec --no-startup-id systemctl suspend, mode default";
+              "s" = "exec --no-startup-id betterlockscreen --suspend, mode default";
               "p" = "exec --no-startup-id systemctl poweroff, mode default";
               "r" = "exec --no-startup-id systemctl reboot, mode default";
             };
