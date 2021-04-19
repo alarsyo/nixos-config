@@ -3,22 +3,17 @@
   environment.systemPackages = with pkgs; [
     alacritty
     discord
-    emacsPgtkGcc
     feh
     firefox
     pavucontrol
     slack
     spotify
-    sqlite # needed for org-roam
     zathura
-  ];
-
-  fonts.fonts = with pkgs; [
-    input-fonts
-    emacs-all-the-icons-fonts
   ];
 
   networking.networkmanager.enable = true;
   programs.nm-applet.enable = true;
+
+  # NOTE: needed for home emacs configuration
   nixpkgs.config.input-fonts.acceptLicense = true;
 }

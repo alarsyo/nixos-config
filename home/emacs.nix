@@ -5,6 +5,16 @@
   };
 
   config = lib.mkIf config.my.home.emacs.enable {
+    home.packages = with pkgs; [
+      sqlite # needed by org-roam
+
+      # fonts used by my config
+      input-fonts
+      emacs-all-the-icons-fonts
+    ];
+    # make sure above fonts are discoverable
+    fonts.fontconfig.enable = true;
+
     services.emacs = {
       enable = true;
       # generate emacsclient desktop file
