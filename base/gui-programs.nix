@@ -6,7 +6,6 @@
     emacsPgtkGcc
     feh
     firefox
-    flameshot
     pavucontrol
     slack
     spotify

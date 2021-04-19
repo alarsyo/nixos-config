@@ -2,6 +2,7 @@
 {
   imports = [
     ./emacs.nix
+    ./flameshot.nix
     ./x
   ];
 
