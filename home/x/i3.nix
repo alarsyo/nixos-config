@@ -27,8 +27,9 @@ let
 in
 {
   config = lib.mkIf isEnabled {
-    # FIXME: enable flameshot when added
-    # my.home = {};
+    my.home = {
+      flameshot.enable = true;
+    };
 
     xsession.windowManager.i3 = {
       enable = true;
