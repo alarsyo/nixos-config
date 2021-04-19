@@ -127,6 +127,12 @@ in
         ];
 
         terminal = myTerminal;
+
+        assigns = {
+          "10" = [
+            { class = "Slack"; }
+          ];
+        };
       };
     };
   };
