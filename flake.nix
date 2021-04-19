@@ -21,9 +21,17 @@
       repo = "emacs-overlay";
       ref = "master";
     };
+
+    home-manager = {
+      type = "github";
+      owner = "nix-community";
+      repo = "home-manager";
+      ref = "master";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, emacs-overlay }: {
+  outputs = { self, nixpkgs, nixpkgs-unstable, emacs-overlay, home-manager }: {
     nixosConfigurations.poseidon = nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
       modules =
@@ -53,6 +61,13 @@
       modules =
         [
           ./boreal.nix
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.alarsyo = import ./home;
+          }
 
           {
             nixpkgs.overlays = [
