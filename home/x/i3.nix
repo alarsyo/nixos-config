@@ -109,14 +109,14 @@ in
               "Return" = "mode default";
             };
           in
-          {
-            "${logoutMode}" = makeModeBindings {
-              "l" = "exec --no-startup-id i3-msg exit, mode default";
-              "s" = "exec --no-startup-id betterlockscreen --suspend, mode default";
-              "p" = "exec --no-startup-id systemctl poweroff, mode default";
-              "r" = "exec --no-startup-id systemctl reboot, mode default";
+            lib.mkOptionDefault {
+              "${logoutMode}" = makeModeBindings {
+                "l" = "exec --no-startup-id i3-msg exit, mode default";
+                "s" = "exec --no-startup-id betterlockscreen --suspend, mode default";
+                "p" = "exec --no-startup-id systemctl poweroff, mode default";
+                "r" = "exec --no-startup-id systemctl reboot, mode default";
+              };
             };
-          };
 
         startup = [
           # FIXME: make it conditional on "nvidia" being part of video drivers
