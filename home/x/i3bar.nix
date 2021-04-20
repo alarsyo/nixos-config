@@ -30,6 +30,17 @@ in
               warning = 20.0;
               alert = 10.0;
             }
+            # TODO: update to new format when i3status-rust updates to v0.20:
+            # https://github.com/greshake/i3status-rust/blob/4d55b1d94ee09cbdefd805841fb54a2a4a0663a4/doc/blocks.md#available-format-keys-11
+            {
+              block = "memory";
+              display_type = "memory";
+              format_mem = "{Mug}/{MTg}GB";
+              warning_mem = 70.0;
+              critical_mem = 90.0;
+              # don't show swap
+              clickable = false;
+            }
             {
               block = "cpu";
               interval = 1;
