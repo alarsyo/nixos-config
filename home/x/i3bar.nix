@@ -61,6 +61,13 @@ in
               primary_only = true;
             }
             {
+              block = "bluetooth";
+              mac = config.my.secrets.bluetooth-mouse-mac-address;
+              hide_disconnected = true;
+              # TODO: use format when i3status-rust updates to v0.20
+              # format = "{percentage}";
+            }
+            {
               block = "sound";
               driver = "pulseaudio";
             }
