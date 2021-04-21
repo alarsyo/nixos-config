@@ -14,17 +14,7 @@ let
 
   logoutMode = "[L]ogout, [S]uspend, [P]oweroff, [R]eboot";
 
-  # colors
-  colorBg = "#282828";
-  colorRed = "#cc241d";
-  colorGreen = "#98971a";
-  colorYellow = "#d79921";
-  colorBlue = "#458588";
-  colorPurple = "#b16286";
-  colorAqua = "#689d68";
-  colorGray = "#a89984";
-  colorDarkGray = "#1d2021";
-  colorWhite = "#ffffff";
+  i3Theme = config.my.home.theme.i3Theme;
 in
 {
   config = lib.mkIf isEnabled {
@@ -53,65 +43,17 @@ in
               position = "top";
               fonts = [ "DejaVuSansMono" "FontAwesome5Free 9" ];
 
-              colors = {
-                background = colorBg;
-                statusline = colorYellow;
-
-                focusedWorkspace = {
-                  border = colorAqua;
-                  background = colorAqua;
-                  text = colorDarkGray;
-                };
-                inactiveWorkspace = {
-                  border = colorDarkGray;
-                  background = colorDarkGray;
-                  text = colorYellow;
-                };
-                activeWorkspace = {
-                  border = colorAqua;
-                  background = colorDarkGray;
-                  text = colorYellow;
-                };
-                urgentWorkspace = {
-                  border = colorRed;
-                  background = colorRed;
-                  text = colorBg;
-                };
-
-                separator = colorRed;
-              };
+              colors = i3Theme.bar;
             }
           ];
 
         colors = {
-          focused = {
-            border = colorBlue;
-            background = colorBlue;
-            text = colorDarkGray;
-            indicator = colorPurple;
-            childBorder = colorDarkGray;
-          };
-          focusedInactive = {
-            border = colorDarkGray;
-            background = colorDarkGray;
-            text = colorYellow;
-            indicator = colorPurple;
-            childBorder = colorDarkGray;
-          };
-          unfocused = {
-            border = colorDarkGray;
-            background = colorDarkGray;
-            text = colorYellow;
-            indicator = colorPurple;
-            childBorder = colorDarkGray;
-          };
-          urgent = {
-            border = colorRed;
-            background = colorRed;
-            text = colorWhite;
-            indicator = colorRed;
-            childBorder = colorRed;
-          };
+          inherit (i3Theme)
+            focused
+            focusedInactive
+            unfocused
+            urgent
+          ;
         };
 
         focus = {
