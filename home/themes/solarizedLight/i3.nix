@@ -1,64 +1,64 @@
 let
   colors = import ./colors.nix;
 in
-with colors.i3;
+with colors;
 {
   bar = {
-    background = background;
+    background = base3;
     statusline = yellow;
     separator = red;
 
     focusedWorkspace = {
-      border = aqua;
-      background = aqua;
-      text = darkGray;
+      border = blue;
+      background = blue;
+      text = base3; # base2 ?
     };
     inactiveWorkspace = {
-      border = darkGray;
-      background = darkGray;
-      text = yellow;
+      border = base2;
+      background = base2;
+      text = base00;
     };
     activeWorkspace = {
-      border = aqua;
-      background = darkGray;
+      border = blue;
+      background = base2;
       text = yellow;
     };
     urgentWorkspace = {
       border = red;
       background = red;
-      text = background;
+      text = base3;
     };
   };
 
   focused = {
     border = blue;
     background = blue;
-    text = darkGray;
-    indicator = purple;
-    childBorder = darkGray;
+    text = base3;
+    indicator = magenta;
+    childBorder = blue;
   };
 
   focusedInactive = {
-    border = darkGray;
-    background = darkGray;
-    text = yellow;
-    indicator = purple;
-    childBorder = darkGray;
+    border = base2;
+    background = base2;
+    text = base00;
+    indicator = magenta;
+    childBorder = base2;
   };
 
   unfocused = {
-    border = darkGray;
-    background = darkGray;
-    text = yellow;
-    indicator = purple;
-    childBorder = darkGray;
+    border = base2;
+    background = base2;
+    text = base00;
+    indicator = magenta;
+    childBorder = base2;
   };
 
   urgent = {
-    border = red;
-    background = red;
-    text = white;
-    indicator = red;
-    childBorder = red;
+    border = orange;
+    background = orange;
+    text = base3;
+    indicator = magenta;
+    childBorder = orange;
   };
 }
