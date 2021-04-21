@@ -4,6 +4,7 @@
     ./emacs.nix
     ./flameshot.nix
     ./secrets
+    ./themes
     ./tmux.nix
     ./x
   ];
