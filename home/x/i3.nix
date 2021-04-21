@@ -14,7 +14,7 @@ let
 
   logoutMode = "[L]ogout, [S]uspend, [P]oweroff, [R]eboot";
 
-  i3Theme = config.my.home.theme.i3Theme;
+  i3Theme = config.my.theme.i3Theme;
 in
 {
   config = lib.mkIf isEnabled {

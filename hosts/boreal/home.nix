@@ -5,6 +5,6 @@
     my.home.x.enable = true;
     my.home.emacs.enable = true;
     my.home.tmux.enable = true;
-    my.home.theme = config.home-manager.users.alarsyo.my.home.themes.solarizedLight;
+    my.theme = config.home-manager.users.alarsyo.my.themes.solarizedLight;
   };
 }

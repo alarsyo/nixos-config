@@ -10,17 +10,15 @@ let
   };
 in
 {
-  options.my.home = {
-    theme = mkOption {
+  options.my.theme = mkOption {
       type = themeType;
-    };
-
-    themes = mkOption {
-      type = with types; attrsOf themeType;
-    };
   };
 
-  config.my.home.themes = {
+  options.my.themes = mkOption {
+    type = with types; attrsOf themeType;
+  };
+
+  config.my.themes = {
     solarizedLight = import ./solarizedLight;
   };
 }
