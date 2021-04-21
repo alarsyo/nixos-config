@@ -19,4 +19,8 @@ in
       type = with types; attrsOf themeType;
     };
   };
+
+  config.my.home.themes = {
+    solarizedLight = import ./solarizedLight;
+  };
 }
