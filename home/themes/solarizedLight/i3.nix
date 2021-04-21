@@ -1,7 +1,7 @@
 let
   colors = import ./colors.nix;
 in
-with colors;
+with colors.i3;
 {
   bar = {
     background = background;

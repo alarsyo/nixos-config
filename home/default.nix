@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./alacritty.nix
     ./emacs.nix
     ./flameshot.nix
     ./secrets

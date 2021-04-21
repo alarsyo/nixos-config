@@ -3,6 +3,10 @@ with lib;
 let
   themeType = types.submodule {
     options = {
+      alacrittyTheme = mkOption {
+        type = import ./alacritty.nix { inherit lib; };
+        default = {};
+      };
       i3Theme = mkOption {
         type = import ./i3.nix { inherit lib; };
       };
