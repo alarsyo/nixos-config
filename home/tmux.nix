@@ -10,5 +10,6 @@ in
   config.programs.tmux = lib.mkIf cfg.enable {
     enable = true;
     baseIndex = 1;
+    terminal = "screen-256color";
   };
 }
