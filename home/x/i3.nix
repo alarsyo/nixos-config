@@ -111,9 +111,7 @@ in
         };
       };
 
-      # FIXME: integrate in config when it doesn't use deprecated new_window
       extraConfig = ''
-        default_border pixel
         workspace_auto_back_and_forth yes
       '';
     };
