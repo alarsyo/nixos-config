@@ -9,6 +9,7 @@ let
       };
       i3Theme = mkOption {
         type = import ./i3.nix { inherit lib; };
+        default = {};
       };
     };
   };
@@ -16,6 +17,7 @@ in
 {
   options.my.theme = mkOption {
       type = themeType;
+      default = {};
   };
 
   options.my.themes = mkOption {

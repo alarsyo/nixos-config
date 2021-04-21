@@ -103,6 +103,8 @@ types.submodule {
           };
         };
       };
+
+      default = {};
     };
 
     background = mkOption {
