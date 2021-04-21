@@ -61,6 +61,8 @@ in
           mouseWarping = true;
         };
 
+        workspaceAutoBackAndForth = true;
+
         fonts = [
           "DejaVu Sans Mono 8"
         ];
@@ -110,10 +112,6 @@ in
           ];
         };
       };
-
-      extraConfig = ''
-        workspace_auto_back_and_forth yes
-      '';
     };
   };
 }
