@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   isEnabled = config.my.home.x.enable;
+  i3BarTheme = config.my.theme.i3BarTheme;
 in
 {
 
@@ -16,8 +17,9 @@ in
 
       bars = {
         top = {
-          theme = "solarized-light";
           icons = "awesome5";
+          theme = i3BarTheme.theme.name;
+          settings = i3BarTheme;
 
           blocks = [
             {

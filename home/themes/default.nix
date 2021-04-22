@@ -11,6 +11,10 @@ let
         type = import ./i3.nix { inherit lib; };
         default = {};
       };
+      i3BarTheme = mkOption {
+        type = import ./i3bar.nix { inherit lib; };
+        default = {};
+      };
     };
   };
 in
