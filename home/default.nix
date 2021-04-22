@@ -3,7 +3,7 @@
   imports = [
     ./alacritty.nix
     ./emacs.nix
-    ./fish.nix
+    ./fish
     ./flameshot.nix
     ./secrets
     ./starship.nix
