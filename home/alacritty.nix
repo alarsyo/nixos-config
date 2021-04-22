@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 let
   cfg = config.my.home.alacritty;
   alacrittyTheme = config.my.theme.alacrittyTheme;
@@ -6,25 +6,34 @@ in
 {
   options.my.home.alacritty.enable = lib.mkEnableOption "Alacritty terminal";
 
-  config.programs.alacritty = lib.mkIf cfg.enable {
-    enable = true;
+  config = lib.mkIf cfg.enable {
+    programs.alacritty = {
+      enable = true;
 
-    settings = {
-      window = {
-        padding = {
-          x = 8;
-          y = 8;
+      settings = {
+        window = {
+          padding = {
+            x = 8;
+            y = 8;
+          };
         };
-      };
 
-      font = {
-        normal = {
-          family = "Input Mono Narrow";
+        font = {
+          normal = {
+            family = "Iosevka Fixed";
+            style = "Medium";
+          };
+          size = 10.0;
         };
-        size = 9.0;
-      };
 
-      colors = alacrittyTheme;
+        colors = alacrittyTheme;
+      };
     };
+
+    home.packages = with pkgs; [
+      iosevka-bin
+    ];
+    # make sure font is discoverable
+    fonts.fontconfig.enable = true;
   };
 }

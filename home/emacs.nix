@@ -9,8 +9,8 @@
       sqlite # needed by org-roam
 
       # fonts used by my config
-      input-fonts
       emacs-all-the-icons-fonts
+      iosevka-bin
     ];
     # make sure above fonts are discoverable
     fonts.fontconfig.enable = true;
