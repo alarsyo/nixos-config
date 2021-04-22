@@ -35,8 +35,23 @@
     nixosConfigurations.poseidon = nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
       modules =
+        let
+          unstablePkgs = import nixpkgs-unstable { inherit system; };
+        in
         [
           ./poseidon.nix
+
+          ({ config, utils, ... }: home-manager.nixosModules.home-manager {
+            pkgs = unstablePkgs;
+            lib = unstablePkgs.lib;
+            inherit config utils;
+          })
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.alarsyo = import ./home;
+            home-manager.verbose = true;
+          }
 
           {
             nixpkgs.overlays =
