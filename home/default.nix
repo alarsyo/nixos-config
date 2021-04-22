@@ -3,8 +3,10 @@
   imports = [
     ./alacritty.nix
     ./emacs.nix
+    ./fish.nix
     ./flameshot.nix
     ./secrets
+    ./starship.nix
     ./themes
     ./tmux.nix
     ./x
