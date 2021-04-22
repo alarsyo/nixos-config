@@ -1,10 +1,12 @@
 { ... }:
-
 {
   imports = [
     # Default configuration
     ./base
     ./base/gui-programs.nix
+
+    # Module definitions
+    ./modules
 
     # Service definitions
     ./services
