@@ -109,6 +109,7 @@ in
         assigns = {
           "10" = [
             { class = "Slack"; }
+            { class = "discord"; }
           ];
         };
       };
