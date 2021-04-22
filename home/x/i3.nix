@@ -112,6 +112,10 @@ in
             { class = "discord"; }
           ];
         };
+
+        window.commands = [
+          { command = "border pixel 2"; criteria = { class = "Alacritty"; }; }
+        ];
       };
     };
   };
