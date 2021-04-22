@@ -8,6 +8,8 @@
       experimental-features = nix-command flakes
     '';
 
+    trustedUsers = [ "@wheel" ];
+
     binaryCaches = [
       "https://alarsyo.cachix.org"
       "https://nix-community.cachix.org"
