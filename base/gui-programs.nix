@@ -8,6 +8,7 @@
     pavucontrol
     slack
     spotify
+    tdesktop
     teams
     zathura
   ];
