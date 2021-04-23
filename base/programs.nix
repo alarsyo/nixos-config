@@ -21,6 +21,7 @@
     bat
     fd
     ripgrep
+    tmux
     tree
     wget
 
