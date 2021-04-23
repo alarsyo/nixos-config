@@ -14,6 +14,9 @@
         AddKeysToAgent yes
       '';
     };
+
+    # setcap wrapper for network permissions
+    bandwhich.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
@@ -21,7 +24,9 @@
     bat
     fd
     ripgrep
+    sd
     tmux
+    tokei
     tree
     wget
 
@@ -36,7 +41,13 @@
     vim
 
     # terminal utilities
+    bottom
+    du-dust
     htop
     stow
+    tealdeer
+
+    # dig/drill - like DNS cli
+    dogdns
   ];
 }
