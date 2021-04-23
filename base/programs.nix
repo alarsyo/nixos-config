@@ -28,6 +28,7 @@
     # development
     git
     git-crypt
+    gnumake
     gnupg
     pinentry-curses
     python3
