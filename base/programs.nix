@@ -28,6 +28,7 @@
     # development
     git
     git-crypt
+    git-lfs
     gnumake
     gnupg
     pinentry-curses
