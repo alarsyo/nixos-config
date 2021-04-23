@@ -115,6 +115,12 @@ in
 
         window.commands = [
           { command = "border pixel 2"; criteria = { class = "Alacritty"; }; }
+
+          # NOTE: should be done with an assign command, but Spotify doesn't set
+          # its class until after initialization, so has to be done this way.
+          #
+          # See https://i3wm.org/docs/userguide.html#assign_workspace
+          { criteria = { class = "Spotify"; }; command = "move to workspace 8"; }
         ];
       };
     };
