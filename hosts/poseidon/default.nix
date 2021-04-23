@@ -64,7 +64,7 @@ in
 
     borg-backup = {
       enable = true;
-      repo = secrets.borg-backup-repo;
+      repo = secrets.borg-backup.poseidon-repo;
     };
 
     fail2ban = {
