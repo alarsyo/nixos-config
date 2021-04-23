@@ -39,6 +39,28 @@ in
 
   # List services that you want to enable:
   my.services = {
+    borg-backup = {
+      enable = true;
+      repo = secrets.borg-backup.boreal-repo;
+      paths = [
+        "/home/alarsyo"
+      ];
+      exclude = [
+        "/home/alarsyo/Downloads"
+
+        # Rust builds using half my storage capacity
+        "/home/alarsyo/*/target"
+
+        # C build crap
+        "*.a"
+        "*.o"
+        "*.so"
+
+        # ignore all dotfiles as .config and .cache can become quite big
+        "re:^/home/alarsyo/\\."
+      ];
+    };
+
     wireguard = {
       enable = false;
       iface = "wg";
