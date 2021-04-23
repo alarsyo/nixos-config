@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   home-manager.users.alarsyo = {
     # Keyboard settings & i3 settings
@@ -11,5 +11,10 @@
     my.home.fish.enable = true;
 
     my.theme = config.home-manager.users.alarsyo.my.themes.solarizedLight;
+
+    home.packages = with pkgs; [
+        beancount
+        fava
+    ];
   };
 }
