@@ -44,6 +44,12 @@ in
               fonts = [ "DejaVuSansMono" "FontAwesome5Free 9" ];
 
               colors = i3Theme.bar;
+
+              # disable mouse scroll wheel in bar
+              extraConfig = ''
+                bindsym button4 nop
+                bindsym button5 nop
+              '';
             }
           ];
 
