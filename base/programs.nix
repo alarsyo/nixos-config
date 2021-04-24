@@ -41,14 +41,10 @@
     vim
 
     # terminal utilities
-    bottom
     du-dust
     htop
     stow
     tealdeer
-
-    # dig/drill - like DNS cli
-    dogdns
 
     # nix pkgs lookup
     nix-index

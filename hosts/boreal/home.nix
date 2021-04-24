@@ -18,6 +18,10 @@
 
         beancount
         fava
+
+        # only available on unstable
+        bottom
+        dogdns
     ];
   };
 }
