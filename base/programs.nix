@@ -49,5 +49,8 @@
 
     # dig/drill - like DNS cli
     dogdns
+
+    # nix pkgs lookup
+    nix-index
   ];
 }
