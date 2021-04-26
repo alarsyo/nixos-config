@@ -5,6 +5,7 @@
     discord
     feh
     firefox
+    gnome3.nautilus
     pavucontrol
     slack
     spotify
