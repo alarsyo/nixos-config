@@ -18,6 +18,11 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.supportedFilesystems = [
+    "btrfs"
+    "ntfs"
+  ];
+
   services.btrfs = {
     autoScrub = {
       enable = true;
