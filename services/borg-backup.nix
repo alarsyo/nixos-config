@@ -14,6 +14,18 @@ in {
       description = "Borgbase repo info. Required.";
     };
 
+    prune = mkOption {
+      type = types.attrs;
+      default = {
+        keep = {
+          daily = 7;
+          weekly = 4;
+          monthly = 6;
+        };
+      };
+      description = "pruning options for borg";
+    };
+
     paths = mkOption {
       type = types.listOf types.str;
       default = [];
@@ -57,11 +69,7 @@ in {
       doInit = true;
       compression = "auto,zstd";
       startAt = "daily";
-      prune.keep = {
-        daily = 7;
-        weekly = 4;
-        monthly = 6;
-      };
+      prune = cfg.prune;
     };
   };
 }

@@ -47,6 +47,14 @@ in
     borg-backup = {
       enable = true;
       repo = secrets.borg-backup.boreal-repo;
+      # for a workstation, having backups spanning the last month should be
+      # enough
+      prune = {
+        keep = {
+          daily = 7;
+          weekly = 4;
+        };
+      };
       paths = [
         "/home/alarsyo"
       ];
