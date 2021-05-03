@@ -70,6 +70,12 @@ in
               # format = "{percentage}";
             }
             {
+              block = "music";
+              player = "spotify";
+              buttons = ["prev" "play" "next"];
+              hide_when_empty = true;
+            }
+            {
               block = "sound";
               driver = "pulseaudio";
             }
