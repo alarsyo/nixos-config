@@ -23,6 +23,12 @@ in
 
           blocks = [
             {
+              block = "pomodoro";
+              length = 60;
+              break_length = 10;
+              use_nag = true;
+            }
+            {
               block = "disk_space";
               path = "/";
               alias = "/";
