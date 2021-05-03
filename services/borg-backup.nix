@@ -65,7 +65,7 @@ in {
       };
       environment.BORG_RSH = "ssh -i /root/borgbackup/ssh_key";
       extraCreateArgs = "--stats --list";
-      extraPruneArgs = "--stats --list";
+      extraPruneArgs = "--stats --list --save-space";
       doInit = true;
       compression = "auto,zstd";
       startAt = "daily";
