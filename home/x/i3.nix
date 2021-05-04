@@ -41,7 +41,10 @@ in
             {
               statusCommand = "i3status-rs ${barConfigPath}";
               position = "top";
-              fonts = [ "DejaVuSansMono" "FontAwesome5Free 9" ];
+              fonts = {
+                names = [ "DejaVuSansMono" "FontAwesome5Free" ];
+                size = 9.0;
+              };
 
               colors = i3Theme.bar;
 
@@ -69,9 +72,10 @@ in
 
         workspaceAutoBackAndForth = true;
 
-        fonts = [
-          "DejaVu Sans Mono 8"
-        ];
+        fonts = {
+          names = [ "DejaVu Sans Mono" ];
+          size = 8.0;
+        };
 
         keybindings = lib.mkOptionDefault {
           "${modifier}+Shift+e" = ''mode "${logoutMode}"'';
