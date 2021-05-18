@@ -38,12 +38,10 @@ in
               warning = 20.0;
               alert = 10.0;
             }
-            # TODO: update to new format when i3status-rust updates to v0.20:
-            # https://github.com/greshake/i3status-rust/blob/4d55b1d94ee09cbdefd805841fb54a2a4a0663a4/doc/blocks.md#available-format-keys-11
             {
               block = "memory";
               display_type = "memory";
-              format_mem = "{Mug}/{MTg}GB";
+              format_mem = "{mem_used;G}/{mem_total;G}";
               warning_mem = 70.0;
               critical_mem = 90.0;
               # don't show swap
@@ -72,8 +70,7 @@ in
               block = "bluetooth";
               mac = config.my.secrets.bluetooth-mouse-mac-address;
               hide_disconnected = true;
-              # TODO: use format when i3status-rust updates to v0.20
-              # format = "{percentage}";
+              format = "{percentage}";
             }
             {
               block = "music";
