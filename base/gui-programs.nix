@@ -11,6 +11,7 @@
     spotify
     tdesktop
     teams
+    thunderbird
     zathura
   ];
 
