@@ -68,6 +68,7 @@ in {
 
       extraConfig = ''
         experimental_features: { spaces_enabled: true }
+        use_presence: false
       '';
 
       logConfig = ''
