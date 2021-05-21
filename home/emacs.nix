@@ -23,9 +23,7 @@
 
     programs.emacs = {
       enable = true;
-      # FIXME: revert when pgtk branch merged master
-      # package = pkgs.emacsPgtkGcc;
-      package = pkgs.emacsGcc;
+      package = pkgs.emacsPgtkGcc;
     };
   };
 }
