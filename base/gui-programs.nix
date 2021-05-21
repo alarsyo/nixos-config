@@ -5,6 +5,7 @@
     discord
     feh
     firefox
+    element-desktop
     gnome3.nautilus
     pavucontrol
     slack
