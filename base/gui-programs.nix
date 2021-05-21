@@ -7,6 +7,7 @@
     firefox
     element-desktop
     gnome3.nautilus
+    mpv
     pavucontrol
     slack
     spotify
