@@ -56,7 +56,7 @@ in
               block = "temperature";
               collapsed = false;
               interval = 10;
-              format = "{max}°";
+              format = "{max}";
               # FIXME: specific to my AMD Ryzen CPU. Make this depend on
               # hostname or something else
               chip = "k10temp-pci-*";
