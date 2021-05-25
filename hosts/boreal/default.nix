@@ -74,6 +74,8 @@ in
       ];
     };
 
+    pipewire.enable = true;
+
     wireguard = {
       enable = false;
       iface = "wg";
@@ -111,13 +113,6 @@ in
 
   # TODO: remove when https://nixpk.gs/pr-tracker.html?pr=124237 reaches unstable
   nix.sandboxPaths = [ "/bin/sh=${pkgs.bash}/bin/sh" ];
-
-  sound.enable = true;
-  hardware.pulseaudio = {
-    enable = true;
-    extraModules = [ pkgs.pulseaudio-modules-bt ];
-    package = pkgs.pulseaudioFull;
-  };
 
   hardware.bluetooth = {
     enable = true;
