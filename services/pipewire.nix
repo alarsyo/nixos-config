@@ -64,5 +64,9 @@ in
         ];
       };
     };
+
+    # FIXME: a shame pactl isn't available by itself, eventually this should be
+    #        replaced by pw-cli or a wrapper, I guess?
+    environment.systemPackages = with pkgs; [ pulseaudio ];
   };
 }
