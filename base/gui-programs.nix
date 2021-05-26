@@ -19,6 +19,7 @@
 
   networking.networkmanager.enable = true;
   programs.nm-applet.enable = true;
+  programs.steam.enable = true;
 
   # NOTE: needed for home emacs configuration
   nixpkgs.config.input-fonts.acceptLicense = true;
