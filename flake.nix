@@ -15,6 +15,13 @@
       ref = "nixos-unstable";
     };
 
+    nixpkgs-unstable-small = {
+      type = "github";
+      owner = "NixOS";
+      repo = "nixpkgs";
+      ref = "nixos-unstable-small";
+    };
+
     emacs-overlay = {
       type = "github";
       owner = "nix-community";
@@ -31,7 +38,12 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, emacs-overlay, home-manager }: {
+  outputs = { self,
+              nixpkgs,
+              nixpkgs-unstable,
+              nixpkgs-unstable-small,
+              emacs-overlay,
+              home-manager }: {
     nixosConfigurations.poseidon = nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
       modules =
@@ -91,6 +103,11 @@
 
               (self: super: {
                 packages = import ./pkgs { pkgs = super; };
+
+                unstable-small = import nixpkgs-unstable-small {
+                  inherit system;
+                  config.allowUnfree = true;
+                };
               })
 
               # uncomment this to build everything from scratch, fun but takes a
