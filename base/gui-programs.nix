@@ -2,7 +2,8 @@
 {
   environment.systemPackages = with pkgs; [
     alacritty
-    discord
+    # https://nixpk.gs/pr-tracker.html?pr=124336
+    unstable-small.discord
     feh
     firefox
     element-desktop
