@@ -48,14 +48,16 @@
       system = "x86_64-linux";
       modules =
         let
-          unstablePkgs = import nixpkgs-unstable { inherit system; };
+          pkgsUnstable = import nixpkgs-unstable { inherit system; };
         in
         [
           ./poseidon.nix
 
+          # hack to use an unstable home manager within a stable NixOS install,
+          # do not reproduce... at home :clown_face:
           ({ config, utils, ... }: home-manager.nixosModules.home-manager {
-            pkgs = unstablePkgs;
-            lib = unstablePkgs.lib;
+            pkgs = pkgsUnstable;
+            lib = pkgsUnstable.lib;
             inherit config utils;
           })
           {
@@ -66,20 +68,15 @@
           }
 
           {
-            nixpkgs.overlays =
-              let
-                pkgsUnstable = nixpkgs-unstable.legacyPackages.${system};
-              in
-                [
-                  # packages accessible through pkgs.unstable.package
-                  (final: prev: {
-                    unstable = pkgsUnstable;
-                  })
-                  (final: prev: {
-                    bitwarden_rs = pkgsUnstable.bitwarden_rs;
-                    bitwarden_rs-vault = pkgsUnstable.bitwarden_rs-vault;
-                  })
-                ];
+            nixpkgs.overlays = [
+              (final: prev: {
+                # packages accessible through pkgs.unstable.package
+                unstable = pkgsUnstable;
+
+                bitwarden_rs = pkgsUnstable.bitwarden_rs;
+                bitwarden_rs-vault = pkgsUnstable.bitwarden_rs-vault;
+              })
+            ];
           }
         ];
     };
