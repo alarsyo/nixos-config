@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, options, ... }:
 
 with lib;
 
@@ -11,7 +11,9 @@ in
     enable = lib.mkEnableOption "Pipewire sound backend";
   };
 
-  config = mkIf cfg.enable {
+  # HACK: services.pipewire.alsa doesn't exist on 20.09, avoid evaluating this
+  # config (my 20.09 machine is a server anyway)
+  config = optionalAttrs (options ? services.pipewire.alsa) (mkIf cfg.enable {
     # from NixOS wiki, causes conflicts with pipewire
     sound.enable = false;
     # recommended for pipewire as well
@@ -68,5 +70,5 @@ in
     # FIXME: a shame pactl isn't available by itself, eventually this should be
     #        replaced by pw-cli or a wrapper, I guess?
     environment.systemPackages = with pkgs; [ pulseaudio ];
-  };
+  });
 }
