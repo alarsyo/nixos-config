@@ -111,9 +111,6 @@ in
   };
   my.displayManager.sddm.enable = true;
 
-  # TODO: remove when https://nixpk.gs/pr-tracker.html?pr=124237 reaches unstable
-  nix.sandboxPaths = [ "/bin/sh=${pkgs.bash}/bin/sh" ];
-
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
