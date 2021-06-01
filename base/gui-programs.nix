@@ -2,19 +2,20 @@
 {
   environment.systemPackages = with pkgs; [
     alacritty
-    discord
     feh
-    firefox
-    element-desktop
-    gnome3.nautilus
+    gnome.nautilus
     mpv
     pavucontrol
-    slack
-    spotify
-    tdesktop
-    teams
     thunderbird
     zathura
+
+    unstable.discord
+    unstable.firefox
+    unstable.element-desktop
+    unstable.slack
+    unstable.spotify
+    unstable.tdesktop
+    unstable.teams
   ];
 
   networking.networkmanager.enable = true;
