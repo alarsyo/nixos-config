@@ -5,7 +5,7 @@
 {
   # Whenever something defines an nginx vhost, ensure that nginx defaults are
   # properly set.
-  config = lib.mkIf ((builtins.attrNames config.services.nginx.virtualHosts) != [ ]) {
+  config = lib.mkIf ((builtins.attrNames config.services.nginx.virtualHosts) != [ "localhost" ]) {
     services.nginx = {
       enable = true;
       statusPage = true; # For monitoring scraping.
