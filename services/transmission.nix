@@ -49,6 +49,9 @@ in
         rpc-whitelist-enabled = true;
         rpc-whitelist = "127.0.0.1";
       };
+
+      # automatically allow transmission.settings.peer-port
+      openFirewall = true;
     };
 
     services.nginx.virtualHosts."${webuiDomain}" = {
@@ -56,11 +59,6 @@ in
       enableACME = true;
 
       locations."/".proxyPass = "http://127.0.0.1:${toString transmissionRpcPort}";
-    };
-
-    networking.firewall = {
-      allowedTCPPorts = [ transmissionPeerPort ];
-      allowedUDPPorts = [ transmissionPeerPort ];
     };
   };
 }
