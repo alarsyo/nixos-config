@@ -16,7 +16,7 @@
         # dev
         clang_11
 
-        packages.beancount
+        beancount
         fava
 
         # only available on unstable
