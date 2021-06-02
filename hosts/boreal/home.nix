@@ -13,8 +13,14 @@
     my.theme = config.home-manager.users.alarsyo.my.themes.solarizedLight;
 
     home.packages = with pkgs; [
+        blender
+
+        # some websites only work there :(
+        chromium
+
         # dev
         clang_11
+        rustup
 
         unstable.beancount
         unstable.fava
