@@ -16,8 +16,8 @@
         # dev
         clang_11
 
-        beancount
-        fava
+        unstable.beancount
+        unstable.fava
 
         # only available on unstable
         bottom
