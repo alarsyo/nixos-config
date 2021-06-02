@@ -41,6 +41,8 @@
     vim
 
     # terminal utilities
+    bottom
+    dogdns
     du-dust
     htop
     stow
