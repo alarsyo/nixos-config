@@ -39,6 +39,12 @@ in {
           smtpPort = mkOption {
             type = types.port;
             default = 587;
+            description = ''
+              The port to use to connect to the SMTP host.
+
+              Defaulting to STARTTLS port 587 because TLS port 465 isn't supported by synapse
+              See https://github.com/matrix-org/synapse/issues/8046
+            '';
           };
           smtpUser = mkOption {
             type = types.str;
