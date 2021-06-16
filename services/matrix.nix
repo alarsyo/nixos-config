@@ -287,5 +287,44 @@ in {
       # this is just caching for other servers media, doesn't need backup
       exclude = [ "${dataDir}/media/remote_*" ];
     };
+
+    systemd.services.matrix-synapse-compress-state = {
+      path = [
+        config.services.postgresql.package
+        pkgs.matrix-synapse-tools.rust-synapse-compress-state
+      ];
+
+      serviceConfig = {
+        Type = "oneshot";
+        User = "matrix-synapse";
+        Group = "matrix-synapse";
+      };
+
+      script = ''
+        set -eux
+
+        # select the 20 biggest rooms
+        psql \
+          -U matrix-synapse \
+          -d matrix-synapse \
+          -c 'SELECT room_id, count(*) AS count
+              FROM state_groups_state
+              GROUP BY room_id
+              ORDER BY count DESC;' \
+          -t | sed -r 's/\s([^ ]+)\s*\|.*/\1/' | head -n 20 > /tmp/synapse_compress_rooms.txt
+
+        while read -r room_id; do
+          synapse-compress-state \
+            -p "postgresql:///matrix-synapse?user=matrix-synapse&host=/var/run/postgresql" \
+            -r "''${room_id}" \
+            -o /tmp/compress.sql \
+            -t
+          psql -U matrix-synapse -d matrix-synapse < /tmp/compress.sql
+          rm /tmp/compress.sql
+        done < /tmp/synapse_compress_rooms.txt
+
+        rm /tmp/synapse_compress_rooms.txt
+      '';
+    };
   };
 }
