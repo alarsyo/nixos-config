@@ -11,5 +11,6 @@ in
     enable = true;
     baseIndex = 1;
     terminal = "screen-256color";
+    clock24 = true;
   };
 }
