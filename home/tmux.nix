@@ -14,6 +14,7 @@ in
     clock24 = true;
 
     plugins = with pkgs; [
+      tmuxPlugins.cpu
       {
         plugin = tmuxPlugins.tmux-colors-solarized;
         extraConfig = ''
