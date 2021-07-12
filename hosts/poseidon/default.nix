@@ -120,6 +120,11 @@ in
       enable = true;
     };
 
+    paperless = {
+      enable = true;
+      port = 8085;
+    };
+
     postgresql-backup = {
       enable = true;
     };
