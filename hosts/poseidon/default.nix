@@ -108,7 +108,6 @@ in
 
     monitoring = {
       enable = true;
-      useACME = true;
       domain = "monitoring.${config.networking.domain}";
     };
 
@@ -156,9 +155,6 @@ in
       };
     };
   };
-
-  security.acme.acceptTerms = true;
-  security.acme.email = "antoine97.martin@gmail.com";
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
