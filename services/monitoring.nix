@@ -49,6 +49,8 @@ in {
       port = 9090;
       listenAddress = "127.0.0.1";
 
+      retentionTime = "2y";
+
       exporters = {
         node = {
           enable = true;
