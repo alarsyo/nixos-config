@@ -25,6 +25,20 @@ in
         forceSSL = true;
         useACMEHost = domain;
 
+        listen = [
+          # FIXME: hardcoded tailscale IP
+          {
+            addr = "100.80.61.67";
+            port = 443;
+            ssl = true;
+          }
+          {
+            addr = "100.80.61.67";
+            port = 80;
+            ssl = false;
+          }
+        ];
+
         locations."/" = {
           proxyPass = "http://127.0.0.1:${toString cfg.port}";
           proxyWebsockets = true;
