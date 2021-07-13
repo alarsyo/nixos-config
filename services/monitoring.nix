@@ -37,7 +37,7 @@ in {
 
         dashboards = [
           {
-            name = "Node Exporter";
+            name = "Dashboards";
             options.path = ./grafana-dashboards;
             disableDeletion = true;
           }
