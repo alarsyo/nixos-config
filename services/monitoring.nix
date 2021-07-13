@@ -37,8 +37,13 @@ in {
 
         dashboards = [
           {
-            name = "Dashboards";
-            options.path = ./grafana-dashboards;
+            name = "Node Exporter";
+            options.path = pkgs.packages.grafana-dashboards.node-exporter;
+            disableDeletion = true;
+          }
+          {
+            name = "NGINX";
+            options.path = pkgs.packages.grafana-dashboards.nginx;
             disableDeletion = true;
           }
         ];
