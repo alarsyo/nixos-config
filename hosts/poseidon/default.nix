@@ -32,6 +32,9 @@ in
     enable = true;
     package = pkgs.unstable.tailscale;
   };
+  systemd.services.tailscaled = {
+      path = [ pkgs.procps ];
+  };
 
   virtualisation.docker = {
     enable = true;
