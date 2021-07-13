@@ -123,7 +123,10 @@ in
       enable = true;
     };
 
-    tailscale.enable = true;
+    tailscale = {
+      enable = true;
+      exitNode = true;
+    };
 
     tgv = {
       enable = true;

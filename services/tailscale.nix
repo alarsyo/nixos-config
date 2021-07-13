@@ -8,6 +8,9 @@ in
 {
   options.my.services.tailscale = {
     enable = lib.mkEnableOption "Tailscale";
+
+    # NOTE: still have to do `tailscale up --advertise-exit-node`
+    exitNode = lib.mkEnableOption "Use as exit node";
   };
 
   config = mkIf cfg.enable {
@@ -27,7 +30,7 @@ in
     };
 
     # enable IP forwarding to use as exit node
-    boot.kernel.sysctl = {
+    boot.kernel.sysctl = mkIf cfg.exitNode {
       "net.ipv6.conf.all.forwarding" = true;
       "net.ipv4.ip_forward" = true;
     };
