@@ -40,6 +40,10 @@ in
   systemd.services.tailscaled = {
       path = [ pkgs.procps ];
   };
+  networking.firewall = {
+    trustedInterfaces = [ "tailscale0" ];
+    allowedUDPPorts = [ config.services.tailscale.port ];
+  };
 
   virtualisation.docker = {
     enable = true;
