@@ -32,11 +32,6 @@ in
     };
   };
 
-  services.tailscale = {
-    enable = true;
-    package = pkgs.unstable.tailscale;
-  };
-
   networking.hostName = "boreal"; # Define your hostname.
   networking.domain = "alarsyo.net";
 
@@ -86,6 +81,8 @@ in
     };
 
     pipewire.enable = true;
+
+    tailscale.enable = true;
 
     wireguard = {
       enable = false;

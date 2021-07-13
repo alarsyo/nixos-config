@@ -21,28 +21,11 @@ in
 
   boot.supportedFilesystems = [ "btrfs" ];
 
-  boot.kernel.sysctl = {
-    "net.ipv6.conf.all.forwarding" = true;
-    "net.ipv4.ip_forward" = true;
-  };
-
   services.btrfs = {
     autoScrub = {
       enable = true;
       fileSystems = [ "/" ];
     };
-  };
-
-  services.tailscale = {
-    enable = true;
-    package = pkgs.unstable.tailscale;
-  };
-  systemd.services.tailscaled = {
-      path = [ pkgs.procps ];
-  };
-  networking.firewall = {
-    trustedInterfaces = [ "tailscale0" ];
-    allowedUDPPorts = [ config.services.tailscale.port ];
   };
 
   virtualisation.docker = {
@@ -139,6 +122,8 @@ in
     postgresql-backup = {
       enable = true;
     };
+
+    tailscale.enable = true;
 
     tgv = {
       enable = true;
