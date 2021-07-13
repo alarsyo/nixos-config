@@ -22,6 +22,5 @@
     ./tailscale.nix
     ./tgv.nix
     ./transmission.nix
-    ./wireguard.nix
   ];
 }
