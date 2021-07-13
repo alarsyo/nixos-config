@@ -57,6 +57,7 @@ in {
           enable = true;
           enabledCollectors = [ "systemd" ];
           port = 9100;
+          listenAddress = "127.0.0.1";
         };
       };
 
