@@ -32,6 +32,14 @@
   };
 
   outputs = { self, nixpkgs, home-manager, ... } @inputs: {
+    nixosModules = {
+      home = {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.users.alarsyo = import ./home;
+        home-manager.verbose = true;
+      };
+    };
 
     nixosConfigurations =
       let
@@ -54,13 +62,8 @@
           modules = [
             ./poseidon.nix
 
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.alarsyo = import ./home;
-              home-manager.verbose = true;
-            }
+            home-manager.nixosModule
+            self.nixosModules.home
 
             {
               nixpkgs.overlays = [
@@ -86,13 +89,8 @@
           modules = [
             ./boreal.nix
 
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.alarsyo = import ./home;
-              home-manager.verbose = true;
-            }
+            home-manager.nixosModule
+            self.nixosModules.home
 
             {
               nixpkgs.overlays = [
