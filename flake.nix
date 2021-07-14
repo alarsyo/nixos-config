@@ -31,11 +31,7 @@
     };
   };
 
-  outputs = { self,
-              nixpkgs,
-              nixpkgs-unstable,
-              emacs-overlay,
-              home-manager }: {
+  outputs = { self, nixpkgs, home-manager, ... } @inputs: {
     nixosConfigurations.poseidon = nixpkgs.lib.nixosSystem rec {
       system = "x86_64-linux";
       modules = [
@@ -55,7 +51,7 @@
               packages = import ./pkgs { pkgs = super; };
 
               # packages accessible through pkgs.unstable.package
-              unstable = import nixpkgs-unstable {
+              unstable = import inputs.nixpkgs-unstable {
                 inherit system;
                 config.allowUnfree = true;
               };
@@ -90,12 +86,12 @@
 
         {
           nixpkgs.overlays = [
-            emacs-overlay.overlay
+            inputs.emacs-overlay.overlay
 
             (self: super: {
               packages = import ./pkgs { pkgs = super; };
 
-              unstable = import nixpkgs-unstable {
+              unstable = import inputs.nixpkgs-unstable {
                 inherit system;
                 config.allowUnfree = true;
               };
