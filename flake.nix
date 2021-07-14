@@ -33,87 +33,86 @@
 
   outputs = { self, nixpkgs, home-manager, ... } @inputs: {
 
-    nixosConfigurations = {
-
-      poseidon = nixpkgs.lib.nixosSystem rec {
+    nixosConfigurations =
+      let
         system = "x86_64-linux";
-        modules = [
-          ./poseidon.nix
+        shared_overlays = [
+          (self: super: {
+            packages = import ./pkgs { pkgs = super; };
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.alarsyo = import ./home;
-            home-manager.verbose = true;
-          }
-
-          {
-            nixpkgs.overlays = [
-              (self: super: {
-                packages = import ./pkgs { pkgs = super; };
-
-                # packages accessible through pkgs.unstable.package
-                unstable = import inputs.nixpkgs-unstable {
-                  inherit system;
-                  config.allowUnfree = true;
-                };
-
-                fastPython3 = self.python3.override {
-                  enableOptimizations = true;
-                  reproducibleBuild = false;
-                  self = self.fastPython3;
-                  pythonAttr = "fastPython3";
-                };
-
-                matrix-synapse = super.matrix-synapse.override {
-                  python3 = self.fastPython3;
-                };
-              })
-            ];
-          }
+            # packages accessible through pkgs.unstable.package
+            unstable = import inputs.nixpkgs-unstable {
+              inherit system;
+              config.allowUnfree = true;
+            };
+          })
         ];
+      in {
+
+        poseidon = nixpkgs.lib.nixosSystem rec {
+          inherit system;
+          modules = [
+            ./poseidon.nix
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.alarsyo = import ./home;
+              home-manager.verbose = true;
+            }
+
+            {
+              nixpkgs.overlays = [
+                (self: super: {
+                  fastPython3 = self.python3.override {
+                    enableOptimizations = true;
+                    reproducibleBuild = false;
+                    self = self.fastPython3;
+                    pythonAttr = "fastPython3";
+                  };
+
+                  matrix-synapse = super.matrix-synapse.override {
+                    python3 = self.fastPython3;
+                  };
+                })
+              ] ++ shared_overlays;
+            }
+          ];
+        };
+
+        boreal = nixpkgs.lib.nixosSystem rec {
+          inherit system;
+          modules = [
+            ./boreal.nix
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.alarsyo = import ./home;
+              home-manager.verbose = true;
+            }
+
+            {
+              nixpkgs.overlays = [
+                inputs.emacs-overlay.overlay
+
+                (self: super: {
+                  steam = self.unstable.steam;
+                })
+
+                # uncomment this to build everything from scratch, fun but takes a
+                # while
+                #
+                # (self: super: {
+                #   stdenv = super.impureUseNativeOptimizations super.stdenv;
+                # })
+              ] ++ shared_overlays;
+            }
+          ];
+        };
+
       };
-
-      boreal = nixpkgs.lib.nixosSystem rec {
-        system = "x86_64-linux";
-        modules = [
-          ./boreal.nix
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.alarsyo = import ./home;
-            home-manager.verbose = true;
-          }
-
-          {
-            nixpkgs.overlays = [
-              inputs.emacs-overlay.overlay
-
-              (self: super: {
-                packages = import ./pkgs { pkgs = super; };
-
-                unstable = import inputs.nixpkgs-unstable {
-                  inherit system;
-                  config.allowUnfree = true;
-                };
-
-                steam = self.unstable.steam;
-              })
-
-              # uncomment this to build everything from scratch, fun but takes a
-              # while
-              #
-              # (self: super: {
-              #   stdenv = super.impureUseNativeOptimizations super.stdenv;
-              # })
-            ];
-          }
-        ];
-      };
-
-    };
   };
 }
