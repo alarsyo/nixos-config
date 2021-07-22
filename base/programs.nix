@@ -47,7 +47,6 @@
     dogdns
     du-dust
     htop
-    stow
     tealdeer
 
     # nix pkgs lookup
