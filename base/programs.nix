@@ -48,6 +48,8 @@
     du-dust
     htop
     tealdeer
+    unzip
+    zip
 
     # nix pkgs lookup
     nix-index
