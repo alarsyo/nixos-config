@@ -52,7 +52,5 @@
 
     # nix pkgs lookup
     nix-index
-
-    unstable.innernet
   ];
 }
