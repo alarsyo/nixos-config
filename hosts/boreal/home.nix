@@ -3,6 +3,8 @@
   home-manager.users.alarsyo = {
     # Keyboard settings & i3 settings
     my.home.x.enable = true;
+    my.home.x.i3bar.temperature.chip = "k10temp-pci-*";
+    my.home.x.i3bar.temperature.inputs =  [ "Tccd1" ];
     my.home.x.cursor.enable = true;
     my.home.alacritty.enable = true;
     my.home.emacs.enable = true;
