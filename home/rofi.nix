@@ -4,7 +4,7 @@ let
 in
 {
   options.my.home.rofi = with lib; {
-    enable = (mkEnableOption "rofi configuration") // { default = true; };
+    enable = (mkEnableOption "rofi configuration") // { default = config.my.home.x.enable; };
   };
 
   config = lib.mkIf cfg.enable {
