@@ -5,6 +5,7 @@
     ./bat.nix
     ./emacs.nix
     ./env.nix
+    ./firefox.nix
     ./fish
     ./flameshot.nix
     ./git.nix
@@ -14,6 +15,7 @@
     ./ssh.nix
     ./themes
     ./tmux.nix
+    ./tridactyl.nix
     ./x
   ];
 
