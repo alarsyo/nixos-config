@@ -9,6 +9,7 @@
     ./flameshot.nix
     ./git.nix
     ./laptop.nix
+    ./rofi.nix
     ./secrets
     ./starship.nix
     ./themes
