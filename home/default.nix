@@ -7,6 +7,7 @@
     ./env.nix
     ./fish
     ./flameshot.nix
+    ./git.nix
     ./laptop.nix
     ./secrets
     ./starship.nix
