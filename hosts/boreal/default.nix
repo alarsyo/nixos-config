@@ -76,7 +76,7 @@ in
         "*.so"
 
         # ignore all dotfiles as .config and .cache can become quite big
-        "re:^/home/alarsyo/\\."
+        "/home/alarsyo/.*"
       ];
     };
 
