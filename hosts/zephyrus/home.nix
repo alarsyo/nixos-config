@@ -23,6 +23,8 @@
 
         beancount
         fava
+
+        packages.spot
     ];
   };
 }
