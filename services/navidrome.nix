@@ -8,6 +8,10 @@ let
 in {
   options.my.services.navidrome = {
     enable = mkEnableOption "Navidrome";
+    musicFolder = mkOption {
+      type = types.str;
+      default = "./music";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -17,6 +21,7 @@ in {
         Address = "127.0.0.1";
         Port = 4533;
         LastFM.Enabled = false;
+        MusicFolder = cfg.musicFolder;
       };
     };
 
