@@ -53,6 +53,11 @@
         home-manager.users.alarsyo = import ./home;
         home-manager.verbose = true;
       };
+      nix-path = {
+        nix.nixPath = [
+          "nixpkgs=${inputs.nixpkgs}"
+        ];
+      };
     };
 
     nixosConfigurations =
@@ -75,6 +80,8 @@
           inherit system;
           modules = [
             ./poseidon.nix
+
+            self.nixosModules.nix-path
 
             home-manager.nixosModule
             self.nixosModules.home
@@ -103,6 +110,8 @@
           modules = [
             ./boreal.nix
 
+            self.nixosModules.nix-path
+
             home-manager.nixosModule
             self.nixosModules.home
 
@@ -129,6 +138,8 @@
             inputs.nixos-hardware.nixosModules.common-cpu-intel
             inputs.nixos-hardware.nixosModules.common-pc-laptop
             inputs.nixos-hardware.nixosModules.common-pc-ssd
+
+            self.nixosModules.nix-path
 
             home-manager.nixosModule
             self.nixosModules.home
