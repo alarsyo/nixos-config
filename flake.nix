@@ -74,17 +74,16 @@
             };
           })
         ];
+        sharedModules = [
+          home-manager.nixosModule
+          { nixpkgs.overlays = shared_overlays; }
+        ] ++ (nixpkgs.lib.attrValues self.nixosModules);
       in {
 
         poseidon = nixpkgs.lib.nixosSystem rec {
           inherit system;
           modules = [
             ./poseidon.nix
-
-            self.nixosModules.nix-path
-
-            home-manager.nixosModule
-            self.nixosModules.home
 
             {
               nixpkgs.overlays = [
@@ -100,20 +99,15 @@
                     python3 = self.fastPython3;
                   };
                 })
-              ] ++ shared_overlays;
+              ];
             }
-          ];
+          ] ++ sharedModules;
         };
 
         boreal = nixpkgs.lib.nixosSystem rec {
           inherit system;
           modules = [
             ./boreal.nix
-
-            self.nixosModules.nix-path
-
-            home-manager.nixosModule
-            self.nixosModules.home
 
             {
               nixpkgs.overlays = [
@@ -125,9 +119,9 @@
                 # (self: super: {
                 #   stdenv = super.impureUseNativeOptimizations super.stdenv;
                 # })
-              ] ++ shared_overlays;
+              ];
             }
-          ];
+          ] ++ sharedModules;
         };
 
         zephyrus = nixpkgs.lib.nixosSystem rec {
@@ -139,17 +133,12 @@
             inputs.nixos-hardware.nixosModules.common-pc-laptop
             inputs.nixos-hardware.nixosModules.common-pc-ssd
 
-            self.nixosModules.nix-path
-
-            home-manager.nixosModule
-            self.nixosModules.home
-
             {
               nixpkgs.overlays = [
                 inputs.emacs-overlay.overlay
-              ] ++ shared_overlays;
+              ];
             }
-          ];
+          ] ++ sharedModules;
         };
 
       };
