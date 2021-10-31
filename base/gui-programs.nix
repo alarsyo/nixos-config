@@ -14,6 +14,7 @@
     tdesktop
     teams
     thunderbird
+    virt-manager
     zathura
 
     unstable.discord
