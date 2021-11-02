@@ -10,5 +10,5 @@ PACKAGES=$(nix flake show \
 	| uniq)
 
 for package in $PACKAGES; do
-	nix build --verbose .#$package
+	nix build --verbose -L .#$package
 done
