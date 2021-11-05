@@ -8,6 +8,7 @@
     gnome.nautilus
     imagemagick
     mpv
+    obs-studio
     pavucontrol
     slack
     spotify
