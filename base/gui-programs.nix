@@ -4,6 +4,7 @@
     element-desktop
     feh
     firefox
+    ffmpeg
     gimp
     gnome.nautilus
     imagemagick
