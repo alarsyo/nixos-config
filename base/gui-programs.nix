@@ -1,8 +1,26 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, options, ... }:
 {
-  options.my.gui.enable = lib.mkEnableOption "System has some kind of screen attached";
+  options.my.gui = {
+    enable = lib.mkEnableOption "System has some kind of screen attached";
+    isNvidia = lib.mkEnableOption "System a NVIDIA GPU";
+  };
 
   config = lib.mkIf config.my.gui.enable {
+    my.displayManager.sddm.enable = true;
+
+    services = {
+      xserver = {
+        enable = true;
+        # NOTE: could use `mkOptionDefault` but this feels more explicit
+        videoDrivers = options.services.xserver.videoDrivers.default
+                       ++ lib.optional config.my.gui.isNvidia "nvidia";
+        windowManager.i3.enable = true;
+        layout = "fr";
+        xkbVariant = "us";
+        libinput.enable = true;
+      };
+    };
+
     environment.systemPackages = with pkgs; [
       element-desktop
       feh
