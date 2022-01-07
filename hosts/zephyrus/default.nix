@@ -62,6 +62,7 @@ in
     fwupd.enable = true;
   };
   my.displayManager.sddm.enable = true;
+  my.gui.enable = true;
 
   environment.systemPackages = with pkgs; [
     arandr

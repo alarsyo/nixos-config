@@ -102,6 +102,7 @@ in
     };
   };
   my.displayManager.sddm.enable = true;
+  my.gui.enable = true;
 
   my.wakeonwlan.interfaces.phy0.methods = [
     "magic-packet"
