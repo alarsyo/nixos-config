@@ -26,6 +26,8 @@ in
         xkbVariant = "us";
         libinput.enable = true;
       };
+
+      logind.lidSwitch = "ignore";
     };
 
     environment.systemPackages = builtins.attrValues {
