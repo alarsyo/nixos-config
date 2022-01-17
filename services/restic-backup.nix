@@ -62,6 +62,16 @@ in {
         monthly = 6;
       };
     };
+
+    passwordFile = mkOption {
+      type = types.str;
+      default = "/root/restic/password";
+    };
+
+    environmentFile = mkOption {
+      type = types.str;
+      default = "/root/restic/creds";
+    };
   };
 
   config = mkIf cfg.enable {
@@ -73,8 +83,8 @@ in {
       paths = cfg.paths;
 
       repository = cfg.repo;
-      passwordFile = "/root/restic/password";
-      environmentFile = "/root/restic/creds";
+      passwordFile = cfg.passwordFile;
+      environmentFile = cfg.environmentFile;
 
       extraBackupArgs = [ "--verbose=2" ]
                         ++ optional (builtins.length cfg.exclude != 0) excludeArg;
