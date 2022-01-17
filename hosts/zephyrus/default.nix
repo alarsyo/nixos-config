@@ -53,6 +53,11 @@ in
       };
     };
     fwupd.enable = true;
+    openssh = {
+      enable = true;
+      permitRootLogin = "no";
+      passwordAuthentication = false;
+    };
   };
   my.gui.enable = true;
 
