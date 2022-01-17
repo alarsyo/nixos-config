@@ -11,4 +11,6 @@ let
   all = users ++ machines;
 in
 {
+  "restic-backup/zephyrus-password.age".publicKeys = [ alarsyo zephyrus ];
+  "restic-backup/zephyrus-credentials.age".publicKeys = [ alarsyo zephyrus ];
 }

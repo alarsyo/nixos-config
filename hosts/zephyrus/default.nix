@@ -43,6 +43,35 @@ in
     tailscale.enable = true;
 
     pipewire.enable = true;
+
+    restic-backup = {
+      enable = true;
+      repo = "b2:zephyrus-backup";
+      passwordFile = config.age.secrets."restic-backup/zephyrus-password".path;
+      environmentFile = config.age.secrets."restic-backup/zephyrus-credentials".path;
+
+      paths = [
+        "/home/alarsyo"
+      ];
+      exclude = [
+        "/home/alarsyo/Downloads"
+
+        # Rust builds using half my storage capacity
+        "/home/alarsyo/*/target"
+        "/home/alarsyo/work/rust/build"
+
+        # don't backup nixpkgs
+        "/home/alarsyo/work/nixpkgs"
+
+        # C build crap
+        "*.a"
+        "*.o"
+        "*.so"
+
+        # ignore all dotfiles as .config and .cache can become quite big
+        "/home/alarsyo/.*"
+      ];
+    };
   };
 
   services = {
