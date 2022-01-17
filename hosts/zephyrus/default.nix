@@ -57,7 +57,7 @@ in
         "/home/alarsyo/Downloads"
 
         # Rust builds using half my storage capacity
-        "/home/alarsyo/*/target"
+        "/home/alarsyo/**/target"
         "/home/alarsyo/work/rust/build"
 
         # don't backup nixpkgs
