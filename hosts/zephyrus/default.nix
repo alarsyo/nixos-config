@@ -50,6 +50,10 @@ in
       passwordFile = config.age.secrets."restic-backup/zephyrus-password".path;
       environmentFile = config.age.secrets."restic-backup/zephyrus-credentials".path;
 
+      timerConfig = {
+        OnCalendar = "*-*-* 13:00:00"; # laptop only gets used during the day
+      };
+
       paths = [
         "/home/alarsyo"
       ];
