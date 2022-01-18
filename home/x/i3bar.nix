@@ -106,12 +106,6 @@ in
               primary_only = true;
             }
             {
-              block = "bluetooth";
-              mac = config.my.secrets.bluetooth-mouse-mac-address;
-              hide_disconnected = true;
-              format = "{percentage}";
-            }
-            {
               block = "sound";
               driver = "pulseaudio";
             }
