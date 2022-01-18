@@ -13,4 +13,7 @@ in
 {
   "restic-backup/zephyrus-password.age".publicKeys = [ alarsyo zephyrus ];
   "restic-backup/zephyrus-credentials.age".publicKeys = [ alarsyo zephyrus ];
+
+  "users/root-hashed-password.age".publicKeys = machines;
+  "users/alarsyo-hashed-password.age".publicKeys = machines ++ [ alarsyo ];
 }
