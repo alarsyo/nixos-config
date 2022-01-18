@@ -72,6 +72,13 @@ in {
       type = types.str;
       default = "/root/restic/creds";
     };
+
+    timerConfig = mkOption {
+      type = types.attrsOf types.str;
+      default = {
+        OnCalendar = "daily";
+      };
+    };
   };
 
   config = mkIf cfg.enable {
@@ -89,9 +96,7 @@ in {
       extraBackupArgs = [ "--verbose=2" ]
                         ++ optional (builtins.length cfg.exclude != 0) excludeArg;
 
-      timerConfig = {
-        OnCalendar = "daily";
-      };
+      timerConfig = cfg.timerConfig;
 
       pruneOpts = makePruneOpts cfg.prune;
     };
