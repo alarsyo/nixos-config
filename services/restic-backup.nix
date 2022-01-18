@@ -11,7 +11,6 @@ let
   ;
 
   cfg = config.my.services.restic-backup;
-  secrets = config.my.secrets;
   excludeArg = "--exclude-file=" + (pkgs.writeText "excludes.txt" (concatStringsSep "\n" cfg.exclude));
   makePruneOpts = pruneOpts:
     attrsets.mapAttrsToList (name: value: "--keep-${name} ${toString value}") pruneOpts;
