@@ -11,6 +11,8 @@ let
   all = users ++ machines;
 in
 {
+  "restic-backup/boreal-password.age".publicKeys = [ alarsyo boreal ];
+  "restic-backup/boreal-credentials.age".publicKeys = [ alarsyo boreal ];
   "restic-backup/zephyrus-password.age".publicKeys = [ alarsyo zephyrus ];
   "restic-backup/zephyrus-credentials.age".publicKeys = [ alarsyo zephyrus ];
 

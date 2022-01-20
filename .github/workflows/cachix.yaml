@@ -45,6 +45,7 @@ jobs:
     strategy:
       matrix:
         name:
+        - boreal
         - zephyrus
 
     steps:
