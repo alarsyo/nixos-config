@@ -10,7 +10,7 @@ on:
       - '.github/workflows/*'
 jobs:
   build-pkgs:
-    name: Build custom Nix packages
+    name: Nix packages
     runs-on: ubuntu-latest
 
     strategy:
@@ -38,7 +38,7 @@ jobs:
       run: nix build --verbose -L .#"${{ matrix.name }}"
 
   build-configs:
-    name: Build NixOS configurations
+    name: NixOS configs
     runs-on: ubuntu-latest
     needs: [ build-pkgs ]
 
