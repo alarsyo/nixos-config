@@ -8,6 +8,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./home.nix
+      ./secrets.nix
     ];
 
   boot.kernelPackages = pkgs.linuxPackages;

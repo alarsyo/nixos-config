@@ -9,6 +9,8 @@
       ./hardware-configuration.nix
 
       ./home.nix
+
+      ./secrets.nix
     ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
