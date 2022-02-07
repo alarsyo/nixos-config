@@ -15,13 +15,6 @@
       ref = "nixos-unstable-small";
     };
 
-    nixpkgs-fixed-pam = {
-      type = "github";
-      owner = "NixOS";
-      repo = "nixpkgs";
-      rev = "ffdadd3ef9167657657d60daf3fe0f1b3176402d";
-    };
-
     agenix = {
       type = "github";
       owner = "ryantm";
@@ -88,9 +81,6 @@
               config.allowUnfree = true;
             };
 
-            i3lock-color = super.i3lock-color.override {
-              pam = (import inputs.nixpkgs-fixed-pam { inherit system; }).pam;
-            };
           })
 
           agenix.overlay
