@@ -35,8 +35,7 @@ in
   config = mkIf isEnabled {
     home.packages = builtins.attrValues {
       inherit (pkgs)
-        iw # Used by `net` block
-        lm_sensors # Used by `temperature` block
+        # FIXME: is this useful?
         font-awesome
       ;
     };
