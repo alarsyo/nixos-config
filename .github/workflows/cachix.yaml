@@ -35,7 +35,7 @@ jobs:
         extraPullNames: "nix-community"
 
     - name: Build package
-      run: nix build --verbose -L .#"${{ matrix.name }}"
+      run: nix build -L .#"${{ matrix.name }}"
 
   build-configs:
     name: NixOS configs
@@ -60,4 +60,4 @@ jobs:
         extraPullNames: "nix-community"
 
     - name: Build package
-      run: nix build --verbose -L .#nixosConfigurations."${{ matrix.name }}".config.system.build.toplevel
+      run: nix build -L .#nixosConfigurations."${{ matrix.name }}".config.system.build.toplevel
