@@ -96,7 +96,7 @@ in
 
     miniflux = {
       enable = true;
-      adminCredentialsFile = "${../../secrets/miniflux-admin-credentials.secret}";
+      adminCredentialsFile = config.age.secrets."miniflux/admin-credentials".path;
       privatePort = 8080;
     };
 

@@ -10,8 +10,6 @@ in {
   };
 
   config.my.secrets = {
-    miniflux-admin-credentials = fileContents ./miniflux-admin-credentials.secret;
-
     paperless = import ./paperless { inherit lib; };
   };
 }
