@@ -10,8 +10,6 @@ in {
   };
 
   config.my.secrets = {
-    shadow-hashed-password-alarsyo = fileContents ./shadow-hashed-password-alarsyo.secret;
-    shadow-hashed-password-root = fileContents ./shadow-hashed-password-root.secret;
     miniflux-admin-credentials = fileContents ./miniflux-admin-credentials.secret;
     transmission-password = fileContents ./transmission.secret;
     nextcloud-admin-pass = ./nextcloud-admin-pass.secret;
