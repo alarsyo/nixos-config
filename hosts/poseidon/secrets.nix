@@ -9,6 +9,8 @@
         } // attrs;
       in
         lib.mapAttrs toSecret {
+          "gandi/api-key" = {};
+
           "users/alarsyo-hashed-password" = {};
           "users/root-hashed-password" = {};
         };
