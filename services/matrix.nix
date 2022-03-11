@@ -14,6 +14,7 @@ let
     mkEnableOption
     mkIf
     mkOption
+    optionals
   ;
 
   cfg = config.my.services.matrix;
@@ -46,7 +47,7 @@ in {
     services.matrix-synapse = {
       enable = true;
 
-      extraConfigFiles = lib.optionals (cfg.secretConfigFile != null) [
+      extraConfigFiles = optionals (cfg.secretConfigFile != null) [
         cfg.secretConfigFile
       ];
 

@@ -142,7 +142,7 @@ in
     transmission = {
       enable = true;
       username = "alarsyo";
-      password = secrets.transmission-password;
+      secretConfigFile = config.age.secrets."transmission/secret".path;
     };
   };
 

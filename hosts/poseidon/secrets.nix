@@ -17,6 +17,10 @@
             owner = "matrix-synapse";
           };
 
+          "transmission/secret" = {
+            owner = "transmission";
+          };
+
           "users/alarsyo-hashed-password" = {};
           "users/root-hashed-password" = {};
         };
