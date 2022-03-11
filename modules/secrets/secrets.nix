@@ -17,6 +17,8 @@ in
 
   "matrix-synapse/secret-config.age".publicKeys = [ poseidon ];
 
+  "nextcloud/admin-pass.age".publicKeys = [ poseidon ];
+
   "restic-backup/boreal-password.age".publicKeys = [ alarsyo boreal ];
   "restic-backup/boreal-credentials.age".publicKeys = [ alarsyo boreal ];
   "restic-backup/poseidon-password.age".publicKeys = [ alarsyo poseidon ];

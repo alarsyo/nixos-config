@@ -17,6 +17,10 @@
             owner = "matrix-synapse";
           };
 
+          "nextcloud/admin-pass" = {
+            owner = "nextcloud";
+          };
+
           "restic-backup/poseidon-credentials" = {};
           "restic-backup/poseidon-password" = {};
 

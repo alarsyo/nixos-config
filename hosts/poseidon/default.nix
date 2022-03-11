@@ -117,6 +117,7 @@ in
 
     nextcloud = {
       enable = true;
+      adminpassFile = config.age.secrets."nextcloud/admin-pass".path;
     };
 
     nuage = {
