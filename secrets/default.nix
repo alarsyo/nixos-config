@@ -10,6 +10,5 @@ in {
   };
 
   config.my.secrets = {
-    paperless = import ./paperless { inherit lib; };
   };
 }

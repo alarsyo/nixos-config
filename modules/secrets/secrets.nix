@@ -21,6 +21,9 @@ in
 
   "nextcloud/admin-pass.age".publicKeys = [ poseidon ];
 
+  "paperless/admin-password.age".publicKeys = [ poseidon ];
+  "paperless/secret-key.age".publicKeys = [ poseidon ];
+
   "restic-backup/boreal-password.age".publicKeys = [ alarsyo boreal ];
   "restic-backup/boreal-credentials.age".publicKeys = [ alarsyo boreal ];
   "restic-backup/poseidon-password.age".publicKeys = [ alarsyo poseidon ];
