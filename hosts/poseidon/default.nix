@@ -65,7 +65,9 @@ in
 
     restic-backup = {
       enable = true;
-      repo = secrets.restic-backup.poseidon-repo;
+      repo = "b2:poseidon-backup";
+      passwordFile = config.age.secrets."restic-backup/poseidon-password".path;
+      environmentFile = config.age.secrets."restic-backup/poseidon-credentials".path;
     };
 
     fail2ban = {

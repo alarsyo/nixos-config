@@ -15,6 +15,5 @@ in {
     nextcloud-admin-user = fileContents ./nextcloud-admin-user.secret;
 
     paperless = import ./paperless { inherit lib; };
-    restic-backup = import ./restic-backup { inherit lib; };
   };
 }

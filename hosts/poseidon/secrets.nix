@@ -17,6 +17,9 @@
             owner = "matrix-synapse";
           };
 
+          "restic-backup/poseidon-credentials" = {};
+          "restic-backup/poseidon-password" = {};
+
           "transmission/secret" = {
             owner = "transmission";
           };
