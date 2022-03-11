@@ -26,11 +26,11 @@ in {
   options.my.services.matrix = let inherit (lib) types; in {
     enable = mkEnableOption "Matrix Synapse";
 
-    registration_shared_secret = mkOption {
-      type = types.str;
+    secretConfigFile = mkOption {
+      type = types.nullOr types.path;
       default = null;
-      example = "deadbeef";
-      description = "Shared secret to register users";
+      example = "/var/run/my_secrets/config.secret";
+      description = "Secrets file included in configuration";
     };
 
     emailConfig = mkOption {
@@ -76,99 +76,85 @@ in {
 
     services.matrix-synapse = {
       enable = true;
-      server_name = domain;
-      public_baseurl = "https://matrix.${domain}";
 
-      registration_shared_secret = cfg.registration_shared_secret;
-
-      listeners = [
-        # Federation
-        {
-          bind_address = "::1";
-          port = federationPort.private;
-          tls = false;  # Terminated by nginx.
-          x_forwarded = true;
-          resources = [ { names = [ "federation" ]; compress = false; } ];
-        }
-
-        # Client
-        {
-          bind_address = "::1";
-          port = clientPort.private;
-          tls = false;  # Terminated by nginx.
-          x_forwarded = true;
-          resources = [ { names = [ "client" ]; compress = false; } ];
-        }
+      extraConfigFiles = lib.optionals (cfg.secretConfigFile != null) [
+        cfg.secretConfigFile
       ];
 
-      account_threepid_delegates.msisdn = "https://vector.im";
+      settings = let
+        logConfig = ''
+          version: 1
 
-      extraConfig = ''
-        experimental_features: { spaces_enabled: true }
-        use_presence: false
+          # In systemd's journal, loglevel is implicitly stored, so let's omit it
+          # from the message text.
+          formatters:
+              journal_fmt:
+                  format: '%(name)s: [%(request)s] %(message)s'
 
-        email:
-          # The hostname of the outgoing SMTP server to use. Defaults to 'localhost'.
-          #
-          smtp_host: "${cfg.emailConfig.smtpHost}"
+          filters:
+              context:
+                  (): synapse.util.logcontext.LoggingContextFilter
+                  request: ""
 
-          # The port on the mail server for outgoing SMTP. Defaults to 25.
-          #
-          smtp_port: ${toString cfg.emailConfig.smtpPort}
+          handlers:
+              journal:
+                  class: systemd.journal.JournalHandler
+                  formatter: journal_fmt
+                  filters: [context]
+                  SYSLOG_IDENTIFIER: synapse
 
-          # Username/password for authentication to the SMTP server. By default, no
-          # authentication is attempted.
-          #
-          smtp_user: "${cfg.emailConfig.smtpUser}"
-          smtp_pass: "${cfg.emailConfig.smtpPass}"
+          root:
+              level: WARN
+              handlers: [journal]
 
-          # Uncomment the following to require TLS transport security for SMTP.
-          # By default, Synapse will connect over plain text, and will then switch to
-          # TLS via STARTTLS *if the SMTP server supports it*. If this option is set,
-          # Synapse will refuse to connect unless the server supports STARTTLS.
-          #
-          require_transport_security: true
+          disable_existing_loggers: False
+        '';
+      in {
+        server_name = domain;
+        public_baseurl = "https://matrix.${domain}";
 
-          # notif_from defines the "From" address to use when sending emails.
-          # It must be set if email sending is enabled.
-          #
-          # The placeholder '%(app)s' will be replaced by the application name,
-          # which is normally 'app_name' (below), but may be overridden by the
-          # Matrix client application.
-          #
-          # Note that the placeholder must be written '%(app)s', including the
-          # trailing 's'.
-          #
-          notif_from: "${cfg.emailConfig.notifFrom}"
-      '';
+        account_threepid_delegates = {
+          msisdn = "https://vector.im";
+        };
 
-      logConfig = ''
-        version: 1
+        listeners = [
+          # Federation
+          {
+            bind_addresses = [ "::1" ];
+            port = federationPort.private;
+            tls = false;  # Terminated by nginx.
+            x_forwarded = true;
+            resources = [ { names = [ "federation" ]; compress = false; } ];
+          }
 
-        # In systemd's journal, loglevel is implicitly stored, so let's omit it
-        # from the message text.
-        formatters:
-            journal_fmt:
-                format: '%(name)s: [%(request)s] %(message)s'
+          # Client
+          {
+            bind_addresses = [ "::1" ];
+            port = clientPort.private;
+            tls = false;  # Terminated by nginx.
+            x_forwarded = true;
+            resources = [ { names = [ "client" ]; compress = false; } ];
+          }
+        ];
 
-        filters:
-            context:
-                (): synapse.util.logcontext.LoggingContextFilter
-                request: ""
+        experimental_features = {
+          spaces_enabled = true;
+        };
 
-        handlers:
-            journal:
-                class: systemd.journal.JournalHandler
-                formatter: journal_fmt
-                filters: [context]
-                SYSLOG_IDENTIFIER: synapse
+        use_presence = false;
 
-        root:
-            level: WARN
-            handlers: [journal]
+        email = {
+          smtp_host = cfg.emailConfig.smtpHost;
+          smtp_port = cfg.emailConfig.smtpPort;
+          smtp_user = cfg.emailConfig.smtpUser;
+          smtp_pass = cfg.emailConfig.smtpPass;
 
-        disable_existing_loggers: False
-      '';
+          require_transport_security = true;
+          notif_from = cfg.emailConfig.notifFrom;
+        };
+
+        log_config = pkgs.writeText "log_config.yaml" logConfig;
+      };
     };
 
     services.nginx = {
