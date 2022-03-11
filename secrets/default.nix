@@ -16,7 +16,6 @@ in {
     nextcloud-admin-user = fileContents ./nextcloud-admin-user.secret;
     lohr-shared-secret = fileContents ./lohr-shared-secret.secret;
 
-    borg-backup = import ./borg-backup { inherit lib; };
     paperless = import ./paperless { inherit lib; };
     restic-backup = import ./restic-backup { inherit lib; };
 
