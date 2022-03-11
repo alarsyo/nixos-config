@@ -100,7 +100,7 @@ in
 
     matrix = {
       enable = true;
-      emailConfig = secrets.matrixEmailConfig;
+      secretConfigFile = config.age.secrets."matrix-synapse/secret-config".path;
     };
 
     monitoring = {

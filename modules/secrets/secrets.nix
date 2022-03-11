@@ -15,6 +15,8 @@ in
 
   "lohr/shared-secret.age".publicKeys = [ poseidon ];
 
+  "matrix-synapse/secret-config.age".publicKeys = [ poseidon ];
+
   "restic-backup/boreal-password.age".publicKeys = [ alarsyo boreal ];
   "restic-backup/boreal-credentials.age".publicKeys = [ alarsyo boreal ];
   "restic-backup/zephyrus-password.age".publicKeys = [ alarsyo zephyrus ];

@@ -17,7 +17,5 @@ in {
 
     paperless = import ./paperless { inherit lib; };
     restic-backup = import ./restic-backup { inherit lib; };
-
-    matrixEmailConfig = import ./matrix-email-config.nix;
   };
 }

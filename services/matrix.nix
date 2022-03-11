@@ -32,37 +32,6 @@ in {
       example = "/var/run/my_secrets/config.secret";
       description = "Secrets file included in configuration";
     };
-
-    emailConfig = mkOption {
-      type = types.submodule {
-        options = {
-          smtpHost = mkOption {
-            type = types.str;
-            default = "localhost";
-          };
-          smtpPort = mkOption {
-            type = types.port;
-            default = 587;
-            description = ''
-              The port to use to connect to the SMTP host.
-
-              Defaulting to STARTTLS port 587 because TLS port 465 isn't supported by synapse
-              See https://github.com/matrix-org/synapse/issues/8046
-            '';
-          };
-          smtpUser = mkOption {
-            type = types.str;
-          };
-          smtpPass = mkOption {
-            type = types.str;
-          };
-          notifFrom = mkOption {
-            type = types.str;
-            example = "Your Friendly %(app)s homeserver <noreply@example.com>";
-          };
-        };
-      };
-    };
   };
 
   config = mkIf cfg.enable {
@@ -144,13 +113,7 @@ in {
         use_presence = false;
 
         email = {
-          smtp_host = cfg.emailConfig.smtpHost;
-          smtp_port = cfg.emailConfig.smtpPort;
-          smtp_user = cfg.emailConfig.smtpUser;
-          smtp_pass = cfg.emailConfig.smtpPass;
-
           require_transport_security = true;
-          notif_from = cfg.emailConfig.notifFrom;
         };
 
         log_config = pkgs.writeText "log_config.yaml" logConfig;

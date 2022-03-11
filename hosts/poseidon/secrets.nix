@@ -13,6 +13,10 @@
 
           "lohr/shared-secret" = {};
 
+          "matrix-synapse/secret-config" = {
+            owner = "matrix-synapse";
+          };
+
           "users/alarsyo-hashed-password" = {};
           "users/root-hashed-password" = {};
         };
