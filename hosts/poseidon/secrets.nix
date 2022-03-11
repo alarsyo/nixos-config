@@ -11,6 +11,8 @@
         lib.mapAttrs toSecret {
           "gandi/api-key" = {};
 
+          "lohr/shared-secret" = {};
+
           "users/alarsyo-hashed-password" = {};
           "users/root-hashed-password" = {};
         };

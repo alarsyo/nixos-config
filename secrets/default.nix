@@ -14,7 +14,6 @@ in {
     transmission-password = fileContents ./transmission.secret;
     nextcloud-admin-pass = ./nextcloud-admin-pass.secret;
     nextcloud-admin-user = fileContents ./nextcloud-admin-user.secret;
-    lohr-shared-secret = fileContents ./lohr-shared-secret.secret;
 
     paperless = import ./paperless { inherit lib; };
     restic-backup = import ./restic-backup { inherit lib; };

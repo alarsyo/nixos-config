@@ -13,6 +13,8 @@ in
 {
   "gandi/api-key.age".publicKeys = [ poseidon ];
 
+  "lohr/shared-secret.age".publicKeys = [ poseidon ];
+
   "restic-backup/boreal-password.age".publicKeys = [ alarsyo boreal ];
   "restic-backup/boreal-credentials.age".publicKeys = [ alarsyo boreal ];
   "restic-backup/zephyrus-password.age".publicKeys = [ alarsyo zephyrus ];
