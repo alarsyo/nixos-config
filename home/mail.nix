@@ -68,6 +68,8 @@ in
       Service.Environment = "RBW_AGENT=${pkgs.rbw}/bin/rbw-agent";
     };
 
+    programs.msmtp.enable = true;
+
     programs.mu.enable = true;
   };
 }
