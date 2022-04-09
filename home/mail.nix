@@ -87,6 +87,9 @@ in
     programs.mbsync.enable = true;
     services.mbsync = {
       enable = true;
+      # sync every hour on the third minute, then every 16 minutes (to not hit
+      # servers right on plain hours)
+      frequency = "*:03/16";
       postExec = "${pkgs.mu}/bin/mu index";
     };
     systemd.user.services.mbsync = {
