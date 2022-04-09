@@ -52,6 +52,35 @@ in
             tls.enable = true;
           };
         };
+        lrde = {
+          address = email_lrde;
+          userName = "amartin";
+          realName = myName;
+          flavor = "plain"; # default setting
+          passwordCommand = "${pkgs.rbw}/bin/rbw get lrde.epita.fr amartin";
+          mbsync = {
+            enable = true;
+            create = "both";
+            expunge = "both";
+            extraConfig.account = {
+              # otherwise mbsync tries GSSAPI, but I don't have Kerberos setup
+              # on this machine
+              AuthMechs = "LOGIN";
+            };
+          };
+          msmtp.enable = true;
+          mu.enable = true;
+          imap = {
+            host = "imap.lrde.epita.fr";
+            port = 993;
+            tls.enable = true;
+          };
+          smtp = {
+            host = "smtp.lrde.epita.fr";
+            port = 465;
+            tls.enable = true;
+          };
+        };
       };
     };
 
