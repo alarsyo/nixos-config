@@ -31,6 +31,7 @@
       wget
 
       # development
+      alejandra
       git
       git-crypt
       git-lfs
