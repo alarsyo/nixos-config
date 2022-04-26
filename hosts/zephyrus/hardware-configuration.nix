@@ -52,5 +52,8 @@ in {
 
   powerManagement.cpuFreqGovernor = mkDefault "powersave";
 
-  hardware.enableRedistributableFirmware = true;
+  hardware = {
+    enableRedistributableFirmware = true;
+    cpu.intel.updateMicrocode = true;
+  };
 }
