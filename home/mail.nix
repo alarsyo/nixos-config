@@ -86,6 +86,7 @@ in {
             enable = true;
             create = "both";
             expunge = "both";
+            patterns = ["*" "!Archives*"];
             extraConfig.account = {
               # otherwise mbsync tries GSSAPI, but I don't have Kerberos setup
               # on this machine
