@@ -6,6 +6,7 @@
 }: let
   inherit
     (lib)
+    mapAttrs
     mkEnableOption
     mkIf
     ;
@@ -13,8 +14,41 @@
   myName = "Antoine Martin";
   email_perso = "antoine@alarsyo.net";
   email_lrde = "amartin@lrde.epita.fr";
+  email_prologin = "antoine.martin@prologin.org";
 
   cfg = config.my.home.mail;
+
+  make_mbsync_channel = patterns: {
+    farPattern = patterns.far;
+    nearPattern = patterns.near;
+    extraConfig = {
+      Create = "Both";
+      Expunge = "Both";
+      Remove = "None";
+      SyncState = "*";
+    };
+  };
+  make_mbsync_channels = mapAttrs (_: value: make_mbsync_channel value);
+
+  gmail_far_near_patterns = {
+    sent = {
+      far = "[Gmail]/Sent Mail";
+      near = "Sent";
+    };
+    drafts = {
+      far = "[Gmail]/Drafts";
+      near = "Drafts";
+    };
+    junk = {
+      far = "[Gmail]/Spam";
+      near = "Junk";
+    };
+    trash = {
+      far = "[Gmail]/Trash";
+      near = "Trash";
+    };
+  };
+  gmail_mbsync_channels = make_mbsync_channels gmail_far_near_patterns;
 in {
   options.my.home.mail = {
     # I *could* read email in a terminal emacs client on a server, but in
@@ -102,6 +136,58 @@ in {
           };
           smtp = {
             host = "smtp.lrde.epita.fr";
+            port = 465;
+            tls.enable = true;
+          };
+        };
+        prologin = {
+          address = email_prologin;
+          userName = email_prologin;
+          realName = myName;
+          aliases = [
+            "alarsyo@prologin.org"
+          ];
+          flavor = "plain"; # default setting
+          passwordCommand = "${pkgs.rbw}/bin/rbw get google.com ${email_prologin}-mailpass";
+          primary = false;
+          mbsync = {
+            enable = true;
+            create = "both";
+            expunge = "both";
+            groups = {
+              prologin-main.channels =
+                {
+                  main = {
+                    patterns = ["INBOX" "membres@"];
+                    extraConfig = {
+                      Create = "Both";
+                      Expunge = "Both";
+                      Remove = "None";
+                      SyncState = "*";
+                    };
+                  };
+                }
+                // gmail_mbsync_channels;
+              prologin-info.channels.prologin-info = {
+                patterns = ["info@" "info@gcc"];
+                extraConfig = {
+                  Create = "Both";
+                  Expunge = "Both";
+                  Remove = "None";
+                  SyncState = "*";
+                };
+              };
+            };
+          };
+          msmtp.enable = true;
+          mu.enable = true;
+          imap = {
+            host = "imap.gmail.com";
+            port = 993;
+            tls.enable = true;
+          };
+          smtp = {
+            host = "smtp.gmail.com";
             port = 465;
             tls.enable = true;
           };
