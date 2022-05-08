@@ -10,6 +10,10 @@
     mkEnableOption
     mkIf
     ;
+  inherit
+    (builtins)
+    typeOf
+    ;
 
   myName = "Antoine Martin";
   email_perso = "antoine@alarsyo.net";
@@ -18,16 +22,25 @@
 
   cfg = config.my.home.mail;
 
-  make_mbsync_channel = patterns: {
-    farPattern = patterns.far;
-    nearPattern = patterns.near;
-    extraConfig = {
-      Create = "Both";
-      Expunge = "Both";
-      Remove = "None";
-      SyncState = "*";
+  make_mbsync_channel = patterns:
+    (
+      if (typeOf patterns) == "list"
+      then {
+        inherit patterns;
+      }
+      else {
+        farPattern = patterns.far;
+        nearPattern = patterns.near;
+      }
+    )
+    // {
+      extraConfig = {
+        Create = "Both";
+        Expunge = "Both";
+        Remove = "None";
+        SyncState = "*";
+      };
     };
-  };
   make_mbsync_channels = mapAttrs (_: value: make_mbsync_channel value);
 
   gmail_far_near_patterns = {
@@ -77,23 +90,11 @@ in {
             create = "both";
             expunge = "both";
             groups = {
-              alarsyo-main.channels.alarsyo-main = {
-                patterns = ["INBOX" "Sent" "Drafts" "Junk" "Trash"];
-                extraConfig = {
-                  Create = "Both";
-                  Expunge = "Both";
-                  Remove = "None";
-                  SyncState = "*";
-                };
+              alarsyo-main.channels = make_mbsync_channels {
+                main = ["INBOX" "Sent" "Drafts" "Junk" "Trash"];
               };
-              alarsyo-full.channels.alarsyo-full = {
-                patterns = ["*" "!INBOX" "!Sent" "!Drafts" "!Junk" "!Trash"];
-                extraConfig = {
-                  Create = "Both";
-                  Expunge = "Both";
-                  Remove = "None";
-                  SyncState = "*";
-                };
+              alarsyo-full.channels = make_mbsync_channels {
+                full = ["*" "!INBOX" "!Sent" "!Drafts" "!Junk" "!Trash"];
               };
             };
           };
@@ -156,26 +157,12 @@ in {
             expunge = "both";
             groups = {
               prologin-main.channels =
-                {
-                  main = {
-                    patterns = ["INBOX" "membres@"];
-                    extraConfig = {
-                      Create = "Both";
-                      Expunge = "Both";
-                      Remove = "None";
-                      SyncState = "*";
-                    };
-                  };
-                }
+                (make_mbsync_channels {
+                  main = ["INBOX" "membres@"];
+                })
                 // gmail_mbsync_channels;
-              prologin-info.channels.prologin-info = {
-                patterns = ["info@" "info@gcc"];
-                extraConfig = {
-                  Create = "Both";
-                  Expunge = "Both";
-                  Remove = "None";
-                  SyncState = "*";
-                };
+              prologin-info.channels = make_mbsync_channels {
+                info = ["info@" "info@gcc"];
               };
             };
           };
