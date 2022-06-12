@@ -53,6 +53,14 @@ in {
   config = mkIf cfg.enable {
     services.postgresql = {
       enable = true;
+
+      ensureDatabases = ["matrix-synapse"];
+      ensureUsers = [
+        {
+          name = "matrix-synapse";
+          ensurePermissions."DATABASE \"matrix-synapse\"" = "ALL PRIVILEGES";
+        }
+      ];
     };
 
     services.postgresqlBackup = {
