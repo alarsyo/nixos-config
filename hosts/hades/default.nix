@@ -55,12 +55,20 @@ in {
 
   # List services that you want to enable:
   my.services = {
+    fail2ban.enable = true;
+
+    restic-backup = {
+      enable = true;
+      repo = "b2:hades-backup-alarsyo";
+      passwordFile = config.age.secrets."restic-backup/hades-password".path;
+      environmentFile = config.age.secrets."restic-backup/hades-credentials".path;
+      paths = ["/home/alarsyo"];
+    };
+
     tailscale = {
       enable = true;
       exitNode = true;
     };
-
-    fail2ban.enable = true;
   };
 
   # Enable the OpenSSH daemon.

@@ -13,6 +13,9 @@
         // attrs;
     in
       lib.mapAttrs toSecret {
+        "restic-backup/hades-credentials" = {};
+        "restic-backup/hades-password" = {};
+
         "users/alarsyo-hashed-password" = {};
         "users/root-hashed-password" = {};
       };

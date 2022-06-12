@@ -26,6 +26,8 @@ in {
 
   "restic-backup/boreal-password.age".publicKeys = [alarsyo boreal];
   "restic-backup/boreal-credentials.age".publicKeys = [alarsyo boreal];
+  "restic-backup/hades-password.age".publicKeys = [alarsyo hades];
+  "restic-backup/hades-credentials.age".publicKeys = [alarsyo hades];
   "restic-backup/poseidon-password.age".publicKeys = [alarsyo poseidon];
   "restic-backup/poseidon-credentials.age".publicKeys = [alarsyo poseidon];
   "restic-backup/zephyrus-password.age".publicKeys = [alarsyo zephyrus];
