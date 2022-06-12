@@ -57,6 +57,12 @@ in {
   my.services = {
     fail2ban.enable = true;
 
+    miniflux = {
+      enable = true;
+      adminCredentialsFile = config.age.secrets."miniflux/admin-credentials".path;
+      privatePort = 8080;
+    };
+
     restic-backup = {
       enable = true;
       repo = "b2:hades-backup-alarsyo";

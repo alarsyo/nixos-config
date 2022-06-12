@@ -11,13 +11,13 @@ let
 
   all = users ++ machines;
 in {
-  "gandi/api-key.age".publicKeys = [alarsyo poseidon];
+  "gandi/api-key.age".publicKeys = [alarsyo hades poseidon];
 
   "lohr/shared-secret.age".publicKeys = [alarsyo poseidon];
 
   "matrix-synapse/secret-config.age".publicKeys = [alarsyo poseidon];
 
-  "miniflux/admin-credentials.age".publicKeys = [alarsyo poseidon];
+  "miniflux/admin-credentials.age".publicKeys = [alarsyo hades];
 
   "nextcloud/admin-pass.age".publicKeys = [alarsyo poseidon];
 

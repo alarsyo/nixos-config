@@ -21,8 +21,6 @@
           owner = "matrix-synapse";
         };
 
-        "miniflux/admin-credentials" = {};
-
         "nextcloud/admin-pass" = {
           owner = "nextcloud";
         };

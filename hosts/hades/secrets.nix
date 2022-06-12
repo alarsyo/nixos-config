@@ -13,6 +13,10 @@
         // attrs;
     in
       lib.mapAttrs toSecret {
+        "gandi/api-key" = {};
+
+        "miniflux/admin-credentials" = {};
+
         "restic-backup/hades-credentials" = {};
         "restic-backup/hades-password" = {};
 
