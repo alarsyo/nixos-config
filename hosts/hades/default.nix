@@ -59,6 +59,8 @@ in {
       enable = true;
       exitNode = true;
     };
+
+    fail2ban.enable = true;
   };
 
   # Enable the OpenSSH daemon.
