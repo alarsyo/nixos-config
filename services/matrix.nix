@@ -274,11 +274,10 @@ in {
 
     my.services.restic-backup = let
       dataDir = config.services.matrix-synapse.dataDir;
-    in
-      mkIf cfg.enable {
-        paths = [dataDir];
-        # this is just caching for other servers media, doesn't need backup
-        exclude = ["${dataDir}/media/remote_*"];
-      };
+    in {
+      paths = [dataDir];
+      # this is just caching for other servers media, doesn't need backup
+      exclude = ["${dataDir}/media/remote_*"];
+    };
   };
 }
