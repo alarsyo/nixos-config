@@ -15,7 +15,7 @@ in {
 
   "lohr/shared-secret.age".publicKeys = [alarsyo poseidon];
 
-  "matrix-synapse/secret-config.age".publicKeys = [alarsyo poseidon];
+  "matrix-synapse/secret-config.age".publicKeys = [alarsyo hades];
 
   "miniflux/admin-credentials.age".publicKeys = [alarsyo hades];
 

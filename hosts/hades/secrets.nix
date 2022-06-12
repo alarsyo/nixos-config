@@ -15,6 +15,10 @@
       lib.mapAttrs toSecret {
         "gandi/api-key" = {};
 
+        "matrix-synapse/secret-config" = {
+          owner = "matrix-synapse";
+        };
+
         "miniflux/admin-credentials" = {};
 
         "restic-backup/hades-credentials" = {};

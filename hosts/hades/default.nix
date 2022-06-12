@@ -57,6 +57,11 @@ in {
   my.services = {
     fail2ban.enable = true;
 
+    matrix = {
+      enable = true;
+      secretConfigFile = config.age.secrets."matrix-synapse/secret-config".path;
+    };
+
     miniflux = {
       enable = true;
       adminCredentialsFile = config.age.secrets."miniflux/admin-credentials".path;

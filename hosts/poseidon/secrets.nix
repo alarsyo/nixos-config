@@ -17,10 +17,6 @@
 
         "lohr/shared-secret" = {};
 
-        "matrix-synapse/secret-config" = {
-          owner = "matrix-synapse";
-        };
-
         "nextcloud/admin-pass" = {
           owner = "nextcloud";
         };

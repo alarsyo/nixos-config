@@ -96,11 +96,6 @@ in {
       port = 8083;
     };
 
-    matrix = {
-      enable = true;
-      secretConfigFile = config.age.secrets."matrix-synapse/secret-config".path;
-    };
-
     monitoring = {
       enable = true;
       domain = "monitoring.${config.networking.domain}";
