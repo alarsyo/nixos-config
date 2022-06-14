@@ -73,10 +73,6 @@ in {
       privatePort = 8080;
     };
 
-    postgresql-backup = {
-      enable = true;
-    };
-
     restic-backup = {
       enable = true;
       repo = "b2:hades-backup-alarsyo";

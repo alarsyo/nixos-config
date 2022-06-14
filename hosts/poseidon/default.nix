@@ -117,10 +117,6 @@ in {
       secretKeyFile = config.age.secrets."paperless/secret-key".path;
     };
 
-    postgresql-backup = {
-      enable = true;
-    };
-
     tailscale = {
       enable = true;
       exitNode = true;
