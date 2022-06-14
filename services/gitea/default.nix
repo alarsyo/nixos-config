@@ -95,6 +95,8 @@ in {
       ];
     };
 
+    # NOTE: no need to use postgresql.ensureDatabases because the gitea module
+    # takes care of this automatically
     services.postgresqlBackup = {
       databases = ["gitea"];
     };
