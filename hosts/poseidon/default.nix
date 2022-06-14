@@ -82,11 +82,6 @@ in {
       filePath = "accounts/current.beancount";
     };
 
-    gitea = {
-      enable = true;
-      privatePort = 8082;
-    };
-
     jellyfin = {
       enable = true;
     };
