@@ -85,6 +85,9 @@ in {
       paths = [
         cfg.home
       ];
+      exclude = [
+        "${cfg.home}/storage"
+      ];
     };
   };
 }
