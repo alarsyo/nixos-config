@@ -92,6 +92,12 @@ in {
   services.openssh.permitRootLogin = "no";
   services.openssh.passwordAuthentication = false;
 
+  virtualisation.docker.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    docker-compose
+  ];
+
   # Takes a long while to build
   documentation.nixos.enable = false;
 }
