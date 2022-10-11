@@ -73,6 +73,11 @@ in {
       privatePort = 8080;
     };
 
+    photoprism = {
+      enable = true;
+      port = 8084;
+    };
+
     restic-backup = {
       enable = true;
       repo = "b2:hades-backup-alarsyo";
