@@ -70,6 +70,12 @@ in {
           proxyPass = "http://127.0.0.1:${toString cfg.port}";
           proxyWebsockets = true;
         };
+
+        extraConfig = ''
+          proxy_connect_timeout 600;
+          proxy_read_timeout 600;
+          proxy_send_timeout 600;
+        '';
       };
     };
 
