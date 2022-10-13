@@ -91,5 +91,23 @@ in {
         "${cfg.home}/storage"
       ];
     };
+
+    services.fail2ban.jails = {
+      photoprism = ''
+        enabled = true
+        filter = photoprism-failed-login
+        port = http,https
+        maxretry = 3
+      '';
+    };
+
+    environment.etc = {
+      "fail2ban/filter.d/photoprism-failed-login.conf".text = ''
+        [Definition]
+        failregex = ^.* photoprism: <HOST> - .*"POST \/api\/v1\/session HTTP[^"]*" 400 .*$
+        ignoreregex =
+        journalmatch = _SYSTEMD_UNIT=nginx.service _TRANSPORT=syslog
+      '';
+    };
   };
 }
