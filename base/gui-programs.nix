@@ -40,6 +40,7 @@ in {
     environment.systemPackages = builtins.attrValues {
       inherit
         (pkgs)
+        chrysalis
         element-desktop
         feh
         firefox
