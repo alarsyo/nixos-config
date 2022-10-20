@@ -42,6 +42,7 @@ in {
         (pkgs)
         chrysalis
         element-desktop
+        evince
         feh
         firefox
         ffmpeg
