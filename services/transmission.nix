@@ -67,7 +67,7 @@ in {
         };
 
         # automatically allow transmission.settings.peer-port
-        openFirewall = true;
+        openPeerPorts = true;
       }
       // (optionalAttrs (cfg.secretConfigFile != null) {
         credentialsFile = cfg.secretConfigFile;
