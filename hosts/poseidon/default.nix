@@ -90,11 +90,6 @@ in {
       musicFolder.path = "${config.services.nextcloud.home}/data/alarsyo/files/Musique/Songs";
     };
 
-    nextcloud = {
-      enable = true;
-      adminpassFile = config.age.secrets."nextcloud/admin-pass".path;
-    };
-
     paperless = {
       enable = true;
       port = 8085;
