@@ -76,12 +76,6 @@ in {
       enable = true;
     };
 
-    fava = {
-      enable = true;
-      port = 8084;
-      filePath = "accounts/current.beancount";
-    };
-
     jellyfin = {
       enable = true;
     };
