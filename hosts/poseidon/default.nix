@@ -85,11 +85,6 @@ in {
       port = 8083;
     };
 
-    navidrome = {
-      enable = true;
-      musicFolder.path = "${config.services.nextcloud.home}/data/alarsyo/files/Musique/Songs";
-    };
-
     paperless = {
       enable = true;
       port = 8085;
