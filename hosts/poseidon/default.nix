@@ -91,11 +91,6 @@ in {
       port = 8083;
     };
 
-    monitoring = {
-      enable = true;
-      domain = "monitoring.${config.networking.domain}";
-    };
-
     navidrome = {
       enable = true;
       musicFolder.path = "${config.services.nextcloud.home}/data/alarsyo/files/Musique/Songs";
