@@ -92,11 +92,6 @@ in {
       enable = true;
       exitNode = true;
     };
-
-    transmission = {
-      enable = true;
-      username = "alarsyo";
-    };
   };
 
   # Enable the OpenSSH daemon.
