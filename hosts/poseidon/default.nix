@@ -76,10 +76,6 @@ in {
       enable = true;
     };
 
-    jellyfin = {
-      enable = true;
-    };
-
     lohr = {
       enable = true;
       port = 8083;

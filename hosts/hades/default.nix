@@ -62,6 +62,10 @@ in {
       privatePort = 8082;
     };
 
+    jellyfin = {
+      enable = true;
+    };
+
     matrix = {
       enable = true;
       secretConfigFile = config.age.secrets."matrix-synapse/secret-config".path;
