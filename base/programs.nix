@@ -1,11 +1,6 @@
 {pkgs, ...}: {
   programs = {
     fish.enable = true;
-    gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
-      pinentryFlavor = "gnome3";
-    };
     less.enable = true;
     mosh.enable = true;
 
