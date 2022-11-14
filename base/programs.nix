@@ -8,6 +8,14 @@
     bandwhich.enable = true;
   };
 
+  services.openssh = {
+    passwordAuthentication = false;
+    permitRootLogin = "no";
+    extraConfig = ''
+      StreamLocalBindUnlink yes
+    '';
+  };
+
   environment.systemPackages = builtins.attrValues {
     inherit
       (pkgs)
