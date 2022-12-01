@@ -25,7 +25,7 @@
       type = "github";
       owner = "nix-community";
       repo = "home-manager";
-      ref = "master";
+      ref = "release-22.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
