@@ -25,6 +25,8 @@
         # dev
         
         rustup
+        gdb
+        valgrind
         arandr
         ;
 
