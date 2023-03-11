@@ -82,7 +82,7 @@
               };
             })
 
-            agenix.overlay
+            agenix.overlays.default
           ]
           ++ builtins.attrValues self.overlays;
         sharedModules =
