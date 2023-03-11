@@ -87,8 +87,8 @@
           ++ builtins.attrValues self.overlays;
         sharedModules =
           [
-            agenix.nixosModule
-            home-manager.nixosModule
+            agenix.nixosModules.default
+            home-manager.nixosModules.default
             {nixpkgs.overlays = shared_overlays;}
           ]
           ++ (nixpkgs.lib.attrValues self.nixosModules);
