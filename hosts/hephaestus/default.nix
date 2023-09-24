@@ -95,4 +95,6 @@
 
   # Configure console keymap
   console.keyMap = "us";
+
+  programs.light.enable = true;
 }
