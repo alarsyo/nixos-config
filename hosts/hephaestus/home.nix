@@ -15,6 +15,9 @@
 
     my.theme = config.home-manager.users.alarsyo.my.themes.solarizedLight;
 
+    # TODO: place in global home conf
+    services.dunst.enable = true;
+
     home.packages = builtins.attrValues {
       inherit
         (pkgs)
