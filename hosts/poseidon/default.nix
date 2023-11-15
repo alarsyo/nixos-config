@@ -57,12 +57,6 @@ in {
   my.networking.externalInterface = "eno1";
 
   my.services = {
-    vaultwarden = {
-      enable = true;
-      privatePort = 8081;
-      websocketPort = 3012;
-    };
-
     restic-backup = {
       enable = true;
       repo = "b2:poseidon-backup";
