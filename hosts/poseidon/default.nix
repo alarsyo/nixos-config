@@ -68,11 +68,6 @@ in {
       enable = true;
     };
 
-    lohr = {
-      enable = true;
-      port = 8083;
-    };
-
     tailscale = {
       enable = true;
       exitNode = true;
