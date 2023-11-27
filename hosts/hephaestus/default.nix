@@ -102,6 +102,7 @@
 
   services = {
     tlp = {
+      enable = true;
       settings = {
         START_CHARGE_THRESH_BAT0 = 70;
         STOP_CHARGE_THRESH_BAT0 = 80;
@@ -141,6 +142,7 @@
   # Enable the KDE Plasma Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
+  services.power-profiles-daemon.enable = false;
 
   # Configure console keymap
   console.keyMap = "us";
