@@ -22,9 +22,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.systemd.enable = true;
-  boot.plymouth.enable = true;
-  boot.kernelParams = ["quiet"];
+  # boot.initrd.systemd.enable = true;
+  # boot.plymouth.enable = true;
+  # boot.kernelParams = ["quiet"];
 
   boot.initrd.secrets = {
     "/crypto_keyfile.bin" = null;
