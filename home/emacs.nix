@@ -38,6 +38,7 @@ in {
       enable = true;
       # generate emacsclient desktop file
       client.enable = true;
+      socketActivation.enable = true;
     };
 
     programs.emacs = {
