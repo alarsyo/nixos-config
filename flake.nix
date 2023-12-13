@@ -42,6 +42,13 @@
       repo = "nixos-hardware";
       ref = "master";
     };
+
+    disko = {
+      type = "github";
+      owner = "nix-community";
+      repo = "disko";
+      ref = "master";
+    };
   };
 
   outputs = {
@@ -49,6 +56,7 @@
     nixpkgs,
     home-manager,
     agenix,
+    disko,
     ...
   } @ inputs:
     {
@@ -144,6 +152,16 @@
               inputs.nixos-hardware.nixosModules.common-gpu-amd
               inputs.nixos-hardware.nixosModules.common-pc-laptop
               inputs.nixos-hardware.nixosModules.common-pc-ssd
+            ]
+            ++ sharedModules;
+        };
+
+        thanatos = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules =
+            [
+              disko.nixosModules.default
+              ./thanatos.nix
             ]
             ++ sharedModules;
         };
