@@ -109,6 +109,7 @@
                   "zotero-6.0.26"
                 ];
               };
+              hardware.enableRedistributableFirmware = true;
             }
           ]
           ++ (nixpkgs.lib.attrValues self.nixosModules);
