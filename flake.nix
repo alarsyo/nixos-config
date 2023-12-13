@@ -143,19 +143,6 @@
             ++ sharedModules;
         };
 
-        zephyrus = nixpkgs.lib.nixosSystem rec {
-          inherit system;
-          modules =
-            [
-              ./zephyrus.nix
-
-              inputs.nixos-hardware.nixosModules.common-cpu-intel
-              inputs.nixos-hardware.nixosModules.common-pc-laptop
-              inputs.nixos-hardware.nixosModules.common-pc-ssd
-            ]
-            ++ sharedModules;
-        };
-
         hephaestus = nixpkgs.lib.nixosSystem rec {
           inherit system;
           modules =
