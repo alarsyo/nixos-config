@@ -3,6 +3,7 @@
     fish.enable = true;
     less.enable = true;
     mosh.enable = true;
+    tmux.enable = true;
 
     # setcap wrapper for network permissions
     bandwhich.enable = true;
