@@ -105,15 +105,6 @@
           ]
           ++ (nixpkgs.lib.attrValues self.nixosModules);
       in {
-        poseidon = nixpkgs.lib.nixosSystem rec {
-          inherit system;
-          modules =
-            [
-              ./poseidon.nix
-            ]
-            ++ sharedModules;
-        };
-
         hades = nixpkgs.lib.nixosSystem rec {
           inherit system;
           modules =
