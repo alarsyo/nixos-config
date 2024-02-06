@@ -213,6 +213,30 @@
     };
   };
 
+  systemd.services.autorandr-lid-listener = {
+    wantedBy = ["multi-user.target"];
+    description = "Listening for lid events to invoke autorandr";
+
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = let
+        stdbufExe = lib.getExe' pkgs.coreutils "stdbuf";
+        libinputExe = lib.getExe' pkgs.libinput "libinput";
+        grepExe = lib.getExe pkgs.gnugrep;
+        autorandrExe = lib.getExe pkgs.autorandr;
+      in
+        pkgs.writeShellScript "lid-listener.sh" ''
+          ${stdbufExe} -oL ${libinputExe} debug-events |
+            ${grepExe} -E --line-buffered '^[[:space:]-]+event[0-9]+[[:space:]]+SWITCH_TOGGLE[[:space:]]' |
+            while read line; do
+              ${pkgs.systemd}/bin/systemctl start --no-block autorandr.service
+            done
+        '';
+      Restart = "always";
+      RestartSec = "30";
+    };
+  };
+
   # Configure console keymap
   console.keyMap = "us";
 
