@@ -5,7 +5,7 @@
       type = "github";
       owner = "NixOS";
       repo = "nixpkgs";
-      ref = "nixos-23.11";
+      ref = "nixos-unstable";
     };
 
     nixpkgs-unstable-small = {
@@ -25,7 +25,7 @@
       type = "github";
       owner = "nix-community";
       repo = "home-manager";
-      ref = "release-23.11";
+      ref = "master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -33,7 +33,7 @@
       type = "github";
       owner = "numtide";
       repo = "flake-utils";
-      ref = "master";
+      ref = "main";
     };
 
     nixos-hardware = {
@@ -153,6 +153,15 @@
               inputs.nixos-hardware.nixosModules.common-pc-ssd
             ]
             ++ sharedModules;
+        };
+
+        talos = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            inputs.nixos-hardware.nixosModules.framework-13-inch-7040-amd
+            disko.nixosModules.default
+            ./talos.nix
+          ];
         };
 
         thanatos = nixpkgs.lib.nixosSystem {
