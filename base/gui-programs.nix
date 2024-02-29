@@ -29,11 +29,6 @@ in {
     services = {
       xserver = {
         enable = true;
-        # NOTE: could use `mkOptionDefault` but this feels more explicit
-        videoDrivers =
-          if config.my.gui.isNvidia
-          then ["nvidia"]
-          else options.services.xserver.videoDrivers.default;
         windowManager.i3.enable = true;
         xkb = {
           layout = "fr";
