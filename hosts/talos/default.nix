@@ -104,6 +104,11 @@
   services.xserver.desktopManager.plasma5.enable = true;
   services.power-profiles-daemon.enable = true;
 
+  programs.hyprland.enable = true;
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+  };
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.
