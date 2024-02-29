@@ -21,7 +21,11 @@
   boot.kernelPackages = pkgs.linuxPackages_6_6;
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot = {
+    enable = true;
+    editor = false;
+    consoleMode = "auto";
+  };
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.tmp.useTmpfs = true;
