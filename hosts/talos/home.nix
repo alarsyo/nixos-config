@@ -22,11 +22,11 @@
       inherit
         (pkgs)
         # some websites only work there :(
-
+        
         chromium
         darktable
         # dev
-
+        
         rustup
         gdb
         valgrind
