@@ -35,8 +35,10 @@ in {
           then ["nvidia"]
           else options.services.xserver.videoDrivers.default;
         windowManager.i3.enable = true;
-        layout = "fr";
-        xkbVariant = "us";
+        xkb = {
+          layout = "fr";
+          variant = "us";
+        };
         libinput = {
           enable = true;
           touchpad = {
