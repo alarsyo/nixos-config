@@ -4,6 +4,9 @@
   ...
 }: {
   home-manager.users.alarsyo = {
+    # TODO: can probably upgrade me
+    home.stateVersion = "21.05";
+
     # Keyboard settings & i3 settings
     my.home.x.enable = true;
     my.home.x.i3bar.temperature.chip = "k10temp-pci-*";
