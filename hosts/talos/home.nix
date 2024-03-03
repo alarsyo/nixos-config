@@ -1,11 +1,10 @@
 {
   config,
-  lib,
   pkgs,
   ...
 }: {
   home-manager.users.alarsyo = {
-    home.stateVersion = lib.mkForce "23.11";
+    home.stateVersion = "23.11";
 
     my.home.laptop.enable = true;
 
