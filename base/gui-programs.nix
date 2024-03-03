@@ -53,7 +53,6 @@ in {
         (pkgs)
         discord
         feh
-        firefox
         ffmpeg
         gimp-with-plugins
         imagemagick
