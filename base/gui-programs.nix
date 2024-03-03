@@ -51,8 +51,6 @@ in {
     environment.systemPackages = builtins.attrValues {
       inherit
         (pkgs)
-        chrysalis
-        evince
         discord
         feh
         firefox
@@ -69,8 +67,6 @@ in {
         xcolor
         zathura
         ;
-
-      inherit (pkgs.gnome) nautilus;
 
       inherit (pkgs.libsForQt5) okular;
     };
