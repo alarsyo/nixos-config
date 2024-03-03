@@ -34,7 +34,6 @@ in {
           if config.my.gui.isNvidia
           then ["nvidia"]
           else options.services.xserver.videoDrivers.default;
-        windowManager.i3.enable = true;
         layout = "fr";
         xkbVariant = "us";
         libinput = {
