@@ -93,6 +93,8 @@
                 inherit system;
                 config.allowUnfree = true;
               };
+
+              power-profiles-daemon = self.unstable.power-profiles-daemon;
             })
 
             agenix.overlays.default
