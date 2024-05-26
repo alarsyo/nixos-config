@@ -65,7 +65,6 @@ in {
           HTTP_PORT = cfg.privatePort;
         };
         log.LEVEL = "Warn"; # [ "Trace" "Debug" "Info" "Warn" "Error" "Critical" ]
-        other.SHOW_FOOTER_VERSION = false;
         repository = {
           ENABLE_PUSH_CREATE_USER = true;
           DEFAULT_BRANCH = "main";
