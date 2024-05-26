@@ -53,6 +53,9 @@ in {
       enable = true;
       user = forgejoUser;
       appName = "Personal Forge";
+      group = config.users.users.${forgejoUser}.group;
+      stateDir = "/var/lib/${forgejoUser}";
+
       lfs.enable = true;
 
       settings = {
