@@ -67,17 +67,6 @@
           home-manager.users.alarsyo = import ./home;
           home-manager.verbose = true;
         };
-        nix-path = {
-          nix = {
-            nixPath = [
-              "nixpkgs=${inputs.nixpkgs}"
-            ];
-            registry = {
-              nixpkgs.flake = inputs.nixpkgs;
-              unstable.flake = inputs.nixpkgs-unstable-small;
-            };
-          };
-        };
       };
 
       overlays = import ./overlays;
