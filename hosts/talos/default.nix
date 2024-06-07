@@ -156,8 +156,6 @@
   services.power-profiles-daemon.enable = true;
 
   environment.systemPackages = [
-    pkgs.framework-tool
-
     pkgs.unstable.zed-editor
   ];
 
