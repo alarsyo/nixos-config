@@ -133,20 +133,6 @@
             ++ sharedModules;
         };
 
-        hephaestus = nixpkgs.lib.nixosSystem rec {
-          inherit system;
-          modules =
-            [
-              ./hephaestus.nix
-
-              inputs.nixos-hardware.nixosModules.common-cpu-amd
-              inputs.nixos-hardware.nixosModules.common-gpu-amd
-              inputs.nixos-hardware.nixosModules.common-pc-laptop
-              inputs.nixos-hardware.nixosModules.common-pc-ssd
-            ]
-            ++ sharedModules;
-        };
-
         talos = nixpkgs.lib.nixosSystem {
           inherit system;
           modules =
