@@ -157,6 +157,8 @@
 
   environment.systemPackages = [
     pkgs.framework-tool
+
+    pkgs.zed-editor
   ];
 
   #programs.hyprland.enable = true;
