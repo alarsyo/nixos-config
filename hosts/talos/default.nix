@@ -64,6 +64,9 @@
   virtualisation = {
     docker.enable = true;
     libvirtd.enable = false;
+    virtualbox.host = {
+      enable = false;
+    };
   };
 
   my.services = {
@@ -108,6 +111,8 @@
 
         # test vms
         "*.qcow2"
+        "*.vbox"
+        "*.vdi"
 
         # secrets stay offline
         "/home/alarsyo/**/secrets"
