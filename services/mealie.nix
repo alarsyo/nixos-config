@@ -34,6 +34,10 @@ in {
       enable = true;
       listenAddress = "127.0.0.1";
       port = cfg.port;
+
+      settings = {
+        ALLOW_SIGNUP = "false";
+      };
     };
 
     services.nginx.virtualHosts."mealie.${domain}" = {
