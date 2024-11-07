@@ -94,8 +94,6 @@
     isNvidia = true;
   };
 
-  services.udev.packages = [pkgs.chrysalis];
-
   hardware = {
     bluetooth = {
       enable = true;
