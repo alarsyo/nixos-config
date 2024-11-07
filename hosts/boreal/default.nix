@@ -96,8 +96,14 @@
 
   services.udev.packages = [pkgs.chrysalis];
 
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = false;
+  hardware = {
+    bluetooth = {
+      enable = true;
+      powerOnBoot = false;
+    };
+    nvidia = {
+      open = true;
+      modesetting.enable = true;
+    };
   };
 }
