@@ -18,6 +18,7 @@ in {
     services.displayManager.sddm = {
       enable = true;
       theme = "sugar-candy";
+      wayland.enable = true;
     };
 
     environment.systemPackages = builtins.attrValues {
