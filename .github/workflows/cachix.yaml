@@ -26,9 +26,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - uses: cachix/install-nix-action@v25
+    - uses: cachix/install-nix-action@v27
 
-    - uses: cachix/cachix-action@v14
+    - uses: cachix/cachix-action@v15
       with:
         name: alarsyo
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
@@ -55,9 +55,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - uses: cachix/install-nix-action@v25
+    - uses: cachix/install-nix-action@v27
 
-    - uses: cachix/cachix-action@v14
+    - uses: cachix/cachix-action@v15
       with:
         name: alarsyo
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
@@ -83,9 +83,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - uses: cachix/install-nix-action@v25
+    - uses: cachix/install-nix-action@v27
 
-    - uses: cachix/cachix-action@v14
+    - uses: cachix/cachix-action@v15
       with:
         name: alarsyo
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
