@@ -35,6 +35,16 @@ in {
   };
 
   services = {
+    gitlab-runner = {
+      enable = true;
+      settings = {
+        concurrent = 4;
+      };
+      services.default = {
+        authenticationTokenConfigFile = config.age.secrets."gitlab-runner/thanatos-runner-env".path;
+        dockerImage = "debian:stable";
+      };
+    };
     openssh.enable = true;
   };
 
