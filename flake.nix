@@ -59,7 +59,7 @@
       type = "github";
       owner = "jj-vcs";
       repo = "jj";
-      ref = "v0.25.0";
+      ref = "v0.26.0";
     };
   };
 
