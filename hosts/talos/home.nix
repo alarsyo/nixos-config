@@ -89,6 +89,9 @@ in {
             "Return" = "mode default";
           };
         };
+
+        menu = "fuzzel --list-executables-in-path";
+
         startup = [
           {command = "shikane";}
           {command = "waybar";}
