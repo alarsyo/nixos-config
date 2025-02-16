@@ -40,7 +40,9 @@ in {
         ;
     };
 
-    wayland.windowManager.sway = {
+    wayland.windowManager.sway = let
+      logoutMode = "[L]ogout, [S]uspend, [P]oweroff, [R]eboot";
+    in {
       enable = true;
       swaynag.enable = true;
       wrapperFeatures.gtk = true;
@@ -70,7 +72,19 @@ in {
         bars = [];
 
         keybindings = mkOptionDefault {
+          "Mod4+Shift+e" = ''mode "${logoutMode}"'';
           "Mod4+i" = "exec emacsclient --create-frame";
+        };
+
+        modes = mkOptionDefault {
+          "${logoutMode}" = {
+            "l" = "exec --no-startup-id swaymsg exit, mode default";
+            #"s" = "exec --no-startup-id betterlockscreen --suspend, mode default";
+            "p" = "exec --no-startup-id systemctl poweroff, mode default";
+            "r" = "exec --no-startup-id systemctl reboot, mode default";
+            "Escape" = "mode default";
+            "Return" = "mode default";
+          };
         };
         startup = [
           {command = "waybar";}
