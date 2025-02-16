@@ -78,6 +78,9 @@ in {
           "Mod4+Shift+e" = ''mode "${logoutMode}"'';
           "Mod4+i" = "exec emacsclient --create-frame";
           "Mod4+Control+l" = "exec hyprlock";
+          "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- -l 1.2";
+          "XF86AudioRaiseVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1.2";
         };
 
         modes = mkOptionDefault {
