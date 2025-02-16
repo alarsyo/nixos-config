@@ -31,6 +31,7 @@ in {
         (pkgs)
         ansel
         chromium # some websites only work there :(
+        hyprlock
         shikane # output autoconfig
         zotero
         ;
@@ -75,6 +76,7 @@ in {
         keybindings = mkOptionDefault {
           "Mod4+Shift+e" = ''mode "${logoutMode}"'';
           "Mod4+i" = "exec emacsclient --create-frame";
+          "Mod4+Control+l" = "exec hyprlock";
         };
 
         modes = mkOptionDefault {
