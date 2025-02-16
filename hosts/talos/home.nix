@@ -31,6 +31,7 @@ in {
         (pkgs)
         ansel
         chromium # some websites only work there :(
+        shikane # output autoconfig
         zotero
         ;
 
@@ -87,6 +88,7 @@ in {
           };
         };
         startup = [
+          {command = "shikane";}
           {command = "waybar";}
         ];
       };
