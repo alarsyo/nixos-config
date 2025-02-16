@@ -32,6 +32,7 @@ in {
         ansel
         chromium # some websites only work there :(
         hyprlock
+        nwg-displays
         shikane # output autoconfig
         zotero
         ;
