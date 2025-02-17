@@ -101,6 +101,7 @@ in {
         startup = [
           {command = "shikane";}
           {command = "waybar";}
+          {command = "swayidle -w idlehint 1 before-sleep \"${lock}\"";}
         ];
       };
     };
@@ -111,5 +112,18 @@ in {
         enable = true;
       };
     };
+  };
+
+  # FIXME: belongs elsewhere
+  services = {
+    logind = {
+      lidSwitch = "suspend";
+      lidSwitchExternalPower = "ignore";
+      extraConfig = ''
+        IdleAction=suspend
+        IdleActionSec=10min
+      '';
+    };
+    upower.enable = true;
   };
 }
