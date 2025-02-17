@@ -76,6 +76,7 @@ in {
         bars = [];
 
         keybindings = mkOptionDefault {
+          "Mod4+Shift+a" = "exec shikanectl reload";
           "Mod4+Shift+e" = ''mode "${logoutMode}"'';
           "Mod4+i" = "exec emacsclient --create-frame";
           "Mod4+Control+l" = "exec ${lock}";
