@@ -116,12 +116,17 @@ in {
         bindswitch --reload --locked lid:on output eDP-1 disable;
       '';
     };
+
     programs = {
       fuzzel.enable = true;
       swaylock.enable = true;
       waybar = {
         enable = true;
       };
+    };
+
+    home.sessionVariables = {
+      NIXOS_OZONE_WL = "1";
     };
   };
 
