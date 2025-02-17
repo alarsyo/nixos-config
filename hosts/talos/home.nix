@@ -31,7 +31,6 @@ in {
         (pkgs)
         ansel
         chromium # some websites only work there :(
-        hyprlock
         nwg-displays
         shikane # output autoconfig
         zotero
@@ -45,6 +44,7 @@ in {
 
     wayland.windowManager.sway = let
       logoutMode = "[L]ogout, [S]uspend, [P]oweroff, [R]eboot";
+      lock = "hyprlock --immediate";
     in {
       enable = true;
       swaynag.enable = true;
@@ -77,7 +77,7 @@ in {
         keybindings = mkOptionDefault {
           "Mod4+Shift+e" = ''mode "${logoutMode}"'';
           "Mod4+i" = "exec emacsclient --create-frame";
-          "Mod4+Control+l" = "exec hyprlock";
+          "Mod4+Control+l" = "exec ${lock}";
           "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
           "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- -l 1.2";
           "XF86AudioRaiseVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1.2";
@@ -106,7 +106,7 @@ in {
     };
     programs = {
       fuzzel.enable = true;
-      swaylock.enable = true;
+      hyprlock.enable = true;
       waybar = {
         enable = true;
       };
