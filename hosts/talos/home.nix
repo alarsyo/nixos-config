@@ -33,6 +33,7 @@ in {
         chromium # some websites only work there :(
         nwg-displays
         shikane # output autoconfig
+        swaybg
         zotero
         ;
 
@@ -101,6 +102,10 @@ in {
         startup = [
           {command = "shikane";}
           {command = "waybar";}
+          {
+            command = "swaybg --image ~/.wallpaper --mode fill";
+            always = true;
+          }
           {command = "swayidle -w idlehint 1 before-sleep \"${lock}\"";}
         ];
       };
