@@ -45,7 +45,7 @@ in {
 
     wayland.windowManager.sway = let
       logoutMode = "[L]ogout, [S]uspend, [P]oweroff, [R]eboot";
-      lock = "hyprlock --immediate";
+      lock = "swaylock --daemonize --image ~/.wallpaper --scaling fill";
     in {
       enable = true;
       swaynag.enable = true;
@@ -118,7 +118,7 @@ in {
     };
     programs = {
       fuzzel.enable = true;
-      hyprlock.enable = true;
+      swaylock.enable = true;
       waybar = {
         enable = true;
       };
