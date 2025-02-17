@@ -109,6 +109,11 @@ in {
           {command = "swayidle -w idlehint 1 before-sleep \"${lock}\"";}
         ];
       };
+
+      extraConfig = ''
+        bindswitch --reload --locked lid:off output eDP-1 enable;
+        bindswitch --reload --locked lid:on output eDP-1 disable;
+      '';
     };
     programs = {
       fuzzel.enable = true;
