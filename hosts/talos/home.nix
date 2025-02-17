@@ -90,7 +90,7 @@ in {
         modes = mkOptionDefault {
           "${logoutMode}" = {
             "l" = "exec --no-startup-id swaymsg exit, mode default";
-            #"s" = "exec --no-startup-id betterlockscreen --suspend, mode default";
+            "s" = "exec --no-startup-id systemctl suspend, mode default";
             "p" = "exec --no-startup-id systemctl poweroff, mode default";
             "r" = "exec --no-startup-id systemctl reboot, mode default";
             "Escape" = "mode default";
