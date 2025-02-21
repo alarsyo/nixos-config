@@ -149,6 +149,11 @@ in {
         client.urgent            $peach    $base $peach $overlay0  $peach
         client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
         client.background        $base
+
+        smart_borders on
+        default_border pixel 3
+        gaps inner 5
+        gaps outer 3
       '';
     };
 
