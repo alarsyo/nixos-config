@@ -19,6 +19,7 @@ in {
   config = mkIf cfg.enable {
     programs.tmux = {
       enable = true;
+      escapeTime = 0;
       baseIndex = 1;
       terminal = "screen-256color";
       clock24 = true;
