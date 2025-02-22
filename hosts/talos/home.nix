@@ -71,7 +71,7 @@ in {
         };
         fonts = {
           names = ["Iosevka Fixed" "FontAwesome6Free"];
-          size = 8.0;
+          size = 9.0;
         };
         bars = [];
 
