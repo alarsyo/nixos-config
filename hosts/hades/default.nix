@@ -202,10 +202,6 @@ in {
             NIX_SSL_CERT_FILE = "/nix/var/nix/profiles/default/etc/ssl/certs/ca-bundle.crt";
           };
         };
-        default = {
-          authenticationTokenConfigFile = config.age.secrets."gitlab-runner/hades-runner-env".path;
-          dockerImage = "debian:stable";
-        };
       };
     };
   };
