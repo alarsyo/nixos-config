@@ -173,6 +173,7 @@
   # home
   xdg.portal.config.sway = {
     "org.freedesktop.impl.portal.Settings" = "darkman";
+    "org.freedesktop.impl.portal.Inhibit" = "none";
   };
 
   # Copy the NixOS configuration file and link it from the resulting system
