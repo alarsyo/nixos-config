@@ -34,9 +34,10 @@ in {
           '';
         }
         {
-          plugin = tmuxPlugins.tmux-colors-solarized;
+          plugin = pkgs.tmuxPlugins.catppuccin;
           extraConfig = ''
-            set -g @colors-solarized 'light'
+            set -g @catppuccin_flavor 'latte'
+            set -g @catppuccin_window_status_style "rounded"
           '';
         }
       ];
