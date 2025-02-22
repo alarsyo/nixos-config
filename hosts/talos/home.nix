@@ -23,8 +23,19 @@ in {
 
     my.theme = config.home-manager.users.alarsyo.my.themes.solarizedLight;
 
-    # TODO: place in global home conf
-    services.dunst.enable = true;
+    services = {
+      # TODO: place in global home conf
+      dunst.enable = true;
+      wlsunset = {
+        enable = true;
+        latitude = 48.9;
+        longitude = 2.3;
+        temperature = {
+          day = 6500;
+          night = 3500;
+        };
+      };
+    };
 
     home.packages = builtins.attrValues {
       inherit
