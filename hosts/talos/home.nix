@@ -35,6 +35,13 @@ in {
           night = 3500;
         };
       };
+      darkman = {
+        enable = true;
+        settings = {
+          lat = 48.9;
+          lng = 2.3;
+        };
+      };
     };
 
     home.packages = builtins.attrValues {
