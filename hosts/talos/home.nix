@@ -115,6 +115,9 @@ in {
         bindswitch --reload --locked lid:off output eDP-1 enable;
         bindswitch --reload --locked lid:on output eDP-1 disable;
 
+        bindgesture swipe:right workspace prev
+        bindgesture swipe:left workspace next
+
         set $rosewater #dc8a78
         set $flamingo #dd7878
         set $pink #ea76cb
