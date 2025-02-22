@@ -145,12 +145,12 @@ in {
         set $mantle #e6e9ef
         set $crust #dce0e8
 
-        # target                 title     bg    text   indicator  border
-        client.focused           $lavender $base $text  $rosewater $lavender
-        client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
-        client.unfocused         $overlay0 $base $text  $rosewater $overlay0
-        client.urgent            $peach    $base $peach $overlay0  $peach
-        client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+        # target                 title     bg        text   indicator  border
+        client.focused           $lavender $lavender $base  $rosewater $lavender
+        client.focused_inactive  $overlay0 $base     $text  $rosewater $overlay0
+        client.unfocused         $overlay0 $base     $text  $rosewater $overlay0
+        client.urgent            $peach    $base     $peach $overlay0  $peach
+        client.placeholder       $overlay0 $base     $text  $overlay0  $overlay0
         client.background        $base
 
         smart_borders on
