@@ -7,7 +7,7 @@ diff-editor = ":builtin"
 paginate = "auto"
 editor = "vim"
 pager = "less -FRX"
-default-command = "log"
+default-command = "logstatus"
 
 [ui.movement]
 edit = false
@@ -23,6 +23,7 @@ pdiff = ["diff", "-r", "@-"]
 tug = ["bookmark", "move", "--from", "closest_bookmark(@-)", "--to", "@-"]
 ll = ["log", "-T", "builtin_log_detailed"]
 l = ["log", "-T", "builtin_log_compact"]
+logstatus = ["util", "exec", "--", "sh", "-c", "jj status && jj log"]
 
 [revset-aliases]
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
