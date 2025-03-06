@@ -46,8 +46,8 @@ coalesce(
       if(current_working_copy, "@"),
       if(immutable, "◆"),
       if(conflict, "×"),
-      if(description.starts_with("wip:"), "🔒"),
-      if(description.starts_with("private:"), "🔒"),
+      if(description.starts_with("wip:"), "!"),
+      if(description.starts_with("private:"), "!"),
       "○",
     )
   )
