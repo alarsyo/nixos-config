@@ -49,6 +49,7 @@ in {
         (pkgs)
         ansel
         chromium # some websites only work there :(
+        font-awesome # for pretty icons
         nwg-displays
         shikane # output autoconfig
         swaybg
