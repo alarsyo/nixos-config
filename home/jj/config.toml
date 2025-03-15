@@ -74,7 +74,7 @@ concat(
 "commit_description_changelog(commit)" = '''
 concat(
   commit.description(), "\n",
-  surround("", "\n", diff.files().map(|f| if(!commit.description().contains(changelog_entry(f)),
+  surround("", "\n", diff.files().map(|f| if(!commit.description().contains(f.path()),
                                              changelog_entry(f)
                                             )
                                      ).join("")),
