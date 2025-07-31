@@ -101,6 +101,7 @@ in {
         };
         bars = [];
 
+        workspaceAutoBackAndForth = true;
         bindkeysToCode = true;
         keybindings = mkOptionDefault {
           "Mod4+Shift+a" = "exec shikanectl reload";
