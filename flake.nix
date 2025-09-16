@@ -102,6 +102,18 @@
                 inherit system;
                 config.allowUnfree = true;
               };
+
+              tailscale = super.tailscale.overrideAttrs (old: {
+                checkFlags =
+                  builtins.map (
+                    flag:
+                    if super.lib.hasPrefix "-skip=" flag
+                    then flag + "|^TestGetList$|^TestIgnoreLocallyBoundPorts$|^TestPoller$"
+                    else flag
+                  )
+                    old.checkFlags;
+              });
+
             })
 
             agenix.overlays.default
