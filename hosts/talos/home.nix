@@ -207,12 +207,12 @@ in {
   # FIXME: belongs elsewhere
   services = {
     logind = {
-      lidSwitch = "suspend";
-      lidSwitchExternalPower = "ignore";
-      extraConfig = ''
-        IdleAction=suspend
-        IdleActionSec=10min
-      '';
+      settings.Login = {
+        HandleLidSwitch = "suspend";
+        HandleLidSwitchExternalPower = "ignore";
+        IdleAction = "suspend";
+        IdleActionSec = "10min";
+      };
     };
     upower.enable = true;
   };

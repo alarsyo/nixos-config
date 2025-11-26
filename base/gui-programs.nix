@@ -47,7 +47,7 @@ in {
         };
       };
 
-      logind.lidSwitch = "suspend";
+      logind.settings.Login.HandleLidSwitch = "suspend";
 
       printing = {
         enable = true;
