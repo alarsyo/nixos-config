@@ -49,14 +49,6 @@
       repo = "disko";
       ref = "master";
     };
-
-    jujutsu = {
-      type = "github";
-      owner = "jj-vcs";
-      repo = "jj";
-      ref = "v0.35.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
@@ -99,7 +91,6 @@
             })
 
             agenix.overlays.default
-            inputs.jujutsu.overlays.default
           ]
           ++ builtins.attrValues self.overlays;
         sharedModules =
