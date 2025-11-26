@@ -71,7 +71,7 @@ in {
         obs-studio
         pavucontrol
         spotify
-        tdesktop
+        telegram-desktop
         thunderbird
         virt-manager
         xcolor
