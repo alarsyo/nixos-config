@@ -95,7 +95,7 @@ in {
           };
         };
         fonts = {
-          names = ["Iosevka Fixed" "FontAwesome6Free"];
+          names = ["Iosevka Fixed" "FontAwesome7FreeSolid"];
           size = 9.0;
         };
         bars = [];
