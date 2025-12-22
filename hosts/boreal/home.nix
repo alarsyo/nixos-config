@@ -21,9 +21,6 @@
         (pkgs)
         # some websites only work there :(
         chromium
-        darktable
-        hugin
-        enblend-enfuse
         # dev
         rustup
         ;
