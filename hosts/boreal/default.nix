@@ -111,5 +111,6 @@
   programs.waybar.enable = true;
   programs.foot.enable = true;
   services.displayManager.sddm.wayland.enable = true;
+  my.displayManager.gdm.enable = true;
   services.power-profiles-daemon.enable = true;
 }
