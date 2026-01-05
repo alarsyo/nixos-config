@@ -122,6 +122,7 @@
     pkgs.wineWowPackages.stable
     pkgs.bottles
     pkgs.lutris
+    pkgs.gnomeExtensions.no-overview
   ];
 
   users.users.games = {
