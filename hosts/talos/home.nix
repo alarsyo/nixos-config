@@ -59,6 +59,7 @@ in {
         grim
         wl-clipboard
         slurp
+        pdfpc
         ;
 
       inherit
