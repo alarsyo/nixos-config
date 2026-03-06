@@ -6,6 +6,7 @@
     ./gitea
     ./immich.nix
     ./jellyfin.nix
+    ./journiv.nix
     ./lohr.nix
     ./matrix.nix
     ./mealie.nix
