@@ -145,7 +145,7 @@ in {
     };
 
     scribe = {
-      enable = true;
+      enable = false;
       port = 8087;
     };
 
