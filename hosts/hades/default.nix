@@ -69,6 +69,11 @@ in {
       privatePort = 8082;
     };
 
+    journiv = {
+      enable = true;
+      port = 8091;
+    };
+
     immich = {
       enable = true;
       port = 8089;
