@@ -1,6 +1,5 @@
 {...}: {
   imports = [
-    ./vaultwarden.nix
     ./fail2ban.nix
     ./fava.nix
     ./forgejo
@@ -27,5 +26,6 @@
     ./scribe.nix
     ./tailscale.nix
     ./transmission.nix
+    ./vaultwarden.nix
   ];
 }
