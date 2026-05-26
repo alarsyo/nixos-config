@@ -17,6 +17,17 @@
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_6_18;
+  # TODO: drop patch when this PR reaches 25.11:
+  # https://nixpk.gs/pr-tracker.html?pr=523337
+  boot.kernelPatches = [
+    {
+      name = "Bluetooth: btmtk: accept too short WMT FUNC_CTRL events";
+      patch = pkgs.fetchurl {
+        url = "https://git.kernel.org/pub/scm/linux/kernel/git/bluetooth/bluetooth-next.git/patch/?id=162b1adeb057d28ad84fd8a03f3c50cf08db5c62";
+        hash = "sha256-3iG77qRobyeMELrPR/khzWDJ4DpvUpr5PIghFPAMVoU=";
+      };
+    }
+  ];
   # Set Wi-Fi regulatory domain. Currently always set to '00' (world), and could
   # lead to bad Wi-Fi performance
   boot.kernelParams = ["cfg80211.ieee80211_regdom=FR"];
