@@ -172,6 +172,7 @@
 
   environment.systemPackages = [
     pkgs.foot
+    pkgs.xwayland-satellite
     # FIXME: is this needed?
     pkgs.darkman
   ];
@@ -180,6 +181,9 @@
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
+  };
+  programs.niri = {
+    enable = true;
   };
 
   # TODO: These are overriden by files from
