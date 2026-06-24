@@ -165,6 +165,8 @@
     pkgs.xwayland-satellite
     # FIXME: is this needed?
     pkgs.darkman
+
+    pkgs.noctalia-shell
   ];
 
   #programs.hyprland.enable = true;
