@@ -184,6 +184,11 @@
     "org.freedesktop.impl.portal.Inhibit" = "none";
   };
 
+  hardware.uinput.enable = true;
+  services.kanata.enable = true;
+  # TODO: add this file to Nix config and store
+  services.kanata.keyboards.arsenik.configFile = "/etc/arsenik/kanata.kbd";
+
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.
